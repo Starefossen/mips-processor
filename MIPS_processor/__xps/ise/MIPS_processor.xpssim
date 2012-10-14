@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<Simulation_deps>
+
+  <Version XPSPNVER="1.0" EDKVER="12.4" />
+  <FPGA family="aspartan6" device="xa6slx16" package="csg324" speedgrade="-3" />
+  <File Type="MHS" URL="../../MIPS_processor.mhs" />
+  <File Type="SimgenOpt" URL="../simgen.opt" />
+  <File Type="LibgenOpt" URL="../libgen.opt" />
+
+
+</Simulation_deps>

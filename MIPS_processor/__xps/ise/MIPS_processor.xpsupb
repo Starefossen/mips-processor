@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<Update_bits_deps>
+
+  <Version XPSPNVER="1.0" EDKVER="12.4" />
+  <FPGA family="aspartan6" device="xa6slx16" package="csg324" speedgrade="-3" />
+  <File Type="MHS" URL="../../MIPS_processor.mhs" />
+  <File Type="LibgenOpt" URL="../libgen.opt" />
+  <File Type="BitinitOpt" URL="../bitinit.opt" />
+
+
+</Update_bits_deps>
