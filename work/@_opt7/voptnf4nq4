@@ -1,0 +1,730 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\hanskrfl\Desktop\assignment1SimpleProc
+T_opt3
+Z1 VY>f0Oj2__]GE8znVV1U841
+Z2 04 20 8 work tb_processor_control behavior 1
+Z3 =1-00215a613036-50692f47-276-d54
+Z4 o-quiet -auto_acc_if_foreign -work work +acc
+Z5 n@_opt3
+Z6 OE;O;6.6d;45
+Z7 dC:\Users\hanskrfl\Desktop\assignment1SimpleProc
+T_opt5
+Z8 V2zXE9U@=ez^K>hWYJ>?Ao3
+R2
+Z9 =1-00215a613036-50693376-2e4-6fc
+R4
+Z10 n@_opt5
+R6
+R7
+T_opt7
+Z11 V4mT0OocPXK1gfLaI0mYnR0
+Z12 04 6 8 work tb_alu behavior 1
+Z13 =1-00215a613036-50695723-22d-d24
+R4
+Z14 n@_opt7
+R6
+R7
+T_opt9
+Z15 VRifgKn=@E2zmN6b5@mD0`1
+Z16 04 12 8 work tb_processor behavior 1
+Z17 =2-00215a613036-506950ba-104-c7c
+R4
+Z18 n@_opt9
+R6
+R7
+Eadder
+Z19 w1347011613
+Z20 DPx4 ieee 11 numeric_std 0 22 =NSdli^?T5OD8;4F<blj<3
+Z21 DPx4 ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+R7
+Z22 8hardware/adder.vhd
+Z23 Fhardware/adder.vhd
+l0
+L33
+Z24 VUkGLGcZ=KO6YWd]Ka;o120
+Z25 OE;C;6.6d;45
+31
+Z26 o-explicit -93
+Z27 tExplicit 1
+Z28 !s100 MC16gUE;:VACLmO2:0I8g3
+Abehavioral
+R20
+R21
+Z29 DEx4 work 5 adder 0 22 UkGLGcZ=KO6YWd]Ka;o120
+l58
+L44
+Z30 Vf]Y:4_M]Y5hG`6k7]<IdE1
+R25
+31
+Z31 Mx2 4 ieee 14 std_logic_1164
+Z32 Mx1 4 ieee 11 numeric_std
+R26
+R27
+Z33 !s100 ;4cW_;;^@`bD0ZjWIPoMU2
+Ealu
+R19
+Z34 DPx52 C:\Users\hanskrfl\Desktop\assignment1SimpleProc\work 17 mips_constant_pkg 0 22 C;88Om77CSfh^]DH9W^7i2
+Z35 DPx22 C:\modeltech_6.6d\ieee 11 numeric_std 0 22 =NSdli^?T5OD8;4F<blj<3
+Z36 DPx22 C:\modeltech_6.6d\ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+31
+R7
+Z37 8hardware/alu.vhd
+Z38 Fhardware/alu.vhd
+l0
+L36
+Z39 VCQ>Ih>^_X:RMPA3L>mH=j1
+R25
+R26
+R27
+Z40 !s100 m:z=BJPEiYaD=?7fWPQIc0
+Abehavioral
+Z41 DEx52 C:\Users\hanskrfl\Desktop\assignment1SimpleProc\work 8 alu_1bit 0 22 OFja5Az;9W_c1C^90dD2O2
+R34
+R35
+R36
+Z42 DEx52 C:\Users\hanskrfl\Desktop\assignment1SimpleProc\work 3 alu 0 22 CQ>Ih>^_X:RMPA3L>mH=j1
+31
+Mx3 22 C:\modeltech_6.6d\ieee 14 std_logic_1164
+Mx2 22 C:\modeltech_6.6d\ieee 11 numeric_std
+Z43 Mx1 52 C:\Users\hanskrfl\Desktop\assignment1SimpleProc\work 17 mips_constant_pkg
+l68
+L47
+Z44 V1Ce5aEJkYMPeg3Z@6kUY33
+R25
+R26
+R27
+Z45 !s100 23UcV149`ZXOcFo6WG]Oc2
+Ealu_1bit
+R19
+R36
+31
+R7
+Z46 8hardware/alu_1bit.vhd
+Z47 Fhardware/alu_1bit.vhd
+l0
+L32
+Z48 VOFja5Az;9W_c1C^90dD2O2
+R25
+R26
+R27
+Z49 !s100 `LFFVnEK1Vb6EVYnoM]AT3
+Abehavioral
+Z50 DEx52 C:\Users\hanskrfl\Desktop\assignment1SimpleProc\work 10 full_adder 0 22 TMmHk2WPngD]<Iaizz=Ma1
+R36
+R41
+31
+Z51 Mx1 22 C:\modeltech_6.6d\ieee 14 std_logic_1164
+l65
+L49
+Z52 V?Cl40RY::zfjI<8noS:i50
+R25
+R26
+R27
+Z53 !s100 IRM97U]?SoB`Y;<850An71
+Ealu_control
+Z54 w1349046552
+Z55 DPx4 work 17 mips_constant_pkg 0 22 C;88Om77CSfh^]DH9W^7i2
+R21
+R7
+Z56 8hardware/ALU_CONTROL.vhd
+Z57 Fhardware/ALU_CONTROL.vhd
+l0
+L27
+Z58 VFFFI]=ebZ^Io7eKeORM=;1
+R25
+31
+R26
+R27
+Z59 !s100 je@Sb7<o<d<F3X`MaPza01
+Abehavioral
+R55
+R21
+Z60 DEx4 work 11 alu_control 0 22 FFFI]=ebZ^Io7eKeORM=;1
+l38
+L36
+Z61 V@j0ZcoGYhP5]fQMhX11Kh2
+R25
+31
+R31
+Z62 Mx1 4 work 17 mips_constant_pkg
+R26
+R27
+Z63 !s100 Z1`^<bWY0G>Wz<[<B71=e0
+Eander
+Z64 w1348831066
+R21
+R7
+Z65 8hardware/and.vhd
+Z66 Fhardware/and.vhd
+l0
+L31
+Z67 V7d7aRKIo[kJINcfHIN]WF1
+R25
+31
+R26
+R27
+Z68 !s100 RX^O2LcXd?@McoKPFBn=_2
+Abehavioral
+R21
+Z69 DEx4 work 5 ander 0 22 7d7aRKIo[kJINcfHIN]WF1
+l39
+L37
+Z70 V23b4<meUhOP;9B_2KlSLF2
+R25
+31
+Z71 Mx1 4 ieee 14 std_logic_1164
+R26
+R27
+Z72 !s100 RYYD3j?R_e1Wc8a5T8eZe3
+Ecom
+R19
+Z73 DPx4 ieee 15 std_logic_arith 0 22 GJbAT?7@hRQU9IQ702DT]2
+Z74 DPx4 ieee 18 std_logic_unsigned 0 22 hEMVMlaNCR^<OOoVNV;m90
+R21
+R7
+Z75 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/hardware/com.vhd
+Z76 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/hardware/com.vhd
+l0
+L33
+Z77 VY2WL=`kS59e5X1E1`Ylh93
+R25
+32
+Z78 o-work work
+R27
+Z79 !s100 nB]L6F:Z_>Fk:FA0o5KI^0
+Abehavioral
+R73
+R74
+R21
+Z80 DEx4 work 3 com 0 22 Y2WL=`kS59e5X1E1`Ylh93
+l77
+L60
+Z81 V3]Mm<CEm9n:k^Y7aOfk]83
+R25
+32
+Z82 Mx3 4 ieee 14 std_logic_1164
+Z83 Mx2 4 ieee 18 std_logic_unsigned
+Z84 Mx1 4 ieee 15 std_logic_arith
+R78
+R27
+Z85 !s100 cl;a9;MYJGV4a2i][IQ3U1
+Efull_adder
+Z86 w1349014244
+R35
+R36
+31
+R7
+Z87 8hardware/full_adder.vhd
+Z88 Fhardware/full_adder.vhd
+l0
+L33
+Z89 VTMmHk2WPngD]<Iaizz=Ma1
+R25
+R26
+R27
+Z90 !s100 ^`l^^Ui_Q1V>EaR0gz7AP3
+Abehavioral
+R35
+R36
+R50
+31
+Z91 Mx2 22 C:\modeltech_6.6d\ieee 14 std_logic_1164
+Mx1 22 C:\modeltech_6.6d\ieee 11 numeric_std
+l47
+L43
+Z92 Vc<UIh2UUc6`Yk4`ZZY<6;1
+R25
+R26
+R27
+Z93 !s100 L;?Pl7XCD2]G<]b9eBVLl2
+Ememory
+Z94 w1348843513
+R20
+R21
+R7
+Z95 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/hardware/memory.vhd
+Z96 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/hardware/memory.vhd
+l0
+L33
+Z97 VFLehcbo?41fN]a^7]j]a31
+R25
+32
+R78
+R27
+Z98 !s100 gTTP`Jmh8CIgzS=e[A=GY0
+Abehavioral
+R20
+R21
+Z99 DEx4 work 6 memory 0 22 FLehcbo?41fN]a^7]j]a31
+l54
+L46
+Z100 VS>d8zCnMh8KgVg[[NZKlX0
+R25
+32
+R31
+R32
+R78
+R27
+Z101 !s100 H`0Za]aGi]DD7UZa1kbgX2
+Pmips_constant_pkg
+R36
+31
+R51
+Z102 w1349042429
+R7
+Z103 8hardware/mips_constant_pkg.vhd
+Z104 Fhardware/mips_constant_pkg.vhd
+l0
+L10
+Z105 VC;88Om77CSfh^]DH9W^7i2
+R25
+R26
+R27
+Z106 !s100 ?3bS@`5[;5nWCWgfXRkZm0
+Emux
+Z107 w1348745259
+R21
+R7
+Z108 8hardware/MUX.vhd
+Z109 Fhardware/MUX.vhd
+l0
+L32
+Z110 Vg5k>_:n^bmMMDd@8MSg6k3
+R25
+31
+R26
+R27
+Z111 !s100 C85SGRmAWPzA=]BC[lcM53
+Abehavioral
+R21
+Z112 DEx4 work 3 mux 0 22 g5k>_:n^bmMMDd@8MSg6k3
+l42
+L40
+Z113 VkTf3gRI@S<zI0e3>WUje_2
+R25
+31
+R71
+R26
+R27
+Z114 !s100 KU0CYXC0abAFFOo<N9RkI1
+Eprocessor
+Z115 w1349079195
+R55
+R20
+R74
+R73
+R21
+R7
+Z116 8hardware/processor.vhd
+Z117 Fhardware/processor.vhd
+l0
+L30
+Z118 ViEeJccH`PoD>U23J1aaUY2
+R25
+31
+R26
+R27
+Z119 !s100 Az_b9fFM85DnLDf^m0BHk0
+Abehavioral
+R55
+R20
+R74
+R73
+R21
+Z120 DEx4 work 9 processor 0 22 iEeJccH`PoD>U23J1aaUY2
+l161
+L45
+Z121 VQ8`ml8T8lD^j_SXY@1QkG3
+R25
+31
+Z122 Mx5 4 ieee 14 std_logic_1164
+Z123 Mx4 4 ieee 15 std_logic_arith
+Z124 Mx3 4 ieee 18 std_logic_unsigned
+Z125 Mx2 4 ieee 11 numeric_std
+R62
+R26
+R27
+Z126 !s100 9?FjH1iO=O`9m1N[SOPZR2
+Eprocessor_control
+Z127 w1349074240
+R55
+R21
+R7
+Z128 8hardware/PROCESSOR_CONTROL.vhd
+Z129 Fhardware/PROCESSOR_CONTROL.vhd
+l0
+L27
+Z130 VJZ?@VZ?UzND@acoV_NJz33
+R25
+31
+R26
+R27
+Z131 !s100 CX>]S;H7CC<>a^0X8Z[?V0
+Abehavioral
+R55
+R21
+Z132 DEx4 work 17 processor_control 0 22 JZ?@VZ?UzND@acoV_NJz33
+l47
+L45
+Z133 VVm2P:3[CzcnGHnHUz1O7I3
+R25
+31
+R31
+R62
+R26
+R27
+Z134 !s100 Of?T`DlSPmY^BGZfCBChE1
+Eprogram_counter
+Z135 w1349073758
+R55
+R21
+R7
+Z136 8hardware/PROGRAM_COUNTER.vhd
+Z137 Fhardware/PROGRAM_COUNTER.vhd
+l0
+L27
+Z138 V9Zicad5_T>?Y0iY=CWVMT0
+R25
+31
+R26
+R27
+Z139 !s100 iBiY9LJ3mWhbeGM^?IO`92
+Abehavioral
+R55
+R21
+Z140 DEx4 work 15 program_counter 0 22 9Zicad5_T>?Y0iY=CWVMT0
+l80
+L44
+Z141 VBo7^C0eXcJ[J0fmSjIKIQ2
+R25
+31
+R31
+R62
+R26
+R27
+Z142 !s100 ?XSKj`3]GjR_k1`m2gU>81
+Eregister_file
+R19
+R55
+R20
+R21
+R7
+Z143 8hardware/register_file.vhd
+Z144 Fhardware/register_file.vhd
+l0
+L36
+Z145 V]4Z2QQf[gAOe22LNI[AZW1
+R25
+31
+R26
+R27
+Z146 !s100 27PSd2dmMZZMX<nF`i5@_2
+Abehavioral
+R55
+R20
+R21
+Z147 DEx4 work 13 register_file 0 22 ]4Z2QQf[gAOe22LNI[AZW1
+l58
+L51
+Z148 V8iKI3f2dM35LGgU^`0HoG2
+R25
+31
+R82
+R125
+R62
+R26
+R27
+Z149 !s100 ;GiB_PG7[Cn@l5^1j<45W1
+Eshift_l2
+Z150 w1348728475
+R21
+R7
+Z151 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/hardware/SHIFT_L2.vhd
+Z152 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/hardware/SHIFT_L2.vhd
+l0
+L32
+Z153 VF9Z>::eOmAMm;I[CZTeJ;3
+R25
+32
+R78
+R27
+Z154 !s100 c^WfEB^zJb^<]nS1^SIi52
+Abehavioral
+R21
+Z155 DEx4 work 8 shift_l2 0 22 F9Z>::eOmAMm;I[CZTeJ;3
+l39
+L37
+Z156 VO0`QK6DlOPi`^E]J;l@EQ0
+R25
+32
+R71
+R78
+R27
+Z157 !s100 ge:P@RT2JVf??OhB]eDSn3
+Esign_extend
+Z158 w1348728422
+R21
+R7
+Z159 8hardware/SIGN_EXTEND.vhd
+Z160 Fhardware/SIGN_EXTEND.vhd
+l0
+L32
+Z161 ViG0aGeL28_4m4Cb?6:E[b0
+R25
+31
+R26
+R27
+Z162 !s100 V;9M?08D96c;l;Pnh?9OQ3
+Abehavioral
+R21
+Z163 DEx4 work 11 sign_extend 0 22 iG0aGeL28_4m4Cb?6:E[b0
+l39
+L37
+Z164 Vhe^RG`;MEjan9n1k>Je@P0
+R25
+31
+R71
+R26
+R27
+Z165 !s100 m2PQcSeZ]nM`^mIM77cc=1
+Etb_alu
+Z166 w1349080855
+R34
+R36
+31
+R7
+Z167 8testbenches/tb_alu.vhd
+Z168 Ftestbenches/tb_alu.vhd
+l0
+L39
+Z169 V>gK?GK>PMcAfB``8I]:9m0
+R25
+R26
+R27
+Z170 !s100 ]oZ7F>cQ7a<6lbf>h2BVn2
+Abehavior
+R42
+R34
+R36
+DEx52 C:\Users\hanskrfl\Desktop\assignment1SimpleProc\work 6 tb_alu 0 22 >gK?GK>PMcAfB``8I]:9m0
+31
+R91
+R43
+l70
+L42
+Z171 VeLn[PBTQO?5ZEf=Z43@=C1
+R25
+R26
+R27
+Z172 !s100 f?TTZ^aaB^2f;>0M553jT3
+Etb_alu_control
+Z173 w1349046543
+Z174 DPx4 work 17 mips_constant_pkg 0 22 3S5bKM[:YWXQXnmZQ[0:30
+R21
+R7
+Z175 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_alu_control.vhd
+Z176 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_alu_control.vhd
+l0
+L35
+Z177 V]NodCOL:0ejW5[^`TZX6b0
+R25
+32
+R78
+R27
+Z178 !s100 _YT6l>z]c?_D6j9=VFzL01
+Abehavior
+R174
+R21
+Z179 DEx4 work 14 tb_alu_control 0 22 ]NodCOL:0ejW5[^`TZX6b0
+l62
+L38
+Z180 VIbJAHzGI<0N<TE6AI9]BY0
+R25
+32
+R31
+R62
+R78
+R27
+Z181 !s100 6AHiO2M=mVLL1H6VXGo8l2
+Etb_fulladder
+Z182 w1348820916
+R21
+R7
+Z183 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_fulladder.vhd
+Z184 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_fulladder.vhd
+l0
+L35
+Z185 V_ec^ERifk8QJZi1;z6Sz=2
+R25
+32
+R78
+R27
+Z186 !s100 igHh6XH[SS1e0?1eTHnz43
+Etb_processor
+Z187 w1349078672
+R21
+R7
+Z188 8testbenches/tb_processor.vhd
+Z189 Ftestbenches/tb_processor.vhd
+l0
+L35
+Z190 VDc0cDg:2mfQeMm^fd<1XQ0
+R25
+31
+R26
+R27
+Z191 !s100 lhBQ_g=:kJIKadWi>C_XJ2
+Abehavior
+R21
+Z192 DEx4 work 12 tb_processor 0 22 Dc0cDg:2mfQeMm^fd<1XQ0
+l75
+L38
+Z193 Vn<W9HZ@fY[zSf[cmBSk<z0
+R25
+31
+R71
+R26
+R27
+Z194 !s100 ho[cd=Z0LLTb=HL`4j_HJ3
+Etb_processor_control
+Z195 w1349073521
+R55
+R21
+R7
+Z196 8testbenches/tb_processor_control.vhd
+Z197 Ftestbenches/tb_processor_control.vhd
+l0
+L35
+Z198 V?RZX[m^G=J<<>hlP50Bjj2
+R25
+31
+R26
+R27
+Z199 !s100 7O]2j8<94>_YJ440Kbz2?1
+Abehavior
+R55
+R21
+Z200 DEx4 work 20 tb_processor_control 0 22 ?RZX[m^G=J<<>hlP50Bjj2
+l80
+L38
+Z201 VCSHHNj?1iD8?zN]Fo7UlE0
+R25
+31
+R31
+R62
+R26
+R27
+Z202 !s100 APS?z;S7FLi1CcZFJE5Yg2
+Etb_program_counter
+Z203 w1349070277
+R21
+R7
+Z204 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_program_counter.vhd
+Z205 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_program_counter.vhd
+l0
+L35
+Z206 V5j:6ImC?Of_J4GiW_JAQl3
+R25
+32
+R78
+R27
+Z207 !s100 :kmE<PlIm55>DKz[K3<Gg3
+Abehavior
+R21
+Z208 DEx4 work 18 tb_program_counter 0 22 5j:6ImC?Of_J4GiW_JAQl3
+32
+R71
+l75
+L38
+Z209 Vgh`O[f=m6SgHK^Ra;nO[@2
+R25
+R78
+R27
+Z210 !s100 nJPZPPniH85m3>H3R7FWP0
+Etb_register_file
+Z211 w1348740887
+R21
+R7
+Z212 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_register_file.vhd
+Z213 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_register_file.vhd
+l0
+L35
+Z214 VWXWJ`lh7GdKB]IH]eO8PH1
+R25
+32
+R78
+R27
+Z215 !s100 [cAcWaQgPjWD`Zi_Me=1:3
+Abehavior
+R21
+Z216 DEx4 work 16 tb_register_file 0 22 WXWJ`lh7GdKB]IH]eO8PH1
+l73
+L38
+Z217 V^CD5]MCDm:2gARcQAQJ[m0
+R25
+32
+R71
+R78
+R27
+Z218 !s100 X6Qg3TbljHiKE7Uala3892
+Etb_toplevel
+Z219 w1349011099
+R21
+R7
+Z220 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_toplevel.vhd
+Z221 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/testbenches/tb_toplevel.vhd
+l0
+L35
+Z222 VWaX8GGfKiWY`PMJA3[^iW3
+R25
+32
+R78
+R27
+Z223 !s100 ^Y?0PR>TL_RB9O=NiTk0i2
+Abehavior
+R21
+Z224 DEx4 work 11 tb_toplevel 0 22 WaX8GGfKiWY`PMJA3[^iW3
+l101
+L38
+Z225 Ve6elTOe5EV^dh4`B34;_h1
+R25
+32
+R71
+R78
+R27
+Z226 !s100 A0NhURzZcF`H37>c>P9K_0
+Etoplevel
+Z227 w1348843499
+R174
+R20
+R21
+R7
+Z228 8C:/Users/hanskrfl/Desktop/assignment1SimpleProc/hardware/toplevel.vhd
+Z229 FC:/Users/hanskrfl/Desktop/assignment1SimpleProc/hardware/toplevel.vhd
+l0
+L36
+Z230 V5ghobM_1TNKGjKGZfZJJL1
+R25
+32
+R78
+R27
+Z231 !s100 ^50ZPI`ZT2AI]PNIG<B:X0
+Abehavioral
+R174
+R20
+R21
+Z232 DEx4 work 8 toplevel 0 22 5ghobM_1TNKGjKGZfZJJL1
+l123
+L54
+Z233 V4j?44jF8FDDDziVeM83OE0
+R25
+32
+R82
+R125
+R62
+R78
+R27
+Z234 !s100 cgW17N@VKgfZ7CmOEBhgg1
