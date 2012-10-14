@@ -57,3 +57,6 @@ xst/
 _ngo/
 _xmsgs/
 work/
+
+# mac general files
+.DS_Store
