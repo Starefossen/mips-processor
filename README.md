@@ -13,6 +13,6 @@ The suggested architecture for the simple multi-cycle MIPS processor is depicted
 
 ## Part 2: pipelined MIPS processor
 
-In the second part, we will extend the processor by changing the datapath to a pipeline. This means that you will need to add pipeline registers and make a new control module which accommodates the pipeline processing. Note that all hazards are handled through software. Therefore, in this assignment, you don’t need to implement the hazard detec- tion and controlling module. Hazard detection and controlling module using hardware is left for Assignment 3.
+In the second part the processor is extend by changing the datapath to a pipeline. This means that we will need to add pipeline registers and make a new control module which accommodates the pipeline processing. All hazards are handled through software so we don’t need to implement the hazard detection and controlling module. This will be added in Part 3.
 
 ![Pipelined MIPS processor](https://raw.github.com/Starefossen/mips-processor/master/docs/mips_pipeline.png?login=Starefossen&token=b29707db05f9504e830b644881def7e1)
