@@ -41,6 +41,7 @@
 *_summary.xml
 *_usage.xml
 *_xst.xrpt
+wlft*
 
 # project-wide generated files
 *.gise
@@ -55,3 +56,4 @@ xlnx_auto_0_xdb/
 xst/
 _ngo/
 _xmsgs/
+work/
