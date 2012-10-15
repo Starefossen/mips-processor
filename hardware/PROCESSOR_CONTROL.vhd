@@ -27,7 +27,6 @@ use WORK.MIPS_CONSTANT_PKG.ALL;
 entity PROCESSOR_CONTROL is
 	Port ( 
 		OPCode 			: in  STD_LOGIC_VECTOR (5 downto 0);
-		State 			: in  state_type;
 		RegDst 			: out STD_LOGIC := '0';
 		Jump 				: out STD_LOGIC := '0';
 		Branch			: out STD_LOGIC := '0';
@@ -36,9 +35,7 @@ entity PROCESSOR_CONTROL is
 		ALUOp 			: out STD_LOGIC_VECTOR (1 downto 0):= "10";
 		MemWrite 		: out STD_LOGIC := '0';
 		ALUSrc 			: out STD_LOGIC := '0';
-		--PCWrite 			: out STD_LOGIC := '1';
-		RegWrite 		: out STD_LOGIC := '0';
-		NextState 		: out state_type := EXEC
+		RegWrite 		: out STD_LOGIC := '0'
 	);
 end PROCESSOR_CONTROL;
 
@@ -46,9 +43,8 @@ architecture Behavioral of processor_control is
 
 begin
 
-	PROCESSOR_CONTROL: process(OPCode, state) begin
+	PROCESSOR_CONTROL: process(OPCode) begin
 		
-		if state = EXEC then
 			case OPCode is
 				-- R-format instructions
 				when OP_R =>
@@ -61,8 +57,6 @@ begin
 					MemWrite 		<= '0';
 					ALUSrc 			<= '0';
 					RegWrite 		<= '1';
-					--PCWrite 			<= '1';
-					NextState		<= FETCH;
 				
 				-- J-format instructions
 				when OP_J => 
@@ -75,8 +69,6 @@ begin
 					MemWrite 		<= '0';
 					ALUSrc 			<= '0';
 					RegWrite 		<= '0';
-					--PCWrite 			<= '1';
-					NextState		<= FETCH;
 				
 				-- I-format load from memory
 				when OP_I_LOAD =>
@@ -89,8 +81,6 @@ begin
 					MemWrite 		<= '0';
 					ALUSrc 			<= '1';
 					RegWrite 		<= '1';
-					--PCWrite 			<= '0';
-					NextState		<= STALL;
 				
 				-- I-format store to memory
 				when OP_I_STORE =>
@@ -103,8 +93,6 @@ begin
 					MemWrite 		<= '1';
 					ALUSrc 			<= '1';
 					RegWrite 		<= '0';
-					--PCWrite 			<= '1';
-					NextState		<= STALL;
 				
 				-- I-format load imediate
 				when OP_I_LI =>
@@ -117,8 +105,6 @@ begin
 					MemWrite 		<= '0';
 					ALUSrc 			<= '1';
 					RegWrite 		<= '1';
-					--PCWrite 			<= '1';
-					NextState		<= FETCH;
 				
 				-- I-format load imediate
 				when OP_I_BEQ =>
@@ -131,16 +117,10 @@ begin
 					MemWrite 		<= '0';
 					ALUSrc 			<= '0';
 					RegWrite 		<= '0';
-					--PCWrite 			<= '1';
-					NextState		<= FETCH;
 					
 				when others =>
 				-- do this
 			end case;
-			elsif state = FETCH then
-				MemWrite <= '0';
-				RegWrite <= '0';
-		end if;
 	end process  processor_control;
 
 end Behavioral;

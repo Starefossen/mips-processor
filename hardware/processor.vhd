@@ -44,223 +44,328 @@ end processor;
 
 architecture Behavioral of processor is
 
-	-- Processor Control
-	component PROCESSOR_CONTROL is
+	component fetcher is
 		Port ( 
-			OPCode 				: in  STD_LOGIC_VECTOR (5 downto 0);
-			State 				: in  state_type;
-			RegDst 				: out STD_LOGIC;
-			Jump 					: out STD_LOGIC;
-			Branch 				: out STD_LOGIC;
-			MemRead 				: out STD_LOGIC;
-			MemtoReg 			: out STD_LOGIC;
-			ALUOp 				: out STD_LOGIC_VECTOR (1 downto 0);
-			MemWrite 			: out STD_LOGIC;
-			ALUSrc 				: out STD_LOGIC;
-			RegWrite 			: out STD_LOGIC;
-			--PCWrite	 			: out STD_LOGIC
-			NextState			: out state_type
+			clk 						: in  STD_LOGIC;
+			reset 					: in  STD_LOGIC;
+		
+			--input
+			if_ctrl_pcSrc			: in STD_LOGIC; 								-- from memory step
+			if_ctrl_jump 			: in STD_LOGIC;								-- from instruction decoder step
+			if_jump_addr 			: in STD_LOGIC_VECTOR (31 downto 0); 	-- from instruction decoder step
+			if_branchAddr			: in STD_LOGIC_VECTOR (31 downto 0); 	-- from memory step
+			
+			--output
+			id_pc						: out STD_LOGIC_VECTOR (31 downto 0);
+			imem_address			: out STD_LOGIC_VECTOR (31 downto 0)
 		);
 	end component;
 	
-	-- ALU Control
-	component ALU_CONTROL is
+	component decoder is
 		Port ( 
-			ALUOp 			: in  STD_LOGIC_VECTOR (1 downto 0);
-			ALUFunct 		: in  STD_LOGIC_VECTOR (5 downto 0);
-			ALUCtrl		 	: out ALU_INPUT
+			clk						: in  STD_LOGIC;
+			reset 					: in  STD_LOGIC;	
+			
+			--input
+			imem_data_in 			: in  STD_LOGIC_VECTOR (31 downto 0);
+
+			id_ctrl_regWrite		: in STD_LOGIC;
+			id_regWriteAddr		: in STD_LOGIC_VECTOR (4 downto 0);
+			id_regWriteData		: in  STD_LOGIC_VECTOR (31 downto 0);	
+			id_if_pc					: in  STD_LOGIC_VECTOR (31 downto 0);
+
+			--output
+			if_ctrl_jump 			: out  STD_LOGIC; -- from processor control
+			if_jump_addr 			: out  STD_LOGIC_VECTOR (31 downto 0);
+
+			wb_ctrl_regWrite 		: out  STD_LOGIC;
+			wb_ctrl_memtoReg 		: out  STD_LOGIC;
+
+			mem_ctrl_branch 		: out  STD_LOGIC;
+			mem_ctrl_memRead 		: out  STD_LOGIC;
+			mem_ctrl_memWrite 	: out  STD_LOGIC;
+
+			ex_ctrl_regDst 		: out  STD_LOGIC;
+			ex_ctrl_aluOp 			: out  STD_LOGIC_VECTOR (1 downto 0);
+			ex_ctrl_aluSrc 		: out  STD_LOGIC;
+			ex_pc						: out  STD_LOGIC_VECTOR (31 downto 0);
+			ex_register_read_1 	: out  STD_LOGIC_VECTOR (31 downto 0);
+			ex_register_read_2 	: out  STD_LOGIC_VECTOR (31 downto 0);
+			ex_signext 				: out  STD_LOGIC_VECTOR (31 downto 0);
+			ex_inst_20_16 			: out  STD_LOGIC_VECTOR (4 downto 0);
+			ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0)
 		);
 	end component;
 	
-	component SIGN_EXTEND is 
-		Port (
-			bus_in 	: in  STD_LOGIC_VECTOR (15 downto 0);
-			bus_out 	: out  STD_LOGIC_VECTOR (31 downto 0)
-		);
-	end component;
+	component Executer is
+		Port ( 
+			reset 					: in  STD_LOGIC;
+			clk 						: in  STD_LOGIC;
 
-	component MUX is
-		generic (N :NATURAL :=32); 
-		Port ( selector : in  STD_LOGIC;
-			bus_in1 : in  STD_LOGIC_VECTOR (N-1 downto 0);
-			bus_in2 : in  STD_LOGIC_VECTOR (N-1 downto 0);
-			bus_out : out  STD_LOGIC_VECTOR (N-1 downto 0)
+			-- input signals
+			ex_wb_ctrl_regWrite 	: in  STD_LOGIC;
+			ex_wb_ctrl_memtoReg 	: in  STD_LOGIC;
+			
+			ex_mem_ctrl_branch 	: in  STD_LOGIC;
+			ex_mem_ctrl_memRead 	: in  STD_LOGIC;
+			ex_mem_ctrl_memWrite : in  STD_LOGIC;
+			
+			ex_ctrl_regDst 		: in STD_LOGIC;
+			ex_ctrl_aluOp 			: in STD_LOGIC_VECTOR (1 downto 0);
+			ex_ctrl_aluSrc 		: in STD_LOGIC;
+			
+			ex_pc						: in STD_LOGIC_VECTOR (31 downto 0);
+			ex_signext 				: in STD_LOGIC_VECTOR (31 downto 0);
+			ex_inst_20_16 			: in STD_LOGIC_VECTOR (4 downto 0);
+			ex_inst_15_11 			: in STD_LOGIC_VECTOR (4 downto 0);
+			
+			ex_register_read_1 	: in STD_LOGIC_VECTOR (31 downto 0);
+			ex_register_read_2 	: in STD_LOGIC_VECTOR (31 downto 0);
+			
+			-- out signals
+			mem_wb_ctrl_regWrite : out  STD_LOGIC;
+			mem_wb_ctrl_memtoReg : out  STD_LOGIC;
+			
+			mem_ctrl_branch 		: out  STD_LOGIC;
+			mem_ctrl_memRead 		: out  STD_LOGIC;
+			mem_ctrl_memWrite 	: out  STD_LOGIC;
+			
+			mem_aluZero				: out STD_LOGIC;
+			mem_branchAddr			: out STD_LOGIC_VECTOR (31 downto 0);
+			mem_aluRes				: out STD_LOGIC_VECTOR (31 downto 0);
+			mem_writeData 			: out STD_LOGIC_VECTOR (31 downto 0); -- copy of ex_register_read_2
+			mem_writeRegisterAddr: out STD_LOGIC_VECTOR (4 downto 0)
+		);	
+	end component;
+	
+	component memorier is
+		Port ( 
+			reset 					: in  STD_LOGIC;
+			clk 						: in  STD_LOGIC;
+					
+			-- input from executer step
+			mem_wb_ctrl_regWrite : in  STD_LOGIC;	
+			mem_wb_ctrl_memtoReg : in  STD_LOGIC;
+
+			mem_ctrl_branch 		: in  STD_LOGIC;
+			mem_ctrl_memRead 		: in  STD_LOGIC;
+			mem_ctrl_memWrite 	: in  STD_LOGIC;
+			
+			mem_aluZero				: in STD_LOGIC;
+			mem_branchAddr			: in STD_LOGIC_VECTOR (31 downto 0);
+			mem_aluRes				: in STD_LOGIC_VECTOR (31 downto 0);
+			mem_writeData 			: in STD_LOGIC_VECTOR (31 downto 0);
+			mem_regWriteAddr		: in STD_LOGIC_VECTOR (4 downto 0);
+		
+			-- output signals to write back step
+			wb_ctrl_regWrite 		: out STD_LOGIC;	
+			wb_ctrl_memtoReg 		: out STD_LOGIC;
+			
+			if_branchAddr			: out STD_LOGIC_VECTOR (31 downto 0);
+			wb_aluRes				: out STD_LOGIC_VECTOR (31 downto 0);
+			wb_regWriteAddr		: out STD_LOGIC_VECTOR (4 downto 0);
+			
+			if_ctrl_pcSrc			: out STD_LOGIC; -- branch control / selector
+			
+			-- external processor signals		
+			dmem_address			: out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
+			dmem_address_wr     	: out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
+			dmem_data_out       	: out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
+			dmem_write_enable   	: out STD_LOGIC
+		);	
+	end component;
+	
+	component writebacker is
+		Port ( 
+			reset 					: in  STD_LOGIC;
+			clk 						: in  STD_LOGIC;
+					
+			-- input signals from memory step
+			wb_ctrl_regWrite 		: in STD_LOGIC;	
+			wb_ctrl_memtoReg 		: in STD_LOGIC;
+			
+			wb_aluRes				: in STD_LOGIC_VECTOR (31 downto 0);
+			wb_regWriteAddr		: in STD_LOGIC_VECTOR (4 downto 0);
+
+			-- external processor signal 
+			dmem_data_in			: in  STD_LOGIC_VECTOR (DDATA_BUS-1 downto 0);
+
+			-- output signals to instruction decoder
+			id_ctrl_regWrite		: out STD_LOGIC;
+			id_writeRegisterAddr : out STD_LOGIC_VECTOR (4 downto 0);
+			id_writeData			: out STD_LOGIC_VECTOR (31 downto 0)
 		);
 	end component;
 	
-	component REGISTER_FILE is
-		port(
-			CLK 			:	in	STD_LOGIC;				
-			RESET			:	in	STD_LOGIC;				
-			RW				:	in	STD_LOGIC;				
-			RS_ADDR 		:	in	STD_LOGIC_VECTOR (RADDR_BUS-1 downto 0); 
-			RT_ADDR 		:	in	STD_LOGIC_VECTOR (RADDR_BUS-1 downto 0); 
-			RD_ADDR 		:	in	STD_LOGIC_VECTOR (RADDR_BUS-1 downto 0);
-			WRITE_DATA	:	in	STD_LOGIC_VECTOR (DDATA_BUS-1 downto 0); 
-			RS				:	out STD_LOGIC_VECTOR (DDATA_BUS-1 downto 0);
-			RT				:	out STD_LOGIC_VECTOR (DDATA_BUS-1 downto 0)
-		);
-	end component;
+	--fetcher out signals
+	signal fetcher_id_pc						: STD_LOGIC_VECTOR (31 downto 0);
+	signal fetcher_imem_address			: STD_LOGIC_VECTOR (31 downto 0);
 	
-	component ALU is
-		generic (N :NATURAL :=32); 
-		port(
-			X			: in STD_LOGIC_VECTOR(N-1 downto 0);
-			Y			: in STD_LOGIC_VECTOR(N-1 downto 0);
-			ALU_IN	: in ALU_INPUT;
-			R			: out STD_LOGIC_VECTOR(N-1 downto 0);
-			FLAGS		: out ALU_FLAGS
-		);
-	end component;
+	--decoder out signals
+	signal decoder_if_ctrl_jump 			: STD_LOGIC; -- from processor control
+	signal decoder_if_jump_addr 			: STD_LOGIC_VECTOR (31 downto 0);
+
+	signal decoder_wb_ctrl_regWrite 		: STD_LOGIC;
+	signal decoder_wb_ctrl_memtoReg 		: STD_LOGIC;
+
+	signal decoder_mem_ctrl_branch 		: STD_LOGIC;
+	signal decoder_mem_ctrl_memRead 		: STD_LOGIC;
+	signal decoder_mem_ctrl_memWrite 	: STD_LOGIC;
+
+	signal decoder_ex_ctrl_regDst 		: STD_LOGIC;
+	signal decoder_ex_ctrl_aluOp 			: STD_LOGIC_VECTOR (1 downto 0);
+	signal decoder_ex_ctrl_aluSrc 		: STD_LOGIC;
+	signal decoder_ex_pc						: STD_LOGIC_VECTOR (31 downto 0);
+	signal decoder_ex_register_read_1 	: STD_LOGIC_VECTOR (31 downto 0);
+	signal decoder_ex_register_read_2 	: STD_LOGIC_VECTOR (31 downto 0);
+	signal decoder_ex_signext 				: STD_LOGIC_VECTOR (31 downto 0);
+	signal decoder_ex_inst_20_16 			: STD_LOGIC_VECTOR (4 downto 0);
+	signal decoder_ex_inst_15_11 			: STD_LOGIC_VECTOR (4 downto 0);
 	
-	component PROGRAM_COUNTER is
-		generic (N :NATURAL :=32);
-		Port (
-			clk 				: in STD_LOGIC;
-			reset 			: in STD_LOGIC;
-			signext_output	: in STD_LOGIC_VECTOR (31 downto 0);
-			imem_data_25_0	: in STD_LOGIC_VECTOR (25 downto 0);
-			Jump				: in STD_LOGIC;
-			Branch			: in STD_LOGIC;
-			Zero				: in STD_LOGIC;
-			--PCWrite 			: in STD_LOGIC;
-			State 			: in state_type;
-			PCIn 				: in STD_LOGIC_VECTOR;
-			PCOut 			: out STD_LOGIC_VECTOR (N-1 downto 0) := "00000000000000000000000000000001"
-		);
-	end component;	
-
-	-- Processor control signals
-	signal RegDst 						: STD_LOGIC := '0';
-	signal Jump 						: STD_LOGIC := '0';
-	signal Branch 						: STD_LOGIC := '0';
-	signal MemRead 					: STD_LOGIC := '0';
-	signal MemtoReg 					: STD_LOGIC := '0';
-	signal ALUOp 						: STD_LOGIC_VECTOR (1 downto 0) := "10";
-	signal ALUSrc 						: STD_LOGIC := '0';
-	signal RegWrite 					: STD_LOGIC := '0';
-	--signal PCWrite 					: STD_LOGIC := '1';
-	signal state						: state_type := FETCH;
-	signal NextState					: state_type := FETCH;
-	signal NewState					: state_type := FETCH;
-
-	-- ALU signals
-	signal ALUCtrl 					: ALU_INPUT := (OP0 => '0', OP1 => '0', OP2 => '0', OP3 => '0');
-	signal alu_output 				: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
-	signal alu_flags 					: ALU_FLAGS := (Carry => '0', Overflow => '0', Zero => '0', Negative => '0');
-
-	-- Component output
-	signal signext_output			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
-	signal mux_alusrc_output		: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
-	signal mux_regdst_output		: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-	signal mux_memtoreg_output		: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
-	signal registers_readdata1		: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
-	signal registers_readdata2		: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
-	signal program_cnt				: STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000001";
+	--executer
+	signal executer_mem_wb_ctrl_regWrite : STD_LOGIC;
+	signal executer_mem_wb_ctrl_memtoReg : STD_LOGIC;
+	
+	signal executer_mem_ctrl_branch 		: STD_LOGIC;
+	signal executer_mem_ctrl_memRead 	: STD_LOGIC;
+	signal executer_mem_ctrl_memWrite 	: STD_LOGIC;
+	
+	signal executer_mem_aluZero				: STD_LOGIC;
+	signal executer_mem_branchAddr			: STD_LOGIC_VECTOR (31 downto 0);
+	signal executer_mem_aluRes					: STD_LOGIC_VECTOR (31 downto 0);
+	signal executer_mem_writeData 			: STD_LOGIC_VECTOR (31 downto 0); -- copy of ex_register_read_2
+	signal executer_mem_writeRegisterAddr	: STD_LOGIC_VECTOR (4 downto 0);
+	
+	--memorier
+	signal memorier_wb_ctrl_regWrite 	: STD_LOGIC;	
+	signal memorier_wb_ctrl_memtoReg 	: STD_LOGIC;
+	
+	signal memorier_if_branchAddr			: STD_LOGIC_VECTOR (31 downto 0);
+	signal memorier_wb_aluRes				: STD_LOGIC_VECTOR (31 downto 0);
+	signal memorier_wb_regWriteAddr		: STD_LOGIC_VECTOR (4 downto 0);
+	
+	signal memorier_if_ctrl_pcSrc			: STD_LOGIC; -- branch control / selector
+	
+	-- external processor signals from memorier		
+	signal memorier_dmem_address			: STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
+	signal memorier_dmem_address_wr     : STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
+	signal memorier_dmem_data_out       : STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
+	signal memorier_dmem_write_enable   : STD_LOGIC;
+	
+	--writebacker
+	signal writebacker_id_ctrl_regWrite			: STD_LOGIC;
+	signal writebacker_id_writeRegisterAddr 	: STD_LOGIC_VECTOR (4 downto 0);
+	signal writebacker_id_writeData				: STD_LOGIC_VECTOR (31 downto 0);
 
 begin
 	
-	-- Processor control component
-	processor_ctrl : PROCESSOR_CONTROL  port map ( 
-		OPCode 		=> imem_data_in(31 downto 26),
-		State 		=> State,
-		RegDst 		=> RegDst,
-		Jump 			=> Jump,
-		Branch 		=> Branch,
-		MemRead 		=> MemRead,
-		MemtoReg 	=> MemtoReg,
-		ALUOp 		=> ALUOp,
-		MemWrite 	=> dmem_write_enable,
-		ALUSrc 		=> ALUSrc,
-		RegWrite 	=> RegWrite,
-		--PCWrite 		=> PCWrite
-		NextState 	=> NextState
-	);
-
-	-- ALU control component
-	alu_ctrl : ALU_CONTROL  port map ( 
-		ALUOp 		=> ALUOp,
-		ALUFunct 	=> imem_data_in(5 downto 0),
-		ALUCtrl 		=> ALUCtrl
-	);
-
-	signext : SIGN_EXTEND port map(
-		bus_in 		=> imem_data_in(15 downto 0),
-		bus_out 		=> signext_output
-	);
-
-	mux_alusrc	: MUX port map(
-		selector 	=> ALUSrc,
-	   bus_in1 		=> registers_readdata2,
-	   bus_in2 		=> signext_output,
-	   bus_out 		=> mux_alusrc_output
-	);
-	
-	mux_regdst : MUX generic map (N=>5) port map(
-		selector 	=> RegDst,
-	   bus_in1 		=> imem_data_in(20 downto 16),
-	   bus_in2 		=> imem_data_in(15 downto 11),
-	   bus_out 		=> mux_regdst_output
-	);
-	
-	mux_memtoreg : MUX port map(
-		selector 	=> MemtoReg,
-	   bus_in1 		=> alu_output,
-	   bus_in2 		=> dmem_data_in,
-	   bus_out 		=> mux_memtoreg_output
-	);
-	
-	-- Main ALU
-	main_alu : ALU port map(
-		X				=> registers_readdata1,
-		Y				=> mux_alusrc_output,
-		ALU_IN		=> ALUCtrl,
-		R				=> alu_output,
-		FLAGS			=> alu_flags
-	);
-	
-	-- General Registers
-	registers : register_file port map(
-		CLK 			=> clk,		
-		RESET			=> reset,		
-		RW				=> RegWrite,		
-		RS_ADDR 		=> imem_data_in(25 downto 21),
-		RT_ADDR 		=> imem_data_in(20 downto 16),
-		RD_ADDR 		=> mux_regdst_output,
-		WRITE_DATA	=> mux_memtoreg_output,
-		RS				=>	registers_readdata1,
-		RT				=> registers_readdata2
-	);
-	
-	-- Program Counter
-	pc : PROGRAM_COUNTER port map(
+	fetcher_comp: fetcher port map(
 		clk 				=> clk,
-		reset 			=> reset,
-		signext_output	=> signext_output,
-		imem_data_25_0	=> imem_data_in(25 downto 0),
-		Jump				=> Jump,
-		Branch			=> Branch,
-		Zero				=> alu_flags.Zero,
-		--PCWrite			=> PCWrite,
-		State				=> State,
-		PCIn				=> program_cnt,
-		PCOut				=> program_cnt
+		reset				=> reset,
+		if_ctrl_pcSrc 	=>	memorier_if_ctrl_pcSrc,
+		if_ctrl_jump	=> decoder_if_ctrl_jump,
+		if_jump_addr	=> decoder_if_jump_addr,
+		if_branchAddr	=> memorier_if_branchAddr,
+		id_pc				=> fetcher_id_pc,
+		imem_address	=>	fetcher_imem_address
 	);
 	
-	CHANGE_STATE : process(clk)
-	begin
-		if (rising_edge(clk)) then
-			state <= NewState;
-		end if;
-	end process;
+	decoder_comp: decoder port map(
+		clk 					=> clk,
+		reset					=> reset,
+		imem_data_in		=> imem_data_in,
+		id_ctrl_regWrite	=> writebacker_id_ctrl_regWrite,
+		id_regWriteAddr	=> writebacker_id_writeRegisterAddr,
+		id_regWriteData	=> writebacker_id_writeData,
+		id_if_pc				=> fetcher_id_pc,
+		if_ctrl_jump		=> decoder_if_ctrl_jump,
+		if_jump_addr		=> decoder_if_jump_addr,
+		wb_ctrl_regWrite	=> decoder_wb_ctrl_regWrite,
+		wb_ctrl_memtoReg	=> decoder_wb_ctrl_memtoReg,
+		mem_ctrl_branch	=> decoder_mem_ctrl_branch,
+		mem_ctrl_memRead	=> decoder_mem_ctrl_memRead,
+		mem_ctrl_memWrite	=> decoder_mem_ctrl_memWrite,
+		ex_ctrl_regDst		=> decoder_ex_ctrl_regDst,
+		ex_ctrl_aluOp		=> decoder_ex_ctrl_aluOp,
+		ex_ctrl_aluSrc		=> decoder_ex_ctrl_aluSrc,
+		ex_pc					=> decoder_ex_pc,
+		ex_register_read_1=> decoder_ex_register_read_1,
+		ex_register_read_2=> decoder_ex_register_read_2,
+		ex_signext			=> decoder_ex_signext,
+		ex_inst_20_16		=> decoder_ex_inst_20_16,
+		ex_inst_15_11		=> decoder_ex_inst_15_11
+	);
 	
+	executer_comp: Executer port map(
+		clk 						=> clk,
+		reset						=> reset,
+		ex_wb_ctrl_regWrite	=> decoder_wb_ctrl_regWrite,
+		ex_wb_ctrl_memtoReg	=> decoder_wb_ctrl_memtoReg,
+		ex_mem_ctrl_branch	=> decoder_mem_ctrl_branch,
+		ex_mem_ctrl_memRead	=> decoder_mem_ctrl_memRead,
+		ex_mem_ctrl_memWrite	=> decoder_mem_ctrl_memWrite,
+		ex_ctrl_regDst			=> decoder_ex_ctrl_regDst,
+		ex_ctrl_aluOp			=> decoder_ex_ctrl_aluOp,
+		ex_ctrl_aluSrc			=> decoder_ex_ctrl_aluSrc,
+		ex_pc						=> decoder_ex_pc,
+		ex_signext				=> decoder_ex_signext,
+		ex_inst_20_16			=> decoder_ex_inst_20_16,
+		ex_inst_15_11			=> decoder_ex_inst_15_11,
+		ex_register_read_1	=> decoder_ex_register_read_1,
+		ex_register_read_2	=> decoder_ex_register_read_2,
+		mem_wb_ctrl_regWrite	=> executer_mem_wb_ctrl_regWrite,
+		mem_wb_ctrl_memtoReg	=> executer_mem_wb_ctrl_memtoReg,
+		mem_ctrl_branch		=> executer_mem_ctrl_branch,
+		mem_ctrl_memRead		=> executer_mem_ctrl_memRead,
+		mem_ctrl_memWrite		=> executer_mem_ctrl_memWrite,
+		mem_aluZero				=> executer_mem_aluZero,
+		mem_branchAddr			=> executer_mem_branchAddr,
+		mem_aluRes				=> executer_mem_aluRes,
+		mem_writeData			=> executer_mem_writeData,
+		mem_writeRegisterAddr=> executer_mem_writeRegisterAddr
+	);
+	
+	memorier_comp: memorier port map(
+		clk 						=> clk,
+		reset						=> reset,
+		mem_wb_ctrl_regWrite	=> executer_mem_wb_ctrl_regWrite,
+		mem_wb_ctrl_memtoReg	=> executer_mem_wb_ctrl_memtoReg,
+		mem_ctrl_branch		=> executer_mem_ctrl_branch,
+		mem_ctrl_memRead		=> executer_mem_ctrl_memRead,
+		mem_ctrl_memWrite		=> executer_mem_ctrl_memWrite,
+		mem_aluZero				=> executer_mem_aluZero,
+		mem_branchAddr			=> executer_mem_branchAddr,
+		mem_aluRes				=> executer_mem_aluRes,
+		mem_writeData			=> executer_mem_writeData,
+		mem_regWriteAddr		=> executer_mem_writeRegisterAddr,
+		wb_ctrl_regWrite		=> memorier_wb_ctrl_regWrite,
+		wb_ctrl_memtoReg		=> memorier_wb_ctrl_memtoReg,
+		if_branchAddr			=> memorier_if_branchAddr,
+		wb_aluRes				=> memorier_wb_aluRes,
+		wb_regWriteAddr		=> memorier_wb_regWriteAddr,
+		if_ctrl_pcSrc			=> memorier_if_ctrl_pcSrc,
+		dmem_address			=> memorier_dmem_address,
+		dmem_address_wr		=> memorier_dmem_address_wr,
+		dmem_data_out			=> memorier_dmem_data_out,
+		dmem_write_enable		=> memorier_dmem_write_enable
+	);
+	
+	writebacker_comp: writebacker port map(
+		clk 						=> clk,
+		reset						=> reset,
+		wb_ctrl_regWrite		=> memorier_wb_ctrl_regWrite,
+		wb_ctrl_memtoReg		=> memorier_wb_ctrl_memtoReg,
+		wb_aluRes				=> memorier_wb_aluRes,
+		wb_regWriteAddr		=> memorier_wb_regWriteAddr,
+		dmem_data_in			=> dmem_data_in,
+		id_ctrl_regWrite		=> writebacker_id_ctrl_regWrite,
+		id_writeRegisterAddr	=> writebacker_id_writeRegisterAddr,
+		id_writeData			=> writebacker_id_writeData
+	);
+	
+		
 	PROCESSOR : process(clk, reset, processor_enable)
 	begin
-		-- Set external signals
-		imem_address 				<= program_cnt;
-		dmem_address 				<= alu_output;
-		dmem_address_wr 			<= alu_output; 	
-		dmem_data_out 				<= registers_readdata2;
 		
 		-- Reset
 		if reset = '1' then
@@ -268,20 +373,17 @@ begin
 			dmem_address 			<= (others => '0');
 			dmem_address_wr 		<= (others => '0');
 			dmem_data_out 			<= (others => '0');
-					
-			NewState					<= FETCH;			
+			dmem_write_enable		<= '0';
 		
 		-- Processor Enabled and State is Stall
 		elsif processor_enable='1' then
-			case state is
-				when STALL => NewState <= FETCH;						
-				when FETCH => NewState <= EXEC;						
-				when EXEC => NewState <= NextState;						
-			end case;
-		
+			-- Set external signals
+			imem_address 				<= fetcher_imem_address;
+			dmem_address 				<= memorier_dmem_address;
+			dmem_address_wr 			<= memorier_dmem_address_wr; 	
+			dmem_data_out 				<= memorier_dmem_data_out;
+			dmem_write_enable			<= memorier_dmem_write_enable;
 		-- Else (Processor Disabled)
-		else
-			NewState <= FETCH ;
 		end if;
 		
 	end process;

@@ -42,34 +42,11 @@ entity PROGRAM_COUNTER is
 end program_counter;
 
 architecture Behavioral of PROGRAM_COUNTER is 
-	component ADDER is
-		generic (N : NATURAL := 32);
-		port(
-			X			: in	STD_LOGIC_VECTOR(N-1 downto 0);
-			Y			: in	STD_LOGIC_VECTOR(N-1 downto 0);
-			CIN		: in	STD_LOGIC;
-			COUT		: out	STD_LOGIC;
-			R			: out	STD_LOGIC_VECTOR(N-1 downto 0)
-		);
-	end component;
 
-	component MUX is
-		generic (N :NATURAL :=32); 
-		Port (
-			selector : in  STD_LOGIC;
-			bus_in1 	: in  STD_LOGIC_VECTOR (N-1 downto 0);
-			bus_in2 	: in  STD_LOGIC_VECTOR (N-1 downto 0);
-			bus_out 	: out  STD_LOGIC_VECTOR (N-1 downto 0)
-		);
-	end component;
+
+
 	
-	component ANDER is
-		Port ( 
-			X 			: in  STD_LOGIC;
-			Y 			: in  STD_LOGIC;
-			R 			: out  STD_LOGIC
-		);
-	end component;
+
 
 	signal mux_branch_selector	: STD_LOGIC := '0';
 	signal JumpAdr					: STD_LOGIC_VECTOR (N-1 downto 0) := (others => '0');
@@ -79,39 +56,10 @@ architecture Behavioral of PROGRAM_COUNTER is
 	signal mux_pcsrc_output		: STD_LOGIC_VECTOR (N-1 downto 0) := (others => '0');
 begin
 
-	branch_ander : ANDER port map(
-		X 				=> Branch,
-	   Y 				=> Zero,
-	   R 				=> mux_branch_selector
-	);
 
-	mux_branch : MUX port map(
-		selector 	=> mux_branch_selector,
-	   bus_in1 		=> adder1_output,
-	   bus_in2 		=> adder2_output,
-		bus_out 		=> mux_branch_output
-	);
-	
-	mux_jump : MUX port map(
-		selector 	=> Jump,	
-	   bus_in1 		=> mux_branch_output,
-	   bus_in2 		=> JumpAdr,
-	   bus_out 		=> mux_pcsrc_output
-	);
 
-	adder1 : ADDER port map(
-		X				=>	PCIn,
-		Y				=> "00000000000000000000000000000001",
-		CIN			=> '0',
-		R				=> adder1_output
-	);
+
 	
-	adder2 : ADDER port map(
-		X				=>	adder1_output,
-		Y				=> signext_output,
-		CIN			=> '0',
-		R				=> adder2_output
-	);
 
 	PROGRAM_COUNTER : process(clk, reset, PCIn, imem_data_25_0) begin	
 		JumpAdr(31 downto 26)	<= PCIn(31 downto 26);
