@@ -28,7 +28,7 @@ entity decoder is
 		reset 					: in  STD_LOGIC;
 		
 		-- processor instruction
-		imem_data_in			: in 	STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		imem_data_in			: in 	STD_LOGIC_VECTOR (31 downto 0) := "11111100000000000000000000000000";
 		
 		-- forwarded signals for writing regtister
 		id_ctrl_regWrite		: in 	STD_LOGIC := '0';								-- from wb step

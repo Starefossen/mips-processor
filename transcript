@@ -8,1345 +8,29 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim -do \{do \{fetcher.fdo\}\} 
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftchkn9s".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftchkn9s
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error: (vopt-19) Failed to access library 'work.{fetcher' at "work.{fetcher".
+# vsim -do \{do \{tb_processor.fdo\}\} 
+# ** Error: (vsim-19) Failed to access library 'work' at "work".
 # No such file or directory. (errno = ENOENT)
-# ** Error: Library work.{fetcher not found.
 # Error loading design
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/adder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity adder
-# -- Compiling architecture behavioral of adder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity alu
-# -- Compiling architecture behavioral of alu
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu_1bit.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity alu_1bit
-# -- Compiling architecture behavioral of alu_1bit
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/ALU_CONTROL.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity alu_control
-# -- Compiling architecture behavioral of alu_control
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/and.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity ander
-# -- Compiling architecture behavioral of ander
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/com.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Compiling entity com
-# -- Compiling architecture behavioral of com
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/full_adder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity full_adder
-# -- Compiling architecture behavioral of full_adder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/memory.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity memory
-# -- Compiling architecture behavioral of memory
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/mips_constant_pkg.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling package mips_constant_pkg
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/MUX.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity mux
-# -- Compiling architecture behavioral of mux
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor
-# -- Compiling architecture behavioral of processor
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/adder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# ** Warning: (vcom-6) -- Waiting for lock by "sondree@DMLAB07". Lockfile is "C:\Users\sondree\Desktop\assignment1SimpleProc\work/_lock".
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity adder
-# -- Compiling architecture behavioral of adder
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity alu
-# -- Compiling architecture behavioral of alu
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu_1bit.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity alu_1bit
-# -- Compiling architecture behavioral of alu_1bit
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/ALU_CONTROL.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity alu_control
-# -- Compiling architecture behavioral of alu_control
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/and.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity ander
-# -- Compiling architecture behavioral of ander
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/com.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Compiling entity com
-# -- Compiling architecture behavioral of com
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/full_adder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity full_adder
-# -- Compiling architecture behavioral of full_adder
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/memory.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity memory
-# -- Compiling architecture behavioral of memory
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/mips_constant_pkg.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling package mips_constant_pkg
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/MUX.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity mux
-# -- Compiling architecture behavioral of mux
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor
-# -- Compiling architecture behavioral of processor
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROCESSOR_CONTROL.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor_control
-# -- Compiling architecture behavioral of processor_control
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROGRAM_COUNTER.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity program_counter
-# -- Compiling architecture behavioral of program_counter
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/register_file.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity register_file
-# -- Compiling architecture behavioral of register_file
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SHIFT_L2.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity shift_l2
-# -- Compiling architecture behavioral of shift_l2
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SIGN_EXTEND.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity sign_extend
-# -- Compiling architecture behavioral of sign_extend
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/toplevel.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity toplevel
-# -- Compiling architecture behavioral of toplevel
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROCESSOR_CONTROL.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor_control
-# -- Compiling architecture behavioral of processor_control
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROGRAM_COUNTER.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity program_counter
-# -- Compiling architecture behavioral of program_counter
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/register_file.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity register_file
-# -- Compiling architecture behavioral of register_file
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SHIFT_L2.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity shift_l2
-# -- Compiling architecture behavioral of shift_l2
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SIGN_EXTEND.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity sign_extend
-# -- Compiling architecture behavioral of sign_extend
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/toplevel.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity toplevel
-# -- Compiling architecture behavioral of toplevel
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity decoder
-# -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_fetcher
-# -- Compiling architecture behavior of tb_fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_fetcher
-# -- Compiling architecture behavior of tb_fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_fetcher
-# -- Compiling architecture behavior of tb_fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_decoder
-# -- Compiling architecture behavior of tb_decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_fetcher
-# -- Compiling architecture behavior of tb_fetcher
-vsim -do \{do work.tb_fetcher
-# vsim -do \{do work.tb_fetcher 
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftx3s9j2".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftx3s9j2
-# ** Note: (vsim-3812) Design is being optimized...
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.tb_fetcher(behavior)#1
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_fetcher/uut/*
-run 1ms
-quit -sim
-vsim -do \{do -novopt work.tb_decoder
-# vsim -do \{do -novopt work.tb_decoder 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_decoder(behavior)
-# Loading work.tb_decoder(behavior)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.mips_constant_pkg
-# Loading work.mips_constant_pkg
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
-# Loading work.decoder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.processor_control(behavioral)
-# Loading work.processor_control(behavioral)
-# Loading ieee.numeric_std(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.register_file(behavioral)
-# Loading work.register_file(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.sign_extend(behavioral)
-# Loading work.sign_extend(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_decoder/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftwstsf0".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftwstsf0
-run 1ms
-quit -sim
-vsim -do \{do -novopt work.tb_fetcher
-# vsim -do \{do -novopt work.tb_fetcher 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_fetcher(behavior)
-# Loading work.tb_fetcher(behavior)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.mux(behavioral)
-# Loading work.mux(behavioral)
-# Loading ieee.numeric_std(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.adder(behavioral)
-# Loading work.adder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.full_adder(behavioral)
-# Loading work.full_adder(behavioral)
-add wave -r sim:/tb_fetcher/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftmew55r".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftmew55r
-# ** Error: Startup command is not a complete Tcl command 
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-find drivers -source -time {12 ps} -cause sim:/tb_fetcher/uut/adder1/r
-find drivers -source -time {215886 ps} -cause sim:/tb_fetcher/uut/adder1_output
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/adder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity adder
-# -- Compiling architecture behavioral of adder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity alu
-# -- Compiling architecture behavioral of alu
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu_1bit.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity alu_1bit
-# -- Compiling architecture behavioral of alu_1bit
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/ALU_CONTROL.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity alu_control
-# -- Compiling architecture behavioral of alu_control
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/and.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity ander
-# -- Compiling architecture behavioral of ander
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/com.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Compiling entity com
-# -- Compiling architecture behavioral of com
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/full_adder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity full_adder
-# -- Compiling architecture behavioral of full_adder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/memory.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity memory
-# -- Compiling architecture behavioral of memory
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/mips_constant_pkg.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling package mips_constant_pkg
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/MUX.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity mux
-# -- Compiling architecture behavioral of mux
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor
-# -- Compiling architecture behavioral of processor
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROCESSOR_CONTROL.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor_control
-# -- Compiling architecture behavioral of processor_control
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROGRAM_COUNTER.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity program_counter
-# -- Compiling architecture behavioral of program_counter
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/register_file.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity register_file
-# -- Compiling architecture behavioral of register_file
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SHIFT_L2.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity shift_l2
-# -- Compiling architecture behavioral of shift_l2
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SIGN_EXTEND.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity sign_extend
-# -- Compiling architecture behavioral of sign_extend
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/toplevel.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity toplevel
-# -- Compiling architecture behavioral of toplevel
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity decoder
-# -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_decoder
-# -- Compiling architecture behavior of tb_decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_fetcher
-# -- Compiling architecture behavior of tb_fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_fetcher(behavior)
-# Loading work.tb_fetcher(behavior)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.mux(behavioral)
-# Loading work.mux(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.adder(behavioral)
-# Loading work.adder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.full_adder(behavioral)
-# Loading work.full_adder(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd(104): Illegal target for signal assignment.
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd(104): (vcom-1136) Unknown identifier "register_add_out".
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd(114): VHDL Compiler exiting
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Warning in wave window restart: (vish-4014) No objects found matching '/tb_fetcher/uut/register_add_out'. 
-run 1ms
-# ** Error: (vsim-3601) Iteration limit reached at time 1310 ns.
-# Could not find any active process to start the loop analysis. 
-quit -sim
-vsim -do \{do -novopt work.tb_fetcher
-# vsim -do \{do -novopt work.tb_fetcher 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Loading work.tb_fetcher(behavior)
-# Loading work.fetcher(behavioral)
-# Loading work.mux(behavioral)
-# Loading ieee.numeric_std(body)
-# Loading work.adder(behavioral)
-# Loading work.full_adder(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_fetcher/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlft1922dq".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft1922dq
-run 1ms
-# ** Error: (vsim-3601) Iteration limit reached at time 1310 ns.
-# Could not find any active process to start the loop analysis. 
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-# ** Error: (vsim-3601) Iteration limit reached at time 1310 ns.
-# Could not find any active process to start the loop analysis. 
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-quit -sim
-vsim -do \{do -novopt work.tb_processor
-# vsim -do \{do -novopt work.tb_processor 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading ieee.numeric_std(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.mips_constant_pkg
-# Loading work.mips_constant_pkg
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.processor(behavioral)
-# Loading work.processor(behavioral)
-# Loading work.fetcher(behavioral)
-# Loading work.mux(behavioral)
-# Loading work.adder(behavioral)
-# Loading work.full_adder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
-# Loading work.decoder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.processor_control(behavioral)
-# Loading work.processor_control(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.register_file(behavioral)
-# Loading work.register_file(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.sign_extend(behavioral)
-# Loading work.sign_extend(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
-# Loading work.executer(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.alu(behavioral)
-# Loading work.alu(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.alu_1bit(behavioral)
-# Loading work.alu_1bit(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.alu_control(behavioral)
-# Loading work.alu_control(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
-# Loading work.memorier(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.ander(behavioral)
-# Loading work.ander(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.writebacker(behavioral)
-# Loading work.writebacker(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_processor/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlft2xx6we".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft2xx6we
-run 1ms
-quit -sim
-vsim -do \{do -novopt work.tb_decoder
-# vsim -do \{do -novopt work.tb_decoder 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_decoder(behavior)
-# Loading work.tb_decoder(behavior)
-# Loading work.mips_constant_pkg
-# Loading work.decoder(behavioral)
-# Loading work.processor_control(behavioral)
-# Loading ieee.numeric_std(body)
-# Loading work.register_file(behavioral)
-# Loading work.sign_extend(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_decoder/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftq90x7h".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftq90x7h
-run 1ms
-quit -sim
-# Load canceled
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity decoder
-# -- Compiling architecture behavioral of decoder
-vsim -do \{do -novopt work.tb_decoder
-# vsim -do \{do -novopt work.tb_decoder 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Loading work.tb_decoder(behavior)
-# Loading work.mips_constant_pkg
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
-# Loading work.decoder(behavioral)
-# Loading work.processor_control(behavioral)
-# Loading ieee.numeric_std(body)
-# Loading work.register_file(behavioral)
-# Loading work.sign_extend(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_decoder/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftrn6x7j".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftrn6x7j
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity decoder
-# -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_decoder
-# -- Compiling architecture behavior of tb_decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_executer
-# -- Compiling architecture behavior of tb_executer
-quit -sim
-vsim -do \{do -novopt work.tb_executer
-# vsim -do \{do -novopt work.tb_executer 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_executer(behavior)
-# Loading work.tb_executer(behavior)
-# Loading work.mips_constant_pkg
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
-# Loading work.executer(behavioral)
-# Loading ieee.numeric_std(body)
-# Loading work.alu(behavioral)
-# Loading work.alu_1bit(behavioral)
-# Loading work.full_adder(behavioral)
-# Loading work.alu_control(behavioral)
-# Loading work.mux(behavioral)
-# Loading work.adder(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_executer/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlft9xv9n0".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft9xv9n0
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_executer
-# -- Compiling architecture behavior of tb_executer
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_executer(behavior)
-# Loading work.tb_executer(behavior)
-run 1ms
-quit -sim
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity decoder
-# -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_memorier
-# -- Compiling architecture behavior of tb_memorier
-vsim -do \{do -novopt work.tb_memorier
-# vsim -do \{do -novopt work.tb_memorier 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_memorier(behavior)
-# Loading work.tb_memorier(behavior)
-# Loading work.mips_constant_pkg
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
-# Loading work.memorier(behavioral)
-# Loading work.ander(behavioral)
-add wave -r sim:/tb_memorier/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftd9sdtr".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftd9sdtr
-# ** Error: Startup command is not a complete Tcl command 
-run 1ms
-quit -sim
-vsim -do \{do -novopt work.tb_fetcher
-# vsim -do \{do -novopt work.tb_fetcher 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Loading work.tb_fetcher(behavior)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Loading work.mux(behavioral)
-# Loading ieee.numeric_std(body)
-# Loading work.adder(behavioral)
-# Loading work.full_adder(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_fetcher/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftichw09".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftichw09
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity decoder
-# -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_writebacker
-# -- Compiling architecture behavior of tb_writebacker
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/tb_writebacker.vhd(127): near ")": syntax error
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/tb_writebacker.vhd(142): VHDL Compiler exiting
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_writebacker
-# -- Compiling architecture behavior of tb_writebacker
-# Break key hit 
-quit -sim
-vsim -do \{do -novopt work.tb_writebacker
-# vsim -do \{do -novopt work.tb_writebacker 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_writebacker(behavior)
-# Loading work.tb_writebacker(behavior)
-# Loading work.mips_constant_pkg
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.writebacker(behavioral)
-# Loading work.writebacker(behavioral)
-# Loading work.mux(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_writebacker/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftnnjgxc".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftnnjgxc
-run 1000ns
-run 4000ns
-quit -sim
-vsim -do \{do -novopt work.tb_processor
-# vsim -do \{do -novopt work.tb_processor 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Loading work.tb_processor(behavior)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading ieee.numeric_std(body)
-# Loading work.mips_constant_pkg
-# Loading work.processor(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Loading work.mux(behavioral)
-# Loading work.adder(behavioral)
-# Loading work.full_adder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
-# Loading work.decoder(behavioral)
-# Loading work.processor_control(behavioral)
-# Loading work.register_file(behavioral)
-# Loading work.sign_extend(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
-# Loading work.executer(behavioral)
-# Loading work.alu(behavioral)
-# Loading work.alu_1bit(behavioral)
-# Loading work.alu_control(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
-# Loading work.memorier(behavioral)
-# Loading work.ander(behavioral)
-# Loading work.writebacker(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_processor/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftbbn86x".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftbbn86x
-run 1 ms
-quit -sim
-vsim -do \{do -novopt work.tb_writebacker
-# vsim -do \{do -novopt work.tb_writebacker 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Loading work.tb_writebacker(behavior)
-# Loading work.mips_constant_pkg
-# Loading work.writebacker(behavioral)
-# Loading work.mux(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_writebacker/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlft2mvkty".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft2mvkty
-run 1ms
-quit -sim
-vsim -do \{do -novopt work.tb_processor
-# vsim -do \{do -novopt work.tb_processor 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Loading work.tb_processor(behavior)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading ieee.numeric_std(body)
-# Loading work.mips_constant_pkg
-# Loading work.processor(behavioral)
-# Loading work.fetcher(behavioral)
-# Loading work.mux(behavioral)
-# Loading work.adder(behavioral)
-# Loading work.full_adder(behavioral)
-# Loading work.decoder(behavioral)
-# Loading work.processor_control(behavioral)
-# Loading work.register_file(behavioral)
-# Loading work.sign_extend(behavioral)
-# Loading work.executer(behavioral)
-# Loading work.alu(behavioral)
-# Loading work.alu_1bit(behavioral)
-# Loading work.alu_control(behavioral)
-# Loading work.memorier(behavioral)
-# Loading work.ander(behavioral)
-# Loading work.writebacker(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_processor/uut/*
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlftrh5mjn".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftrh5mjn
-run 1ms
-add wave -r sim:/tb_processor/uut/fetcher_comp/*
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity decoder
-# -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
-# Loading work.decoder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
-# Loading work.executer(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
-# Loading work.memorier(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.writebacker(behavioral)
-# Loading work.writebacker(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity decoder
-# -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
-# Loading work.decoder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
-# Loading work.executer(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
-# Loading work.memorier(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.writebacker(behavioral)
-# Loading work.writebacker(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# ** Error: (vcom-19) Failed to access library 'work' at "work".
-# No such file or directory. (errno = ENOENT)
 vlib work
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/adder.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/mips_constant_pkg.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling package mips_constant_pkg
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/mips_constant_pkg.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling package mips_constant_pkg
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/adder.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package numeric_std
 # -- Compiling entity adder
 # -- Compiling architecture behavioral of adder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# ** Error: (vcom-11) Could not find work.mips_constant_pkg.
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu.vhd(25): (vcom-1195) Cannot find expanded name "work.mips_constant_pkg".
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu.vhd(25): Unknown expanded name.
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu.vhd(36): VHDL Compiler exiting
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu_1bit.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity alu_1bit
-# -- Compiling architecture behavioral of alu_1bit
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/ALU_CONTROL.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# ** Error: (vcom-11) Could not find work.mips_constant_pkg.
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/ALU_CONTROL.vhd(25): (vcom-1195) Cannot find expanded name "work.mips_constant_pkg".
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/ALU_CONTROL.vhd(25): Unknown expanded name.
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/ALU_CONTROL.vhd(27): VHDL Compiler exiting
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/and.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity ander
-# -- Compiling architecture behavioral of ander
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/com.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Compiling entity com
-# -- Compiling architecture behavioral of com
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/full_adder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity full_adder
-# -- Compiling architecture behavioral of full_adder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/memory.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity memory
-# -- Compiling architecture behavioral of memory
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/mips_constant_pkg.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling package mips_constant_pkg
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/MUX.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity mux
-# -- Compiling architecture behavioral of mux
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor
-# -- Compiling architecture behavioral of processor
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROCESSOR_CONTROL.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor_control
-# -- Compiling architecture behavioral of processor_control
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROGRAM_COUNTER.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity program_counter
-# -- Compiling architecture behavioral of program_counter
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/register_file.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity register_file
-# -- Compiling architecture behavioral of register_file
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SHIFT_L2.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity shift_l2
-# -- Compiling architecture behavioral of shift_l2
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SIGN_EXTEND.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity sign_extend
-# -- Compiling architecture behavioral of sign_extend
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/toplevel.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity toplevel
-# -- Compiling architecture behavioral of toplevel
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/mips_constant_pkg.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling package mips_constant_pkg
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/adder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity adder
-# -- Compiling architecture behavioral of adder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/alu.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
@@ -1354,26 +38,26 @@ vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimplePr
 # -- Loading package mips_constant_pkg
 # -- Compiling entity alu
 # -- Compiling architecture behavioral of alu
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/alu_1bit.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/alu_1bit.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity alu_1bit
 # -- Compiling architecture behavioral of alu_1bit
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/ALU_CONTROL.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/ALU_CONTROL.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity alu_control
 # -- Compiling architecture behavioral of alu_control
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/and.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/and.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity ander
 # -- Compiling architecture behavioral of ander
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/com.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/com.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
@@ -1381,32 +65,32 @@ vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimplePr
 # -- Loading package std_logic_unsigned
 # -- Compiling entity com
 # -- Compiling architecture behavioral of com
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/full_adder.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/full_adder.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package numeric_std
 # -- Compiling entity full_adder
 # -- Compiling architecture behavioral of full_adder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/memory.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/memory.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package numeric_std
 # -- Compiling entity memory
 # -- Compiling architecture behavioral of memory
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/mips_constant_pkg.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/mips_constant_pkg.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling package mips_constant_pkg
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/MUX.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/MUX.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity mux
 # -- Compiling architecture behavioral of mux
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/processor.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/hardware/processor.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
@@ -1416,21 +100,21 @@ vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimplePr
 # -- Loading package mips_constant_pkg
 # -- Compiling entity processor
 # -- Compiling architecture behavioral of processor
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROCESSOR_CONTROL.vhd
+vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/mips/hardware/PROCESSOR_CONTROL.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity processor_control
 # -- Compiling architecture behavioral of processor_control
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/PROGRAM_COUNTER.vhd
+vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/mips/hardware/PROGRAM_COUNTER.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity program_counter
 # -- Compiling architecture behavioral of program_counter
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/register_file.vhd
+vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/mips/hardware/register_file.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
@@ -1438,19 +122,19 @@ vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimplePro
 # -- Loading package mips_constant_pkg
 # -- Compiling entity register_file
 # -- Compiling architecture behavioral of register_file
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SHIFT_L2.vhd
+vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/mips/hardware/SHIFT_L2.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity shift_l2
 # -- Compiling architecture behavioral of shift_l2
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/SIGN_EXTEND.vhd
+vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/mips/hardware/SIGN_EXTEND.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity sign_extend
 # -- Compiling architecture behavioral of sign_extend
-vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/toplevel.vhd
+vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/mips/hardware/toplevel.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
@@ -1458,645 +142,150 @@ vcom -reportprogress 30 -work work C:/Users/sondree/Desktop/assignment1SimplePro
 # -- Loading package mips_constant_pkg
 # -- Compiling entity toplevel
 # -- Compiling architecture behavioral of toplevel
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/pipeline/decoder.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity decoder
 # -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/pipeline/Executer.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity executer
 # -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/pipeline/fetcher.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity fetcher
 # -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/pipeline/memorier.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity memorier
 # -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/pipeline/writebacker.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity writebacker
 # -- Compiling architecture behavioral of writebacker
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/testbenches/tb_processor.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity tb_processor
 # -- Compiling architecture behavior of tb_processor
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_decoder.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_decoder
-# -- Compiling architecture behavior of tb_decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_executer
-# -- Compiling architecture behavior of tb_executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_fetcher
-# -- Compiling architecture behavior of tb_fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_memorier
-# -- Compiling architecture behavior of tb_memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/tb_writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_writebacker
-# -- Compiling architecture behavior of tb_writebacker
-quit -sim
 vsim -do \{do -novopt work.tb_processor
 # vsim -do \{do -novopt work.tb_processor 
 # Loading std.standard
 # Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
+# Refreshing C:\Users\sondree\Desktop\mips\work.tb_processor(behavior)
 # Loading work.tb_processor(behavior)
 # Loading ieee.std_logic_arith(body)
 # Loading ieee.std_logic_unsigned(body)
 # Loading ieee.numeric_std(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.mips_constant_pkg
+# Refreshing C:\Users\sondree\Desktop\mips\work.mips_constant_pkg
 # Loading work.mips_constant_pkg
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.processor(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.processor(behavioral)
 # Loading work.processor(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.fetcher(behavioral)
 # Loading work.fetcher(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.mux(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.mux(behavioral)
 # Loading work.mux(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.adder(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.adder(behavioral)
 # Loading work.adder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.full_adder(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.full_adder(behavioral)
 # Loading work.full_adder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.decoder(behavioral)
 # Loading work.decoder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.processor_control(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.processor_control(behavioral)
 # Loading work.processor_control(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.register_file(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.register_file(behavioral)
 # Loading work.register_file(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.sign_extend(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.sign_extend(behavioral)
 # Loading work.sign_extend(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.executer(behavioral)
 # Loading work.executer(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.alu(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.alu(behavioral)
 # Loading work.alu(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.alu_1bit(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.alu_1bit(behavioral)
 # Loading work.alu_1bit(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.alu_control(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.alu_control(behavioral)
 # Loading work.alu_control(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.memorier(behavioral)
 # Loading work.memorier(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.ander(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.ander(behavioral)
 # Loading work.ander(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.writebacker(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.writebacker(behavioral)
 # Loading work.writebacker(behavioral)
 # ** Error: Startup command is not a complete Tcl command 
-add wave -r sim:/tb_processor/uut/fetcher_comp/*
-run 1ms
-add wave sim:/tb_processor/uut/decoder_comp/registers/*
-restart -f
-run 1ms
-add wave \
-{sim:/tb_processor/uut/imem_data_in } 
-restart -f
-run 1ms
-restart -f
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-quit -sim
-vsim -do \{do -novopt work.tb_processor
-# vsim -do \{do -novopt work.tb_processor 
-# Loading std.standard
-# Loading ieee.std_logic_1164(body)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading ieee.numeric_std(body)
-# Loading work.mips_constant_pkg
-# Loading work.processor(behavioral)
-# Loading work.fetcher(behavioral)
-# Loading work.mux(behavioral)
-# Loading work.adder(behavioral)
-# Loading work.full_adder(behavioral)
-# Loading work.decoder(behavioral)
-# Loading work.processor_control(behavioral)
-# Loading work.register_file(behavioral)
-# Loading work.sign_extend(behavioral)
-# Loading work.executer(behavioral)
-# Loading work.alu(behavioral)
-# Loading work.alu_1bit(behavioral)
-# Loading work.alu_control(behavioral)
-# Loading work.memorier(behavioral)
-# Loading work.ander(behavioral)
-# Loading work.writebacker(behavioral)
-# ** Error: Startup command is not a complete Tcl command 
+add wave sim:/tb_processor/uut/executer_comp/*
 add wave \
 {sim:/tb_processor/uut/clk } \
 {sim:/tb_processor/uut/reset } \
 {sim:/tb_processor/uut/processor_enable } \
 {sim:/tb_processor/uut/imem_address } \
 {sim:/tb_processor/uut/imem_data_in } \
-{sim:/tb_processor/uut/fetcher_id_pc } 
+{sim:/tb_processor/uut/dmem_data_in } \
+{sim:/tb_processor/uut/dmem_address } \
+{sim:/tb_processor/uut/dmem_address_wr } \
+{sim:/tb_processor/uut/dmem_data_out } \
+{sim:/tb_processor/uut/dmem_write_enable } 
+restart -f
+run 2000ns
+add wave sim:/tb_processor/uut/executer_comp/main_alu/*
+restart -f
+run 2000ns
 add wave sim:/tb_processor/uut/decoder_comp/registers/*
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
+restart -f
+run 2000ns
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/pipeline/decoder.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity decoder
 # -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
-reset
-# ambiguous command name "reset": resetGlobalEvcd resetTime
-reset -f
-# ambiguous command name "reset": resetGlobalEvcd resetTime
 restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.decoder(behavioral)
 # Loading work.decoder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
-# Loading work.executer(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
-# Loading work.memorier(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.writebacker(behavioral)
-# Loading work.writebacker(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/hardware/processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor
-# -- Compiling architecture behavioral of processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.processor(behavioral)
-# Loading work.processor(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-add wave sim:/tb_processor/uut/writebacker_comp/mux_memtoreg/*
-restart -f
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
+run 2000ns
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/pipeline/decoder.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity decoder
 # -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
 restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.decoder(behavioral)
 # Loading work.decoder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
-# Loading work.executer(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
-# Loading work.memorier(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.writebacker(behavioral)
-# Loading work.writebacker(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-add wave sim:/tb_processor/uut/fetcher_comp/mux_branch/*
-restart -f
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-find drivers -source -time {2041578 ps} -cause sim:/tb_processor/uut/fetcher_id_pc
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-add wave \
-{sim:/tb_processor/dmem_data_in } 
-add wave \
-{sim:/tb_processor/dmem_data_out } 
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-add wave \
-{sim:/tb_processor/dmem_write_enable } 
-add wave \
-{sim:/tb_processor/dmem_address } 
-add wave \
-{sim:/tb_processor/dmem_address_wr } 
-restart -f
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd(208): near "wait": expecting ';'
-# ** Error: C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd(211): VHDL Compiler exiting
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/decoder.vhd
+run 2000ns
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/pipeline/decoder.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package mips_constant_pkg
 # -- Compiling entity decoder
 # -- Compiling architecture behavioral of decoder
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/Executer.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity executer
-# -- Compiling architecture behavioral of executer
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/fetcher.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity fetcher
-# -- Compiling architecture behavioral of fetcher
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/memorier.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity memorier
-# -- Compiling architecture behavioral of memorier
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/pipeline/writebacker.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity writebacker
-# -- Compiling architecture behavioral of writebacker
 restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.fetcher(behavioral)
-# Loading work.fetcher(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.decoder(behavioral)
+# Refreshing C:\Users\sondree\Desktop\mips\work.decoder(behavioral)
 # Loading work.decoder(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.executer(behavioral)
-# Loading work.executer(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.memorier(behavioral)
-# Loading work.memorier(behavioral)
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.writebacker(behavioral)
-# Loading work.writebacker(behavioral)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
+run 2000ns
+vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/mips/testbenches/tb_processor.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity tb_processor
 # -- Compiling architecture behavior of tb_processor
 restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
+# Refreshing C:\Users\sondree\Desktop\mips\work.tb_processor(behavior)
 # Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
-vcom -reportprogress 300 -work work C:/Users/sondree/Desktop/assignment1SimpleProc/testbenches/tb_processor.vhd
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_processor
-# -- Compiling architecture behavior of tb_processor
-restart -f
-# Refreshing C:\Users\sondree\Desktop\assignment1SimpleProc\work.tb_processor(behavior)
-# Loading work.tb_processor(behavior)
-run 1ms
+run 2000ns

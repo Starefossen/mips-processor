@@ -71,7 +71,7 @@ ARCHITECTURE behavior OF tb_processor IS
 
 	-- Clock period definitions
 	constant clk_period : time := 50 ns;
-	constant nop : std_logic_vector(31 downto 0) := "00000000000000000000000000000000";
+	constant nop : std_logic_vector(31 downto 0) := "11111100000000000000000000000000";
  
 BEGIN
  
@@ -101,6 +101,7 @@ BEGIN
 	-- Stimulus process
 	stim_proc: process
 	begin				
+		imem_data_in	 <= nop;
 		-- hold reset state for 100 ns.
 		--reset <= '1';
 		--wait for 100 ns;	
@@ -144,70 +145,73 @@ BEGIN
 		wait for clk_period*2;
 		--imem_data <= '000000 10011 10010 10101 00000 100010';
 		imem_data_in	 <= "00000010011100101010100000100010";	
-
-		--TEST OR  (1 | 2)
-		wait for clk_period*2;
-		--imem_data <= '000000 10000 10001 10110 00000 100101';
-		imem_data_in	 <= "00000010000100011011000000100101";	
-
-		--TEST AND  (2 & 3)
-		wait for clk_period*2;
-		--imem_data <= '000000 10010 10001 10111 00000 100100';
-		imem_data_in	 <= "00000010010100011011100000100100";	
-		
-		--TEST SLT  (2 og 3)
-		wait for clk_period*2;
-		--imem_data <= '000000 10001 10010 11000 00000 101010';
-		imem_data_in	 <= "00000010001100101100000000101010";	
-		
-		--TEST SLT  (2 og 2)
-		wait for clk_period*2;
-		--imem_data <= '000000 10001 10001 11001 00000 101010';
-		imem_data_in	 <= "00000010001100011100100000101010";	
-		
-		--TEST SLT  (3 og 2)
-		wait for clk_period*2;
-		--imem_data <= '000000 10010 10001 11010 00000 101010';
-		imem_data_in	 <= "00000010010100011101000000101010";	
-		
-		--Branch
-		wait for clk_period*2;
-		--imem_data <= '000100 10010 10010 0111000000001110';
-		imem_data_in	 <= "00010010110100100111000000001110";	
 		
 		wait for clk_period*2;
-		imem_data_in <= nop;
-		wait for clk_period*2;
-		imem_data_in <= nop;
-		wait for clk_period*2;
-		imem_data_in <= nop;
-		wait for clk_period*2;
-		imem_data_in <= nop;
-				
-		--STORE     M[ R[rs] + imm] <= R[rt]
-		wait for clk_period*2;
-		--imem_data <= '101011 10000 10011 0000000000000010';
-		imem_data_in	 <= "10101110000100110000000000000010";
+		imem_data_in		<= nop;
 		
-		--LOAD		R[rt] <= M[ R[rs] + imm] 
-		wait for clk_period*2; --Last used mem
-		--imem_data <= '100011 10001 11011 0000000000000001';
-		imem_data_in	 <= "10001110001110110000000000000001";	
-		dmem_data_in 	<= "00000000000000000000000000000100";--dmem_data_out; --signal ought to be delayed
-				
-		--JUMP
-		wait for clk_period*2; --Last used mem
-		--imem_data <= '000010 00000 00000 0000000000000000';
-		imem_data_in	 <= "00001000000000000000000000000000";
-		wait for clk_period*2;
-		imem_data_in <= nop;	
-				
-		--JUMP
-		wait for clk_period*2; --Last used mem
-		--imem_data <= '000010 00000 00000 1111000000001111';
-		imem_data_in	 <= "00001000000000001111000000001111";	
-		wait for clk_period*2;
-		imem_data_in <= nop;	
+--		--TEST OR  (1 | 2)
+--		wait for clk_period*2;
+--		--imem_data <= '000000 10000 10001 10110 00000 100101';
+--		imem_data_in	 <= "00000010000100011011000000100101";	
+--
+--		--TEST AND  (2 & 3)
+--		wait for clk_period*2;
+--		--imem_data <= '000000 10010 10001 10111 00000 100100';
+--		imem_data_in	 <= "00000010010100011011100000100100";	
+--		
+--		--TEST SLT  (2 og 3)
+--		wait for clk_period*2;
+--		--imem_data <= '000000 10001 10010 11000 00000 101010';
+--		imem_data_in	 <= "00000010001100101100000000101010";	
+--		
+--		--TEST SLT  (2 og 2)
+--		wait for clk_period;
+--		--imem_data <= '000000 10001 10001 11001 00000 101010';
+--		imem_data_in	 <= "00000010001100011100100000101010";	
+--		
+--		--TEST SLT  (3 og 2)
+--		wait for clk_period;
+--		--imem_data <= '000000 10010 10001 11010 00000 101010';
+--		imem_data_in	 <= "00000010010100011101000000101010";	
+--		
+--		--Branch
+--		wait for clk_period;
+--		--imem_data <= '000100 10010 10010 0111000000001110';
+--		imem_data_in	 <= "00010010110100100111000000001110";	
+--		
+--		wait for clk_period;
+--		imem_data_in <= nop;
+--		wait for clk_period;
+--		imem_data_in <= nop;
+--		wait for clk_period;
+--		imem_data_in <= nop;
+--		wait for clk_period;
+--		imem_data_in <= nop;
+--				
+--		--STORE     M[ R[rs] + imm] <= R[rt]
+--		wait for clk_period;
+--		--imem_data <= '101011 10000 10011 0000000000000010';
+--		imem_data_in	 <= "10101110000100110000000000000010";
+--		
+--		--LOAD		R[rt] <= M[ R[rs] + imm] 
+--		wait for clk_period; --Last used mem
+--		--imem_data <= '100011 10001 11011 0000000000000001';
+--		imem_data_in	 <= "10001110001110110000000000000001";	
+--		dmem_data_in 	<= "00000000000000000000000000000100";--dmem_data_out; --signal ought to be delayed
+--				
+--		--JUMP
+--		wait for clk_period; --Last used mem
+--		--imem_data <= '000010 00000 00000 0000000000000000';
+--		imem_data_in	 <= "00001000000000000000000000000000";
+--		wait for clk_period;
+--		imem_data_in <= nop;	
+--				
+--		--JUMP
+--		wait for clk_period; --Last used mem
+--		--imem_data <= '000010 00000 00000 1111000000001111';
+--		imem_data_in	 <= "00001000000000001111000000001111";	
+--		wait for clk_period;
+--		imem_data_in <= nop;	
 		
 		wait;
 	end process;

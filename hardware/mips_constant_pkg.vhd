@@ -19,25 +19,26 @@ package MIPS_CONSTANT_PKG is
     constant MEM_ADDR_COUNT     : integer := 8;
 
     constant ZERO1b             : STD_LOGIC                             := '0';
-    constant ONE1b                  : STD_LOGIC                             := '1';
-    constant ZERO32b                : STD_LOGIC_VECTOR(31 downto 0) := "00000000000000000000000000000000";
-    constant ZERO16b                : STD_LOGIC_VECTOR(15 downto 0) := "0000000000000000";
-    constant ONE32b                 : STD_LOGIC_VECTOR(31 downto 0) := "11111111111111111111111111111111"; 
-    constant ONE16b                 : STD_LOGIC_VECTOR(15 downto 0) := "1111111111111111"; 
+    constant ONE1b              : STD_LOGIC                             := '1';
+    constant ZERO32b            : STD_LOGIC_VECTOR(31 downto 0) := "00000000000000000000000000000000";
+    constant ZERO16b            : STD_LOGIC_VECTOR(15 downto 0) := "0000000000000000";
+    constant ONE32b             : STD_LOGIC_VECTOR(31 downto 0) := "11111111111111111111111111111111"; 
+    constant ONE16b             : STD_LOGIC_VECTOR(15 downto 0) := "1111111111111111"; 
     
     -- Instructon OP Codes
-    constant OP_R                   : STD_LOGIC_VECTOR(5 downto 0) := "000000";
-    constant OP_J                   : STD_LOGIC_VECTOR(5 downto 0) := "000010";
+    constant OP_R               : STD_LOGIC_VECTOR(5 downto 0) := "000000";
+    constant OP_J               : STD_LOGIC_VECTOR(5 downto 0) := "000010";
 
     constant OP_I_LOAD          : STD_LOGIC_VECTOR(5 downto 0) := "100011"; -- 23 (LOAD WORD) / 35
     constant OP_I_STORE         : STD_LOGIC_VECTOR(5 downto 0) := "101011"; -- 2B (STORE WORD) / 43
-    constant OP_I_LI                : STD_LOGIC_VECTOR(5 downto 0) := "001111"; -- (UNKNOWN) F / 15
-    constant OP_I_BEQ               : STD_LOGIC_VECTOR(5 downto 0) := "000100"; -- I-branch
+    constant OP_I_LI            : STD_LOGIC_VECTOR(5 downto 0) := "001111"; -- (UNKNOWN) F / 15
+    constant OP_I_BEQ           : STD_LOGIC_VECTOR(5 downto 0) := "000100"; -- I-branch
+    constant OP_I_NOP           : STD_LOGIC_VECTOR(5 downto 0) := "111111"; -- No Operation
     
     -- ALU OP Codes
     constant ALU_OP_LS          : STD_LOGIC_VECTOR(1 downto 0) := "00"; -- Load & Store
     constant ALU_OP_BEQ         : STD_LOGIC_VECTOR(1 downto 0) := "01"; -- Branch on equal
-    constant ALU_OP_R               : STD_LOGIC_VECTOR(1 downto 0) := "10"; -- R funct
+    constant ALU_OP_R           : STD_LOGIC_VECTOR(1 downto 0) := "10"; -- R funct
     
     -- ALU Functions
     constant ALU_FN_ADD             : STD_LOGIC_VECTOR(5 downto 0) := "100000";

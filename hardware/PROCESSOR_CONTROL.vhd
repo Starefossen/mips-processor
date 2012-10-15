@@ -26,7 +26,7 @@ use WORK.MIPS_CONSTANT_PKG.ALL;
 
 entity PROCESSOR_CONTROL is
 	Port ( 
-		OPCode 			: in  STD_LOGIC_VECTOR (5 downto 0);
+		OPCode 			: in  STD_LOGIC_VECTOR (5 downto 0) := "111111";
 		RegDst 			: out STD_LOGIC := '0';
 		Jump 				: out STD_LOGIC := '0';
 		Branch			: out STD_LOGIC := '0';
@@ -111,6 +111,17 @@ begin
 					RegDst 			<= '0';
 					Jump 				<= '0';
 					Branch 			<= '1';
+					MemRead 			<= '0';
+					MemtoReg 		<= '0';
+					ALUOp 			<= ALU_OP_BEQ;
+					MemWrite 		<= '0';
+					ALUSrc 			<= '0';
+					RegWrite 		<= '0';
+				
+				when OP_I_NOP =>
+					RegDst 			<= '0';
+					Jump 				<= '0';
+					Branch 			<= '0';
 					MemRead 			<= '0';
 					MemtoReg 		<= '0';
 					ALUOp 			<= ALU_OP_BEQ;
