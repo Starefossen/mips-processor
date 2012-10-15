@@ -37,7 +37,7 @@ package MIPS_CONSTANT_PKG is
     -- ALU OP Codes
     constant ALU_OP_LS          : STD_LOGIC_VECTOR(1 downto 0) := "00"; -- Load & Store
     constant ALU_OP_BEQ         : STD_LOGIC_VECTOR(1 downto 0) := "01"; -- Branch on equal
-    constant ALU_OP_R               : STD_LOGIC_VECTOR(1 downto 0) := "10"; -- Branch on equal
+    constant ALU_OP_R               : STD_LOGIC_VECTOR(1 downto 0) := "10"; -- R funct
     
     -- ALU Functions
     constant ALU_FN_ADD             : STD_LOGIC_VECTOR(5 downto 0) := "100000";

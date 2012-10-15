@@ -71,6 +71,7 @@ ARCHITECTURE behavior OF tb_processor IS
 
 	-- Clock period definitions
 	constant clk_period : time := 50 ns;
+	constant nop : std_logic_vector(31 downto 0) := "00000000000000000000000000000000";
  
 BEGIN
  
@@ -114,7 +115,7 @@ BEGIN
 		--imem_data <= '000010 11111111111111111111111111' -- J-format M[R16 + 8] <= R18
 		--imem_data_in	 <= "00001011111111111111111111111111";
 		
-		--wait for clk_period;
+		--wait for clk_period*2;
 		-- Load immidiate R[16] = 1
 		--imem_data <= '001111 00000 10000 0000000000000001';
 		imem_data_in	 <= "00111100000100000000000000000001";
@@ -173,27 +174,40 @@ BEGIN
 		wait for clk_period*2;
 		--imem_data <= '000100 10010 10010 0111000000001110';
 		imem_data_in	 <= "00010010110100100111000000001110";	
+		
+		wait for clk_period*2;
+		imem_data_in <= nop;
+		wait for clk_period*2;
+		imem_data_in <= nop;
+		wait for clk_period*2;
+		imem_data_in <= nop;
+		wait for clk_period*2;
+		imem_data_in <= nop;
 				
-		--STORE
+		--STORE     M[ R[rs] + imm] <= R[rt]
 		wait for clk_period*2;
 		--imem_data <= '101011 10000 10011 0000000000000010';
 		imem_data_in	 <= "10101110000100110000000000000010";
 		
-		--LOAD
-		wait for clk_period*3; --Last used mem
+		--LOAD		R[rt] <= M[ R[rs] + imm] 
+		wait for clk_period*2; --Last used mem
 		--imem_data <= '100011 10001 11011 0000000000000001';
 		imem_data_in	 <= "10001110001110110000000000000001";	
-		dmem_data_in 	<= dmem_data_out;
+		dmem_data_in 	<= "00000000000000000000000000000100";--dmem_data_out; --signal ought to be delayed
 				
 		--JUMP
-		wait for clk_period*3; --Last used mem
+		wait for clk_period*2; --Last used mem
 		--imem_data <= '000010 00000 00000 0000000000000000';
-		imem_data_in	 <= "00001000000000000000000000000000";	
+		imem_data_in	 <= "00001000000000000000000000000000";
+		wait for clk_period*2;
+		imem_data_in <= nop;	
 				
 		--JUMP
-		wait for clk_period*3; --Last used mem
+		wait for clk_period*2; --Last used mem
 		--imem_data <= '000010 00000 00000 1111000000001111';
 		imem_data_in	 <= "00001000000000001111000000001111";	
+		wait for clk_period*2;
+		imem_data_in <= nop;	
 		
 		wait;
 	end process;

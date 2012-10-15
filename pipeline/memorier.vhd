@@ -37,28 +37,28 @@ entity memorier is
 		clk 						: in  STD_LOGIC;
 				
 		-- input from executer step
-		mem_wb_ctrl_regWrite : in  STD_LOGIC;	
-		mem_wb_ctrl_memtoReg : in  STD_LOGIC;
+		mem_wb_ctrl_regWrite : in  STD_LOGIC := '0';	
+		mem_wb_ctrl_memtoReg : in  STD_LOGIC := '0';
 
-		mem_ctrl_branch 		: in  STD_LOGIC;
-		mem_ctrl_memRead 		: in  STD_LOGIC;
-		mem_ctrl_memWrite 	: in  STD_LOGIC;
+		mem_ctrl_branch 		: in  STD_LOGIC := '0';
+		mem_ctrl_memRead 		: in  STD_LOGIC := '0';
+		mem_ctrl_memWrite 	: in  STD_LOGIC := '0';
 		
-		mem_aluZero				: in STD_LOGIC;
-		mem_branchAddr			: in STD_LOGIC_VECTOR (31 downto 0);
-		mem_aluRes				: in STD_LOGIC_VECTOR (31 downto 0);
-		mem_writeData 			: in STD_LOGIC_VECTOR (31 downto 0);
-		mem_regWriteAddr		: in STD_LOGIC_VECTOR (4 downto 0);
+		mem_aluZero				: in STD_LOGIC := '0';
+		mem_branchAddr			: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		mem_aluRes				: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		mem_writeData 			: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		mem_regWriteAddr		: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	
 		-- output signals to write back step
-		wb_ctrl_regWrite 		: out STD_LOGIC;	
-		wb_ctrl_memtoReg 		: out STD_LOGIC;
+		wb_ctrl_regWrite 		: out STD_LOGIC := '0';	
+		wb_ctrl_memtoReg 		: out STD_LOGIC := '0';
 		
-		if_branchAddr			: out STD_LOGIC_VECTOR (31 downto 0);
-		wb_aluRes				: out STD_LOGIC_VECTOR (31 downto 0);
-		wb_regWriteAddr		: out STD_LOGIC_VECTOR (4 downto 0);
+		if_branchAddr			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		wb_aluRes				: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		wb_regWriteAddr		: out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		
-		if_ctrl_pcSrc			: out STD_LOGIC; -- branch control / selector
+		if_ctrl_pcSrc			: out STD_LOGIC := '0'; -- branch control / selector
 		
 		-- external processor signals		
 		dmem_address			: out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
@@ -78,7 +78,7 @@ architecture Behavioral of memorier is
 		);
 	end component;
 
-	signal mux_branch_selector : STD_LOGIC;
+	signal mux_branch_selector : STD_LOGIC := '0';
 
 begin	
 	branch_ander : ANDER port map(
