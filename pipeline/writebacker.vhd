@@ -37,19 +37,19 @@ entity writebacker is
 		clk 						: in  STD_LOGIC;
 				
 		-- input signals from memory step
-		wb_ctrl_regWrite 		: in STD_LOGIC;	
-		wb_ctrl_memtoReg 		: in STD_LOGIC;
+		wb_ctrl_regWrite 		: in STD_LOGIC := '0';	
+		wb_ctrl_memtoReg 		: in STD_LOGIC := '0';
 		
-		wb_aluRes				: in STD_LOGIC_VECTOR (31 downto 0);
-		wb_regWriteAddr		: in STD_LOGIC_VECTOR (4 downto 0);
+		wb_aluRes				: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		wb_regWriteAddr		: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 
 		-- external processor signal 
-		dmem_data_in			: in  STD_LOGIC_VECTOR (DDATA_BUS-1 downto 0);
+		dmem_data_in			: in  STD_LOGIC_VECTOR (DDATA_BUS-1 downto 0) := (others => '0');
 
 		-- output signals to instruction decoder
-		id_ctrl_regWrite		: out STD_LOGIC;
-		id_writeRegisterAddr : out STD_LOGIC_VECTOR (4 downto 0);
-		id_writeData			: out STD_LOGIC_VECTOR (31 downto 0)
+		id_ctrl_regWrite		: out STD_LOGIC := '0';
+		id_writeRegisterAddr : out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		id_writeData			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0')
 	);
 end writebacker;
 
@@ -64,29 +64,31 @@ architecture Behavioral of writebacker is
 		);
 	end component;
 
-	signal mux_memtoreg_output : STD_LOGIC_VECTOR (31 downto 0);
+	signal mux_memtoreg_output : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	
 begin
 
 	mux_memtoreg : MUX port map(
 		selector 	=> wb_ctrl_memtoReg,
-	   bus_in1 		=> dmem_data_in,
-	   bus_in2 		=> wb_aluRes,
+	   bus_in1 		=> wb_aluRes,
+	   bus_in2 		=> dmem_data_in,
 	   bus_out 		=> mux_memtoreg_output
 	);
 
-	STEP_WRITEBACKER : process(clk, reset)
+	STEP_WRITEBACKER : process(clk, reset,wb_ctrl_regWrite,wb_regWriteAddr,mux_memtoreg_output)
 	begin		
 		if reset = '1' then
 			-- output signals to instruction decoder
 			id_ctrl_regWrite			<= '0';	
 			id_writeRegisterAddr 	<= (others => '0');
 			id_writeData				<= (others => '0');
-		elsif rising_edge(clk) then
-			-- output signals to instruction decoder
-			id_ctrl_regWrite			<= wb_ctrl_regWrite;
-			id_writeRegisterAddr 	<= wb_regWriteAddr;
-			id_writeData				<= mux_memtoreg_output;
+		else
+			--if rising_edge(clk) then
+				-- output signals to instruction decoder
+				id_ctrl_regWrite			<= wb_ctrl_regWrite;
+				id_writeRegisterAddr 	<= wb_regWriteAddr;
+				id_writeData				<= mux_memtoreg_output;
+			--end if;
 		end if;
 	end process;
 	

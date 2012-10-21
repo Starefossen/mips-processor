@@ -28,34 +28,34 @@ entity decoder is
 		reset 					: in  STD_LOGIC;
 		
 		-- processor instruction
-		imem_data_in			: in 	STD_LOGIC_VECTOR (31 downto 0);
+		imem_data_in			: in 	STD_LOGIC_VECTOR (31 downto 0) := "11111100000000000000000000000000";
 		
 		-- forwarded signals for writing regtister
-		id_ctrl_regWrite		: in 	STD_LOGIC;								-- from wb step
-		id_regWriteAddr		: in 	STD_LOGIC_VECTOR (4 downto 0);	-- from wb step
-		id_regWriteData		: in  STD_LOGIC_VECTOR (31 downto 0);	-- from wb step
-		id_if_pc					: in  STD_LOGIC_VECTOR (31 downto 0);	-- from if step
+		id_ctrl_regWrite		: in 	STD_LOGIC := '0';								-- from wb step
+		id_regWriteAddr		: in 	STD_LOGIC_VECTOR (4 downto 0) := (others => '0');	-- from wb step
+		id_regWriteData		: in  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');	-- from wb step
+		id_if_pc					: in  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');	-- from if step
 
 		-- output signals
-		if_ctrl_jump 			: out  STD_LOGIC; -- from processor control
-		if_jump_addr 			: out  STD_LOGIC_VECTOR (31 downto 0);
+		if_ctrl_jump 			: out  STD_LOGIC := '0'; -- from processor control
+		if_jump_addr 			: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 
-		wb_ctrl_regWrite 		: out  STD_LOGIC;
-		wb_ctrl_memtoReg 		: out  STD_LOGIC;
+		wb_ctrl_regWrite 		: out  STD_LOGIC := '0';
+		wb_ctrl_memtoReg 		: out  STD_LOGIC := '0';
 
-		mem_ctrl_branch 		: out  STD_LOGIC;
-		mem_ctrl_memRead 		: out  STD_LOGIC;
-		mem_ctrl_memWrite 	: out  STD_LOGIC;
+		mem_ctrl_branch 		: out  STD_LOGIC := '0';
+		mem_ctrl_memRead 		: out  STD_LOGIC := '0';
+		mem_ctrl_memWrite 	: out  STD_LOGIC := '0';
 
-		ex_ctrl_regDst 		: out  STD_LOGIC;
-		ex_ctrl_aluOp 			: out  STD_LOGIC_VECTOR (1 downto 0);
-		ex_ctrl_aluSrc 		: out  STD_LOGIC;
-		ex_pc						: out  STD_LOGIC_VECTOR (31 downto 0);
-		ex_register_read_1 	: out  STD_LOGIC_VECTOR (31 downto 0);
-		ex_register_read_2 	: out  STD_LOGIC_VECTOR (31 downto 0);
-		ex_signext 				: out  STD_LOGIC_VECTOR (31 downto 0);
-		ex_inst_20_16 			: out  STD_LOGIC_VECTOR (4 downto 0);
-		ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0)
+		ex_ctrl_regDst 		: out  STD_LOGIC := '0';
+		ex_ctrl_aluOp 			: out  STD_LOGIC_VECTOR (1 downto 0) := (others => '0');
+		ex_ctrl_aluSrc 		: out  STD_LOGIC := '0';
+		ex_pc						: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_register_read_1 	: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_register_read_2 	: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_signext 				: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_inst_20_16 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0')
 	);
 end decoder;
 
@@ -97,20 +97,21 @@ architecture Behavioral of decoder is
 		);
 	end component;
 	
-	signal OPCode				: STD_LOGIC_VECTOR (31 downto 26);
-	signal RegDst 				: STD_LOGIC;
-	signal Jump 				: STD_LOGIC;
-	signal Branch 				: STD_LOGIC;
-	signal MemRead 			: STD_LOGIC;
-	signal MemtoReg 			: STD_LOGIC;
-	signal ALUOp 				: STD_LOGIC_VECTOR (1 downto 0);
-	signal MemWrite 			: STD_LOGIC;
-	signal ALUSrc 				: STD_LOGIC;
-	signal RegWrite 			: STD_LOGIC;
+	signal RegDst 				: STD_LOGIC := '0';
+	signal Jump 				: STD_LOGIC := '0';
+	signal Branch 				: STD_LOGIC := '0';
+	signal MemRead 			: STD_LOGIC := '0';
+	signal MemtoReg 			: STD_LOGIC := '0';
+	signal ALUOp 				: STD_LOGIC_VECTOR (1 downto 0) := "10";
+	signal MemWrite 			: STD_LOGIC := '0';
+	signal ALUSrc 				: STD_LOGIC := '0';
+	signal RegWrite 			: STD_LOGIC := '0';
 	
-	signal registers_readdata1 : STD_LOGIC_VECTOR (31 downto 0);
-	signal registers_readdata2 : STD_LOGIC_VECTOR (31 downto 0);
-	signal signext_output 	: STD_LOGIC_VECTOR (31 downto 0);
+	signal registers_readdata1 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal registers_readdata2 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal tmp_registers_readdata1 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal tmp_registers_readdata2 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal signext_output 	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	
 begin
 
@@ -147,9 +148,10 @@ begin
 		bus_in 					=> imem_data_in(15 downto 0),
 		bus_out 					=> signext_output
 	);
-	
+
 	STEP_DECODER : process(clk, reset)
-	begin		
+	begin	
+		
 		if reset = '1' then
 			
 			if_jump_addr 			<= (others => '0');
@@ -174,36 +176,40 @@ begin
 			ex_register_read_1 	<= (others => '0'); 
 			ex_register_read_2 	<= (others => '0'); 
 			
-		elsif rising_edge(clk) then
+		else
+				
+			if rising_edge(clk) then
 			
-			--jump signals
-			if_jump_addr(31 downto 28) <= id_if_pc(31 downto 28);
-			if_jump_addr(27 downto 2)  <= imem_data_in(25 downto 0);
-			if_jump_addr(1 downto 0)	<= "00";
-			if_ctrl_jump 					<= Jump;
+				--jump signals
+				if_jump_addr(31 downto 28) <= id_if_pc(31 downto 28);
+				if_jump_addr(27 downto 2)  <= imem_data_in(25 downto 0);
+				if_jump_addr(1 downto 0)	<= "00";
+				if_ctrl_jump 					<= Jump;
 
-			--propagating control signals
-			wb_ctrl_regWrite 		<= RegWrite;
-			wb_ctrl_memtoReg 		<= MemtoReg;
+				--propagating control signals
+				wb_ctrl_regWrite 		<= RegWrite;
+				wb_ctrl_memtoReg 		<= MemtoReg;
 
-			mem_ctrl_branch 		<= Branch;
-			mem_ctrl_memRead 		<= MemRead;
-			mem_ctrl_memWrite 	<= MemWrite;
+				mem_ctrl_branch 		<= Branch;
+				mem_ctrl_memRead 		<= MemRead;
+				mem_ctrl_memWrite 	<= MemWrite;
 
-			ex_ctrl_regDst 		<= RegDst;
-			ex_ctrl_aluOp 			<= ALUOp;
-			ex_ctrl_aluSrc 		<= ALUSrc;
-			
-			ex_pc						<= id_if_pc;
-			ex_signext 				<= signext_output;
-			ex_inst_20_16 			<= imem_data_in(20 downto 16);
-			ex_inst_15_11 			<= imem_data_in(15 downto 11); 
-			
-		elsif falling_edge(clk) then
-			--register signals
-			ex_register_read_1 	<= registers_readdata1;
-			ex_register_read_2 	<= registers_readdata2;
-			
+				ex_ctrl_regDst 		<= RegDst;
+				ex_ctrl_aluOp 			<= ALUOp;
+				ex_ctrl_aluSrc 		<= ALUSrc;
+				
+				ex_pc						<= id_if_pc;
+				ex_signext 				<= signext_output;
+				ex_inst_20_16 			<= imem_data_in(20 downto 16);
+				ex_inst_15_11 			<= imem_data_in(15 downto 11); 
+				
+				ex_register_read_1 	<= registers_readdata1;
+				ex_register_read_2 	<= registers_readdata2;
+				
+			elsif falling_edge(clk) then
+				tmp_registers_readdata1 	<= registers_readdata1;
+				tmp_registers_readdata2 	<= registers_readdata2;
+			end if;
 		end if;
 	end process;
 

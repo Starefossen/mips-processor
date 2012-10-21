@@ -31,10 +31,10 @@ entity processor is
 	port (
         clk 					 : in  STD_LOGIC;
         reset			 	 	 : in  STD_LOGIC;
-        processor_enable    : in  STD_LOGIC;
+        processor_enable    : in  STD_LOGIC := '0';
         imem_address        : out STD_LOGIC_VECTOR (IADDR_BUS-1 downto 0) := (others => '0');
-        imem_data_in        : in  STD_LOGIC_VECTOR (IDATA_BUS-1 downto 0);
-        dmem_data_in        : in  STD_LOGIC_VECTOR (DDATA_BUS-1 downto 0);
+        imem_data_in        : in  STD_LOGIC_VECTOR (IDATA_BUS-1 downto 0) := "11111100000000000000000000000000";
+        dmem_data_in        : in  STD_LOGIC_VECTOR (DDATA_BUS-1 downto 0) := (others => '0');
         dmem_address        : out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0');
         dmem_address_wr     : out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0');
         dmem_data_out       : out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0');
@@ -48,6 +48,7 @@ architecture Behavioral of processor is
 		Port ( 
 			clk 						: in  STD_LOGIC;
 			reset 					: in  STD_LOGIC;
+			processor_enable		: in 	STD_LOGIC;
 		
 			--input
 			if_ctrl_pcSrc			: in STD_LOGIC; 								-- from memory step
@@ -69,8 +70,8 @@ architecture Behavioral of processor is
 			--input
 			imem_data_in 			: in  STD_LOGIC_VECTOR (31 downto 0);
 
-			id_ctrl_regWrite		: in STD_LOGIC;
-			id_regWriteAddr		: in STD_LOGIC_VECTOR (4 downto 0);
+			id_ctrl_regWrite		: in 	STD_LOGIC;
+			id_regWriteAddr		: in 	STD_LOGIC_VECTOR (4 downto 0);
 			id_regWriteData		: in  STD_LOGIC_VECTOR (31 downto 0);	
 			id_if_pc					: in  STD_LOGIC_VECTOR (31 downto 0);
 
@@ -198,76 +199,77 @@ architecture Behavioral of processor is
 	end component;
 	
 	--fetcher out signals
-	signal fetcher_id_pc						: STD_LOGIC_VECTOR (31 downto 0);
-	signal fetcher_imem_address			: STD_LOGIC_VECTOR (31 downto 0);
+	signal fetcher_id_pc						: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal fetcher_imem_address			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	
 	--decoder out signals
-	signal decoder_if_ctrl_jump 			: STD_LOGIC; -- from processor control
-	signal decoder_if_jump_addr 			: STD_LOGIC_VECTOR (31 downto 0);
+	signal decoder_if_ctrl_jump 			: STD_LOGIC := '0'; -- from processor control
+	signal decoder_if_jump_addr 			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 
-	signal decoder_wb_ctrl_regWrite 		: STD_LOGIC;
-	signal decoder_wb_ctrl_memtoReg 		: STD_LOGIC;
+	signal decoder_wb_ctrl_regWrite 		: STD_LOGIC := '0';
+	signal decoder_wb_ctrl_memtoReg 		: STD_LOGIC := '0';
 
-	signal decoder_mem_ctrl_branch 		: STD_LOGIC;
-	signal decoder_mem_ctrl_memRead 		: STD_LOGIC;
-	signal decoder_mem_ctrl_memWrite 	: STD_LOGIC;
+	signal decoder_mem_ctrl_branch 		: STD_LOGIC := '0';
+	signal decoder_mem_ctrl_memRead 		: STD_LOGIC := '0';
+	signal decoder_mem_ctrl_memWrite 	: STD_LOGIC := '0';
 
-	signal decoder_ex_ctrl_regDst 		: STD_LOGIC;
-	signal decoder_ex_ctrl_aluOp 			: STD_LOGIC_VECTOR (1 downto 0);
-	signal decoder_ex_ctrl_aluSrc 		: STD_LOGIC;
-	signal decoder_ex_pc						: STD_LOGIC_VECTOR (31 downto 0);
-	signal decoder_ex_register_read_1 	: STD_LOGIC_VECTOR (31 downto 0);
-	signal decoder_ex_register_read_2 	: STD_LOGIC_VECTOR (31 downto 0);
-	signal decoder_ex_signext 				: STD_LOGIC_VECTOR (31 downto 0);
-	signal decoder_ex_inst_20_16 			: STD_LOGIC_VECTOR (4 downto 0);
-	signal decoder_ex_inst_15_11 			: STD_LOGIC_VECTOR (4 downto 0);
+	signal decoder_ex_ctrl_regDst 		: STD_LOGIC := '0';
+	signal decoder_ex_ctrl_aluOp 			: STD_LOGIC_VECTOR (1 downto 0) := (others => '0');
+	signal decoder_ex_ctrl_aluSrc 		: STD_LOGIC := '0';
+	signal decoder_ex_pc						: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal decoder_ex_register_read_1 	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal decoder_ex_register_read_2 	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal decoder_ex_signext 				: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal decoder_ex_inst_20_16 			: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+	signal decoder_ex_inst_15_11 			: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	
 	--executer
-	signal executer_mem_wb_ctrl_regWrite : STD_LOGIC;
-	signal executer_mem_wb_ctrl_memtoReg : STD_LOGIC;
+	signal executer_mem_wb_ctrl_regWrite : STD_LOGIC := '0';
+	signal executer_mem_wb_ctrl_memtoReg : STD_LOGIC := '0';
 	
-	signal executer_mem_ctrl_branch 		: STD_LOGIC;
-	signal executer_mem_ctrl_memRead 	: STD_LOGIC;
-	signal executer_mem_ctrl_memWrite 	: STD_LOGIC;
+	signal executer_mem_ctrl_branch 		: STD_LOGIC := '0';
+	signal executer_mem_ctrl_memRead 	: STD_LOGIC := '0';
+	signal executer_mem_ctrl_memWrite 	: STD_LOGIC := '0';
 	
-	signal executer_mem_aluZero				: STD_LOGIC;
-	signal executer_mem_branchAddr			: STD_LOGIC_VECTOR (31 downto 0);
-	signal executer_mem_aluRes					: STD_LOGIC_VECTOR (31 downto 0);
-	signal executer_mem_writeData 			: STD_LOGIC_VECTOR (31 downto 0); -- copy of ex_register_read_2
-	signal executer_mem_writeRegisterAddr	: STD_LOGIC_VECTOR (4 downto 0);
+	signal executer_mem_aluZero				: STD_LOGIC := '0';
+	signal executer_mem_branchAddr			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal executer_mem_aluRes					: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal executer_mem_writeData 			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0'); -- copy of ex_register_read_2
+	signal executer_mem_writeRegisterAddr	: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	
 	--memorier
-	signal memorier_wb_ctrl_regWrite 	: STD_LOGIC;	
-	signal memorier_wb_ctrl_memtoReg 	: STD_LOGIC;
+	signal memorier_wb_ctrl_regWrite 	: STD_LOGIC := '0';	
+	signal memorier_wb_ctrl_memtoReg 	: STD_LOGIC := '0';
 	
-	signal memorier_if_branchAddr			: STD_LOGIC_VECTOR (31 downto 0);
-	signal memorier_wb_aluRes				: STD_LOGIC_VECTOR (31 downto 0);
-	signal memorier_wb_regWriteAddr		: STD_LOGIC_VECTOR (4 downto 0);
+	signal memorier_if_branchAddr			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal memorier_wb_aluRes				: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal memorier_wb_regWriteAddr		: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	
-	signal memorier_if_ctrl_pcSrc			: STD_LOGIC; -- branch control / selector
+	signal memorier_if_ctrl_pcSrc			: STD_LOGIC := '0'; -- branch control / selector
 	
 	-- external processor signals from memorier		
 	signal memorier_dmem_address			: STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
 	signal memorier_dmem_address_wr     : STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
 	signal memorier_dmem_data_out       : STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
-	signal memorier_dmem_write_enable   : STD_LOGIC;
+	signal memorier_dmem_write_enable   : STD_LOGIC := '0';
 	
 	--writebacker
-	signal writebacker_id_ctrl_regWrite			: STD_LOGIC;
-	signal writebacker_id_writeRegisterAddr 	: STD_LOGIC_VECTOR (4 downto 0);
-	signal writebacker_id_writeData				: STD_LOGIC_VECTOR (31 downto 0);
+	signal writebacker_id_ctrl_regWrite			: STD_LOGIC := '0';
+	signal writebacker_id_writeRegisterAddr 	: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+	signal writebacker_id_writeData				: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 
 begin
 	
 	fetcher_comp: fetcher port map(
-		clk 				=> clk,
-		reset				=> reset,
-		if_ctrl_pcSrc 	=>	memorier_if_ctrl_pcSrc,
-		if_ctrl_jump	=> decoder_if_ctrl_jump,
-		if_jump_addr	=> decoder_if_jump_addr,
-		if_branchAddr	=> memorier_if_branchAddr,
-		id_pc				=> fetcher_id_pc,
-		imem_address	=>	fetcher_imem_address
+		clk 					=> clk,
+		reset					=> reset,
+		processor_enable 	=> processor_enable,
+		if_ctrl_pcSrc 		=>	memorier_if_ctrl_pcSrc,
+		if_ctrl_jump		=> decoder_if_ctrl_jump,
+		if_jump_addr		=> decoder_if_jump_addr,
+		if_branchAddr		=> memorier_if_branchAddr,
+		id_pc					=> fetcher_id_pc,
+		imem_address		=>	fetcher_imem_address
 	);
 	
 	decoder_comp: decoder port map(
@@ -368,7 +370,7 @@ begin
 	begin
 		
 		-- Reset
-		if reset = '1' then
+		if reset = '1' or processor_enable = '0' then
 			imem_address 			<= (others => '0');
 			dmem_address 			<= (others => '0');
 			dmem_address_wr 		<= (others => '0');
@@ -376,14 +378,13 @@ begin
 			dmem_write_enable		<= '0';
 		
 		-- Processor Enabled and State is Stall
-		elsif processor_enable='1' then
+		else
 			-- Set external signals
 			imem_address 				<= fetcher_imem_address;
 			dmem_address 				<= memorier_dmem_address;
 			dmem_address_wr 			<= memorier_dmem_address_wr; 	
 			dmem_data_out 				<= memorier_dmem_data_out;
 			dmem_write_enable			<= memorier_dmem_write_enable;
-		-- Else (Processor Disabled)
 		end if;
 		
 	end process;

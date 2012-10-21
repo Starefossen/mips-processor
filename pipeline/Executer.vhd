@@ -37,38 +37,38 @@ entity Executer is
 		clk 						: in  STD_LOGIC;
 
 		-- input signals
-		ex_wb_ctrl_regWrite 	: in  STD_LOGIC;
-		ex_wb_ctrl_memtoReg 	: in  STD_LOGIC;
+		ex_wb_ctrl_regWrite 	: in  STD_LOGIC := '0';
+		ex_wb_ctrl_memtoReg 	: in  STD_LOGIC := '0';
 		
-		ex_mem_ctrl_branch 	: in  STD_LOGIC;
-		ex_mem_ctrl_memRead 	: in  STD_LOGIC;
-		ex_mem_ctrl_memWrite : in  STD_LOGIC;
+		ex_mem_ctrl_branch 	: in  STD_LOGIC := '0';
+		ex_mem_ctrl_memRead 	: in  STD_LOGIC := '0';
+		ex_mem_ctrl_memWrite : in  STD_LOGIC := '0';
 		
-		ex_ctrl_regDst 		: in STD_LOGIC;
-		ex_ctrl_aluOp 			: in STD_LOGIC_VECTOR (1 downto 0);
-		ex_ctrl_aluSrc 		: in STD_LOGIC;
+		ex_ctrl_regDst 		: in STD_LOGIC := '0';
+		ex_ctrl_aluOp 			: in STD_LOGIC_VECTOR (1 downto 0) := (others => '0');
+		ex_ctrl_aluSrc 		: in STD_LOGIC := '0';
 		
-		ex_pc						: in STD_LOGIC_VECTOR (31 downto 0);
-		ex_signext 				: in STD_LOGIC_VECTOR (31 downto 0);
-		ex_inst_20_16 			: in STD_LOGIC_VECTOR (4 downto 0);
-		ex_inst_15_11 			: in STD_LOGIC_VECTOR (4 downto 0);
+		ex_pc						: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_signext 				: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_inst_20_16 			: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		ex_inst_15_11 			: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		
-		ex_register_read_1 	: in STD_LOGIC_VECTOR (31 downto 0);
-		ex_register_read_2 	: in STD_LOGIC_VECTOR (31 downto 0);
+		ex_register_read_1 	: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_register_read_2 	: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		
 		-- out signals
-		mem_wb_ctrl_regWrite : out  STD_LOGIC;
-		mem_wb_ctrl_memtoReg : out  STD_LOGIC;
+		mem_wb_ctrl_regWrite : out  STD_LOGIC := '0';
+		mem_wb_ctrl_memtoReg : out  STD_LOGIC := '0';
 		
-		mem_ctrl_branch 		: out  STD_LOGIC;
-		mem_ctrl_memRead 		: out  STD_LOGIC;
-		mem_ctrl_memWrite 	: out  STD_LOGIC;
+		mem_ctrl_branch 		: out  STD_LOGIC := '0';
+		mem_ctrl_memRead 		: out  STD_LOGIC := '0';
+		mem_ctrl_memWrite 	: out  STD_LOGIC := '0';
 		
-		mem_aluZero				: out STD_LOGIC;
-		mem_branchAddr			: out STD_LOGIC_VECTOR (31 downto 0);
-		mem_aluRes				: out STD_LOGIC_VECTOR (31 downto 0);
-		mem_writeData 			: out STD_LOGIC_VECTOR (31 downto 0); -- copy of ex_register_read_2
-		mem_writeRegisterAddr: out STD_LOGIC_VECTOR (4 downto 0)
+		mem_aluZero				: out STD_LOGIC := '0';
+		mem_branchAddr			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		mem_aluRes				: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		mem_writeData 			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0'); -- copy of ex_register_read_2
+		mem_writeRegisterAddr: out STD_LOGIC_VECTOR (4 downto 0) := (others => '0')
 	);	
 end Executer;
 
@@ -114,13 +114,13 @@ architecture Behavioral of Executer is
 		);
 	end component;
 	
-	signal alu_in_y			: STD_LOGIC_VECTOR(31 downto 0);
+	signal alu_in_y			: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 	signal alu_ctrl 			: ALU_INPUT := (OP0 => '0', OP1 => '0', OP2 => '0', OP3 => '0');
 	signal alu_flags 			: ALU_FLAGS := (Carry => '0', Overflow => '0', Zero => '0', Negative => '0');
-	signal alu_result			: STD_LOGIC_VECTOR(31 downto 0);
+	signal alu_result			: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 
-	signal mux_regdest_out	: STD_LOGIC_VECTOR (4 downto 0);
-	signal adder_out			: STD_LOGIC_VECTOR (31 downto 0);
+	signal mux_regdest_out	: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+	signal adder_out			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	
 begin
 
@@ -160,9 +160,11 @@ begin
 		CIN			=> '0',
 		R				=> adder_out
 	);
-
+	
+	
 	STEP_EXECUTER : process(clk, reset)
 	begin		
+
 		if reset = '1' then
 			mem_ctrl_branch 		<= '0';
 			mem_ctrl_memRead 		<= '0';
@@ -172,7 +174,7 @@ begin
 			mem_wb_ctrl_memtoReg <= '0';
 			
 			mem_branchAddr			<= (others => '0');
-			mem_aluRes				<= (others => '0');
+			mem_aluRes				<= (others => '0');		-- intermediate alu res singal
 			mem_aluZero				<= '0';
 			mem_writeData 			<= (others => '0');
 			mem_writeRegisterAddr<= (others => '0');
@@ -185,12 +187,12 @@ begin
 			mem_ctrl_branch 		<= ex_mem_ctrl_branch;
 			mem_ctrl_memRead 		<= ex_mem_ctrl_memRead;
 			mem_ctrl_memWrite 	<= ex_mem_ctrl_memWrite;
+			mem_writeData 			<= ex_register_read_2;
 			
 			-- set computed results to output signals
 			mem_aluZero				<= alu_flags.Zero;
-			mem_branchAddr			<= adder_out;
-			mem_aluRes				<= alu_result; 
-			mem_writeData 			<= ex_register_read_2;
+			mem_branchAddr			<= adder_out;				
+			mem_aluRes				<= alu_result;		-- intermediate alu res singal
 			mem_writeRegisterAddr<= mux_regdest_out;
 		end if;
 	end process;

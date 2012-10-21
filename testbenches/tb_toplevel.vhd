@@ -89,7 +89,8 @@ ARCHITECTURE behavior OF tb_toplevel IS
    constant LDI_2 : std_logic_vector(0 to 31)	:= "00111100000000100000000000001000";		-- LDI 	$2 08		3C 02 00 08	
 	constant ADD : std_logic_vector(0 to 31)		:= "00000000001000100001100000100000";		-- ADD 	$3 $2 $1 	00 22 18 20
 	constant SW : std_logic_vector(0 to 31)		:= "10101100000000110000000000000101";		-- SW 	$3 $0(5)		AC 03 00 01
-	constant BEQ : std_logic_vector(0 to 31)		:= "00010000000000000000000000000011";		-- BEQ 	$0 $0(3)		AC 03 00 01
+	constant BEQ : std_logic_vector(0 to 31)		:= "00010000000000000000000000000011";		-- BEQ 	goto 3
+	constant nop : std_logic_vector(0 to 31) 		:= "11111100000000000000000000000000";
    
    constant CMD_IDLE	: std_logic_vector(0 to 31) := "00000000000000000000000000000000";
 	constant CMD_WI	: std_logic_vector(0 to 31) := "00000000000000000000000000000001";
@@ -148,9 +149,7 @@ BEGIN
       bus_data_in <= zero;
       wait for clk_period*3;
 		
-		
-		
-		--Loads M[1] = 2
+		--Loads M[2] = 2
 		command <= CMD_WD;					
       bus_address_in <= addr2;
       bus_data_in <= data2;
@@ -174,6 +173,7 @@ BEGIN
       bus_data_in <= zero;
       wait for clk_period*3;
 		
+		
 		-- INSTR-2: LOAD DATA TO REGISTER
 		-- Load R[2] = M[R[0]+2]
 		command <= CMD_WI;					
@@ -186,11 +186,53 @@ BEGIN
       bus_data_in <= zero;
       wait for clk_period*3;
 		
+		--nop for pipeline
+		command <= CMD_WI;					
+      bus_address_in <= addr3;
+      bus_data_in <= nop;
+      wait for clk_period*3;
+      
+      command <= CMD_IDLE;					
+      bus_address_in <= zero;
+      bus_data_in <= zero;
+      wait for clk_period*3;
+		
+		--nop for pipeline
+		command <= CMD_WI;					
+      bus_address_in <= addr4;
+      bus_data_in <= nop;
+      wait for clk_period*3;
+      
+      command <= CMD_IDLE;					
+      bus_address_in <= zero;
+      bus_data_in <= zero;
+      wait for clk_period*3;
+		
 		-- INSTR-3: ADD (R3 = R1 + R2)
 		-- Should be 12
 		command <= CMD_WI;					
-      bus_address_in <= addr3;
+      bus_address_in <= addr5;
       bus_data_in <= ADD;
+      wait for clk_period*3;
+      
+      command <= CMD_IDLE;					
+      bus_address_in <= zero;
+      bus_data_in <= zero;
+      wait for clk_period*3;
+		
+		command <= CMD_WI;					
+      bus_address_in <= addr6;
+      bus_data_in <= nop;
+      wait for clk_period*3;
+      
+      command <= CMD_IDLE;					
+      bus_address_in <= zero;
+      bus_data_in <= zero;
+      wait for clk_period*3;
+		
+		command <= CMD_WI;					
+      bus_address_in <= addr7;
+      bus_data_in <= nop;
       wait for clk_period*3;
       
       command <= CMD_IDLE;					
@@ -200,7 +242,7 @@ BEGIN
 		
 		-- INSTR-4: STORE TO DMEM
 		command <= CMD_WI;					
-      bus_address_in <= addr4;
+      bus_address_in <= addr8;
       bus_data_in <= SW;
       wait for clk_period*3;
       
@@ -211,8 +253,8 @@ BEGIN
 
 		-- NOTHING		
 		command <= CMD_WI;					
-      bus_address_in <= addr5;
-      bus_data_in <= IDLE;
+      bus_address_in <= addr9;
+      bus_data_in <= BEQ;
       wait for clk_period*3;
       
       command <= CMD_IDLE;					
@@ -221,8 +263,8 @@ BEGIN
       wait for clk_period*3;
 		
 		command <= CMD_WI;					
-      bus_address_in <= addr6;
-      bus_data_in <= IDLE;
+      bus_address_in <= addr10;
+      bus_data_in <= nop;
       wait for clk_period*3;
       
       command <= CMD_IDLE;					

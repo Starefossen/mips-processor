@@ -50,7 +50,7 @@ begin
 					when ALU_FN_AND 	=> ALUCtrl <= (OP3 => '0', OP2 => '0', OP1 => '0', OP0 => '0'); -- and
 					when ALU_FN_OR 	=> ALUCtrl <= (OP3 => '0', OP2 => '0', OP1 => '0', OP0 => '1'); -- or
 					when ALU_FN_SLT 	=> ALUCtrl <= (OP3 => '0', OP2 => '1', OP1 => '1', OP0 => '1'); -- slt			
-					when others 		=> 
+					when others 		=> ALUCtrl <= (OP3 => '0', OP2 => '0', OP1 => '1', OP0 => '0'); -- add
 				end case;
 		end case;
 	

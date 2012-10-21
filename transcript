@@ -9,79 +9,24 @@
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
 # vsim -do \{do \{tb_toplevel.fdo\}\} 
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlft6hhad9".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft6hhad9
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Error: (vopt-19) Failed to access library 'work.{tb_toplevel' at "work.{tb_toplevel".
 # No such file or directory. (errno = ENOENT)
 # ** Error: Library work.{tb_toplevel not found.
 # Error loading design
-do tb_toplevel.fdo
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Compiling entity full_adder
-# -- Compiling architecture behavioral of full_adder
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity mux
-# -- Compiling architecture behavioral of mux
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/mips_constant_pkg.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling package mips_constant_pkg
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity ander
-# -- Compiling architecture behavioral of ander
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity alu_1bit
-# -- Compiling architecture behavioral of alu_1bit
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/adder.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package numeric_std
 # -- Compiling entity adder
 # -- Compiling architecture behavioral of adder
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Compiling entity sign_extend
-# -- Compiling architecture behavioral of sign_extend
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package numeric_std
-# -- Loading package mips_constant_pkg
-# -- Compiling entity register_file
-# -- Compiling architecture behavioral of register_file
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity program_counter
-# -- Compiling architecture behavioral of program_counter
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity processor_control
-# -- Compiling architecture behavioral of processor_control
-# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package mips_constant_pkg
-# -- Compiling entity alu_control
-# -- Compiling architecture behavioral of alu_control
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/alu.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
@@ -89,6 +34,59 @@ do tb_toplevel.fdo
 # -- Loading package mips_constant_pkg
 # -- Compiling entity alu
 # -- Compiling architecture behavioral of alu
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/alu_1bit.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity alu_1bit
+# -- Compiling architecture behavioral of alu_1bit
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/ALU_CONTROL.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity alu_control
+# -- Compiling architecture behavioral of alu_control
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/and.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity ander
+# -- Compiling architecture behavioral of ander
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/com.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package std_logic_unsigned
+# -- Compiling entity com
+# -- Compiling architecture behavioral of com
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/full_adder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity full_adder
+# -- Compiling architecture behavioral of full_adder
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/memory.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Compiling entity memory
+# -- Compiling architecture behavioral of memory
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/mips_constant_pkg.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling package mips_constant_pkg
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/MUX.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity mux
+# -- Compiling architecture behavioral of mux
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/processor.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
@@ -98,19 +96,41 @@ do tb_toplevel.fdo
 # -- Loading package mips_constant_pkg
 # -- Compiling entity processor
 # -- Compiling architecture behavioral of processor
+vcom -reportprogress 30 -work work C:/Users/hanskrfl/Desktop/mips/hardware/PROCESSOR_CONTROL.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity processor_control
+# -- Compiling architecture behavioral of processor_control
+vcom -reportprogress 30 -work work C:/Users/hanskrfl/Desktop/mips/hardware/PROGRAM_COUNTER.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity program_counter
+# -- Compiling architecture behavioral of program_counter
+vcom -reportprogress 30 -work work C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Loading package numeric_std
-# -- Compiling entity memory
-# -- Compiling architecture behavioral of memory
+# -- Loading package mips_constant_pkg
+# -- Compiling entity register_file
+# -- Compiling architecture behavioral of register_file
+vcom -reportprogress 30 -work work C:/Users/hanskrfl/Desktop/mips/hardware/SHIFT_L2.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Compiling entity com
-# -- Compiling architecture behavioral of com
+# -- Compiling entity shift_l2
+# -- Compiling architecture behavioral of shift_l2
+vcom -reportprogress 30 -work work C:/Users/hanskrfl/Desktop/mips/hardware/SIGN_EXTEND.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity sign_extend
+# -- Compiling architecture behavioral of sign_extend
+vcom -reportprogress 30 -work work C:/Users/hanskrfl/Desktop/mips/hardware/toplevel.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
@@ -118,50 +138,244 @@ do tb_toplevel.fdo
 # -- Loading package mips_constant_pkg
 # -- Compiling entity toplevel
 # -- Compiling architecture behavioral of toplevel
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity decoder
+# -- Compiling architecture behavioral of decoder
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/fetcher.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity fetcher
+# -- Compiling architecture behavioral of fetcher
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/writebacker.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity writebacker
+# -- Compiling architecture behavioral of writebacker
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/testbenches/tb_toplevel.vhd
 # Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
 # -- Loading package standard
 # -- Loading package std_logic_1164
 # -- Compiling entity tb_toplevel
 # -- Compiling architecture behavior of tb_toplevel
-# vsim -lib work -voptargs=\"+acc\" -t 1ps work.tb_toplevel 
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by:   Hostname:   ProcessID: 1
-#           Attempting to use alternate WLF file "./wlft2c6bbj".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft2c6bbj
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Note: (vopt-143) Recognized 1 FSM in architecture body "com(behavioral)".
-# ** Note: (vopt-143) Recognized 1 FSM in architecture body "processor(behavioral)".
+vsim -novopt work.tb_toplevel
+# vsim -novopt work.tb_toplevel 
 # Loading std.standard
 # Loading ieee.std_logic_1164(body)
-# Loading work.tb_toplevel(behavior)#1
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.tb_toplevel(behavior)
+# Loading work.tb_toplevel(behavior)
 # Loading ieee.numeric_std(body)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.mips_constant_pkg
 # Loading work.mips_constant_pkg
-# Loading work.toplevel(behavioral)#1
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.toplevel(behavioral)
+# Loading work.toplevel(behavioral)
 # Loading ieee.std_logic_arith(body)
 # Loading ieee.std_logic_unsigned(body)
-# Loading work.com(behavioral)#1
-# Loading work.memory(behavioral)#1
-# Loading work.processor(behavioral)#1
-# Loading work.processor_control(behavioral)#1
-# Loading work.alu_control(behavioral)#1
-# Loading work.sign_extend(behavioral)#1
-# Loading work.mux(behavioral)#1
-# Loading work.mux(behavioral)#2
-# Loading work.alu(behavioral)#1
-# Loading work.alu_1bit(behavioral)#1
-# Loading work.full_adder(behavioral)#1
-# Loading work.register_file(behavioral)#1
-# Loading work.program_counter(behavioral)#1
-# Loading work.ander(behavioral)#1
-# Loading work.adder(behavioral)#1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.com(behavioral)
+# Loading work.com(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memory(behavioral)
+# Loading work.memory(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.processor(behavioral)
+# Loading work.processor(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.fetcher(behavioral)
+# Loading work.fetcher(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.mux(behavioral)
+# Loading work.mux(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.adder(behavioral)
+# Loading work.adder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.full_adder(behavioral)
+# Loading work.full_adder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.decoder(behavioral)
+# Loading work.decoder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.processor_control(behavioral)
+# Loading work.processor_control(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.register_file(behavioral)
+# Loading work.register_file(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.sign_extend(behavioral)
+# Loading work.sign_extend(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.alu(behavioral)
+# Loading work.alu(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.alu_1bit(behavioral)
+# Loading work.alu_1bit(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.alu_control(behavioral)
+# Loading work.alu_control(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.ander(behavioral)
+# Loading work.ander(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.writebacker(behavioral)
+# Loading work.writebacker(behavioral)
+add wave \
+{sim:/tb_toplevel/uut/mips_sc_processor/imem_data_in } 
+restart -f
+run 3000ns
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/registers
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/registers
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+add wave sim:/tb_toplevel/uut/mips_sc_processor/executer_comp/*
+add wave \
+{sim:/tb_toplevel/uut/mips_sc_processor/imem_data_in } 
+add wave sim:/tb_toplevel/uut/mips_sc_processor/decoder_comp/registers/*
+restart -f
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/testbenches/tb_toplevel.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_toplevel
+# -- Compiling architecture behavior of tb_toplevel
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.tb_toplevel(behavior)
+# Loading work.tb_toplevel(behavior)
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+find drivers -source -time {2660490 ps} -cause sim:/tb_toplevel/uut/mips_sc_processor/decoder_comp/registers/regs(1)
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Loading package mips_constant_pkg
+# -- Compiling entity register_file
+# -- Compiling architecture behavioral of register_file
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): No feasible entries for infix operator "and".
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): Type error resolving infix expression "and" as type std.standard.boolean.
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): near "!": expecting "GENERATE" or "THEN"
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(70): near "if": expecting "PROCESS"
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Loading package mips_constant_pkg
+# -- Compiling entity register_file
+# -- Compiling architecture behavioral of register_file
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): No feasible entries for infix operator "and".
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): Type error resolving infix expression "and" as type std.standard.boolean.
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): near "!": expecting "GENERATE" or "THEN"
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(70): near "if": expecting "PROCESS"
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Loading package mips_constant_pkg
+# -- Compiling entity register_file
+# -- Compiling architecture behavioral of register_file
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): No feasible entries for infix operator "and".
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): near "!": expecting ')'
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(70): near "if": expecting "PROCESS"
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Loading package mips_constant_pkg
+# -- Compiling entity register_file
+# -- Compiling architecture behavioral of register_file
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): No feasible entries for infix operator "and".
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(67): near "NOT": expecting ')'
+# ** Error: C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd(70): near "if": expecting "PROCESS"
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Loading package mips_constant_pkg
+# -- Compiling entity register_file
+# -- Compiling architecture behavioral of register_file
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.register_file(behavioral)
+# Loading work.register_file(behavioral)
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -181,58 +395,291 @@ do tb_toplevel.fdo
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
 add wave \
-{sim:/tb_toplevel/uut/mips_sc_processor/clk } \
-{sim:/tb_toplevel/uut/mips_sc_processor/reset } \
-{sim:/tb_toplevel/uut/mips_sc_processor/processor_enable } \
-{sim:/tb_toplevel/uut/mips_sc_processor/imem_address } \
-{sim:/tb_toplevel/uut/mips_sc_processor/imem_data_in } \
+{sim:/tb_toplevel/uut/mips_sc_processor/processor_enable } 
+restart -f
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/hardware/register_file.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package numeric_std
+# -- Loading package mips_constant_pkg
+# -- Compiling entity register_file
+# -- Compiling architecture behavioral of register_file
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.register_file(behavioral)
+# Loading work.register_file(behavioral)
+rim 3000ns
+# invalid command name "rim"
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+restart -f
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+run 2800ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+restart -f
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/testbenches/tb_toplevel.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_toplevel
+# -- Compiling architecture behavior of tb_toplevel
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.tb_toplevel(behavior)
+# Loading work.tb_toplevel(behavior)
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+add wave \
 {sim:/tb_toplevel/uut/mips_sc_processor/dmem_data_in } \
 {sim:/tb_toplevel/uut/mips_sc_processor/dmem_address } \
 {sim:/tb_toplevel/uut/mips_sc_processor/dmem_address_wr } \
 {sim:/tb_toplevel/uut/mips_sc_processor/dmem_data_out } \
-{sim:/tb_toplevel/uut/mips_sc_processor/dmem_write_enable } \
-{sim:/tb_toplevel/uut/mips_sc_processor/regdst } \
-{sim:/tb_toplevel/uut/mips_sc_processor/jump } \
-{sim:/tb_toplevel/uut/mips_sc_processor/branch } \
-{sim:/tb_toplevel/uut/mips_sc_processor/memread } \
-{sim:/tb_toplevel/uut/mips_sc_processor/memtoreg } \
-{sim:/tb_toplevel/uut/mips_sc_processor/aluop } \
-{sim:/tb_toplevel/uut/mips_sc_processor/alusrc } \
-{sim:/tb_toplevel/uut/mips_sc_processor/regwrite } \
-{sim:/tb_toplevel/uut/mips_sc_processor/state } \
-{sim:/tb_toplevel/uut/mips_sc_processor/nextstate } \
-{sim:/tb_toplevel/uut/mips_sc_processor/newstate } \
-{sim:/tb_toplevel/uut/mips_sc_processor/aluctrl } \
-{sim:/tb_toplevel/uut/mips_sc_processor/alu_output } \
-{sim:/tb_toplevel/uut/mips_sc_processor/alu_flags } \
-{sim:/tb_toplevel/uut/mips_sc_processor/signext_output } \
-{sim:/tb_toplevel/uut/mips_sc_processor/mux_alusrc_output } \
-{sim:/tb_toplevel/uut/mips_sc_processor/mux_regdst_output } \
-{sim:/tb_toplevel/uut/mips_sc_processor/mux_memtoreg_output } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers_readdata1 } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers_readdata2 } \
-{sim:/tb_toplevel/uut/mips_sc_processor/program_cnt } 
-add wave \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers/rw } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers/rs_addr } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers/rt_addr } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers/rd_addr } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers/write_data } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers/rs } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers/rt } \
-{sim:/tb_toplevel/uut/mips_sc_processor/registers/regs } 
-reset -r
-# ambiguous command name "reset": resetGlobalEvcd resetTime
-reset -fg
-# ambiguous command name "reset": resetGlobalEvcd resetTime
-reset -f
-# ambiguous command name "reset": resetGlobalEvcd resetTime
+{sim:/tb_toplevel/uut/mips_sc_processor/dmem_write_enable } 
 restart -f
-run 2000ns
+run 3000ns
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/registers
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/registers
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -251,4 +698,1014 @@ run 2000ns
 #    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
-run 2000ns
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/testbenches/tb_toplevel.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_toplevel
+# -- Compiling architecture behavior of tb_toplevel
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.tb_toplevel(behavior)
+# Loading work.tb_toplevel(behavior)
+run 3000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+restart -f
+run 5000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity decoder
+# -- Compiling architecture behavioral of decoder
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.decoder(behavioral)
+# Loading work.decoder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+run 5000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+# ** Error: C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd(127): near "process": expecting "IF"
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+run 5000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity decoder
+# -- Compiling architecture behavioral of decoder
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.decoder(behavioral)
+# Loading work.decoder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+run 5000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity decoder
+# -- Compiling architecture behavioral of decoder
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.decoder(behavioral)
+# Loading work.decoder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+run 4500ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity decoder
+# -- Compiling architecture behavioral of decoder
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.decoder(behavioral)
+# Loading work.decoder(behavioral)
+run 4500ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+restart -f
+run 4500ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+run 4500ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+restart -f
+run 4500ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+restart -f
+run 4500ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+add wave \
+{sim:/tb_toplevel/uut/mips_sc_processor/memorier_comp/mem_ctrl_memwrite } \
+{sim:/tb_toplevel/uut/mips_sc_processor/memorier_comp/mem_alures } \
+{sim:/tb_toplevel/uut/mips_sc_processor/memorier_comp/mem_writedata } 
+restart -f
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+add wave \
+{sim:/tb_toplevel/uut/mips_sc_processor/executer_comp/mem_ctrl_memwrite } \
+{sim:/tb_toplevel/uut/mips_sc_processor/executer_comp/mem_alures } \
+{sim:/tb_toplevel/uut/mips_sc_processor/executer_comp/mem_writedata } 
+restart -f
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity decoder
+# -- Compiling architecture behavioral of decoder
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+# ** Error: C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd(199): near "falling_edge": expecting "<=" or ":="
+# ** Error: C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd(204): VHDL Compiler exiting
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/fetcher.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity fetcher
+# -- Compiling architecture behavioral of fetcher
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/writebacker.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity writebacker
+# -- Compiling architecture behavioral of writebacker
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.fetcher(behavioral)
+# Loading work.fetcher(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.decoder(behavioral)
+# Loading work.decoder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.writebacker(behavioral)
+# Loading work.writebacker(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity decoder
+# -- Compiling architecture behavioral of decoder
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+# ** Error: C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd(199): near "falling_edge": expecting "<=" or ":="
+# ** Error: C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd(204): VHDL Compiler exiting
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/fetcher.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity fetcher
+# -- Compiling architecture behavioral of fetcher
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/writebacker.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity writebacker
+# -- Compiling architecture behavioral of writebacker
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.fetcher(behavioral)
+# Loading work.fetcher(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.decoder(behavioral)
+# Loading work.decoder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.writebacker(behavioral)
+# Loading work.writebacker(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+add wave \
+{sim:/tb_toplevel/uut/mips_sc_processor/executer_comp/tmp_reg_data2 } 
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity decoder
+# -- Compiling architecture behavioral of decoder
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+# ** Error: C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd(194): near "mem_aluZero": expecting ';'
+# ** Error: C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd(204): VHDL Compiler exiting
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/fetcher.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity fetcher
+# -- Compiling architecture behavioral of fetcher
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/memorier.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity memorier
+# -- Compiling architecture behavioral of memorier
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/writebacker.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity writebacker
+# -- Compiling architecture behavioral of writebacker
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.fetcher(behavioral)
+# Loading work.fetcher(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.decoder(behavioral)
+# Loading work.decoder(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.memorier(behavioral)
+# Loading work.memorier(behavioral)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.writebacker(behavioral)
+# Loading work.writebacker(behavioral)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/pipeline/Executer.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Loading package mips_constant_pkg
+# -- Compiling entity executer
+# -- Compiling architecture behavioral of executer
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.executer(behavioral)
+# Loading work.executer(behavioral)
+# Warning in wave window restart: (vish-4014) No objects found matching '/tb_toplevel/uut/mips_sc_processor/executer_comp/tmp_reg_data2'. 
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/testbenches/tb_toplevel.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_toplevel
+# -- Compiling architecture behavior of tb_toplevel
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.tb_toplevel(behavior)
+# Loading work.tb_toplevel(behavior)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+add wave sim:/tb_toplevel/uut/mips_sc_processor/fetcher_comp/*
+restart -f
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/testbenches/tb_toplevel.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_toplevel
+# -- Compiling architecture behavior of tb_toplevel
+restart -f
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.tb_toplevel(behavior)
+# Loading work.tb_toplevel(behavior)
+run 4000ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/mips_sc_processor/decoder_comp/registers
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 1  Instance: /tb_toplevel/uut/inst_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 3  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 20 ns  Iteration: 4  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 40 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 60 ns  Iteration: 1  Instance: /tb_toplevel/uut/data_mem
+vcom -reportprogress 300 -work work C:/Users/hanskrfl/Desktop/mips/testbenches/tb_processor.vhd
+# Model Technology ModelSim SE vcom 6.6d Compiler 2010.11 Nov  1 2010
+# -- Loading package standard
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_processor
+# -- Compiling architecture behavior of tb_processor
+quit -sim
+vsim -novopt work.tb_processor
+# vsim -novopt work.tb_processor 
+# Loading std.standard
+# Loading ieee.std_logic_1164(body)
+# Refreshing C:\Users\hanskrfl\Desktop\mips\work.tb_processor(behavior)
+# Loading work.tb_processor(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading ieee.numeric_std(body)
+# Loading work.mips_constant_pkg
+# Loading work.processor(behavioral)
+# Loading work.fetcher(behavioral)
+# Loading work.mux(behavioral)
+# Loading work.adder(behavioral)
+# Loading work.full_adder(behavioral)
+# Loading work.decoder(behavioral)
+# Loading work.processor_control(behavioral)
+# Loading work.register_file(behavioral)
+# Loading work.sign_extend(behavioral)
+# Loading work.executer(behavioral)
+# Loading work.alu(behavioral)
+# Loading work.alu_1bit(behavioral)
+# Loading work.alu_control(behavioral)
+# Loading work.memorier(behavioral)
+# Loading work.ander(behavioral)
+# Loading work.writebacker(behavioral)
+add wave sim:/tb_processor/uut/*
+run -all
+# Break key hit 
+# Break in Process step_decoder at C:/Users/hanskrfl/Desktop/mips/pipeline/decoder.vhd line 152
+add wave sim:/tb_processor/uut/decoder_comp/registers/*
+restart -f
+run 1ms
