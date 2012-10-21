@@ -124,7 +124,11 @@ begin
 					Branch 			<= '0';
 					MemRead 			<= '0';
 					MemtoReg 		<= '0';
+<<<<<<< HEAD
 					ALUOp 			<= ALU_OP_LS;
+=======
+					ALUOp 			<= ALU_OP_BEQ;
+>>>>>>> 6d407c7ed3da5b40cc13aed2ec6edabbea7caf01
 					MemWrite 		<= '0';
 					ALUSrc 			<= '0';
 					RegWrite 		<= '0';

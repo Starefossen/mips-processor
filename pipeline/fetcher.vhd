@@ -104,8 +104,17 @@ begin
 			id_pc						<= (others => '0');
 			imem_address			<= (others => '0');
 			pc_register				<= (others => '0');
+<<<<<<< HEAD
 		else
 			imem_address			<= pc_register;
+=======
+		elsif rising_edge(clk) then
+
+			-- output signals
+			pc_register				<= mux_pcsrc_output;
+			id_pc						<= adder1_output;
+			imem_address			<= pc_register;		
+>>>>>>> 6d407c7ed3da5b40cc13aed2ec6edabbea7caf01
 			
 			-- output signals	
 			if rising_edge(clk) then			

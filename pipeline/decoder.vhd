@@ -109,8 +109,11 @@ architecture Behavioral of decoder is
 	
 	signal registers_readdata1 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	signal registers_readdata2 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+<<<<<<< HEAD
 	signal tmp_registers_readdata1 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	signal tmp_registers_readdata2 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+=======
+>>>>>>> 6d407c7ed3da5b40cc13aed2ec6edabbea7caf01
 	signal signext_output 	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	
 begin
@@ -176,6 +179,7 @@ begin
 			ex_register_read_1 	<= (others => '0'); 
 			ex_register_read_2 	<= (others => '0'); 
 			
+<<<<<<< HEAD
 		else
 				
 			if rising_edge(clk) then
@@ -210,6 +214,35 @@ begin
 				tmp_registers_readdata1 	<= registers_readdata1;
 				tmp_registers_readdata2 	<= registers_readdata2;
 			end if;
+=======
+		elsif rising_edge(clk) then
+			
+			--jump signals
+			if_jump_addr(31 downto 28) <= id_if_pc(31 downto 28);
+			if_jump_addr(27 downto 2)  <= imem_data_in(25 downto 0);
+			if_jump_addr(1 downto 0)	<= "00";
+			if_ctrl_jump 					<= Jump;
+
+			--propagating control signals
+			wb_ctrl_regWrite 		<= RegWrite;
+			wb_ctrl_memtoReg 		<= MemtoReg;
+
+			mem_ctrl_branch 		<= Branch;
+			mem_ctrl_memRead 		<= MemRead;
+			mem_ctrl_memWrite 	<= MemWrite;
+
+			ex_ctrl_regDst 		<= RegDst;
+			ex_ctrl_aluOp 			<= ALUOp;
+			ex_ctrl_aluSrc 		<= ALUSrc;
+			
+			ex_pc						<= id_if_pc;
+			ex_signext 				<= signext_output;
+			ex_inst_20_16 			<= imem_data_in(20 downto 16);
+			ex_inst_15_11 			<= imem_data_in(15 downto 11); 
+			
+			ex_register_read_1 	<= registers_readdata1;
+			ex_register_read_2 	<= registers_readdata2;
+>>>>>>> 6d407c7ed3da5b40cc13aed2ec6edabbea7caf01
 		end if;
 	end process;
 
