@@ -1,6 +1,7 @@
 *
 
-!*.vhld
+!*.vhd
+!*.vhdl
 !*.xise
 
 !*.png
