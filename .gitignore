@@ -1,13 +1,8 @@
 *
 
-!*.vhd
-!*.VHD
-!*.vhdl
-!*.VHDL
-!*.xise
+!*.gitignore
 
-!*.png
-!*.pdf
-!*.jpg
-!*.jpeg
-!*.dia
+!*.xise
+!*.vhd
+!*.vhdl
+
