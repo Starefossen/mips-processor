@@ -6,3 +6,20 @@
 !*.vhd
 !*.vhdl
 
+!/docs/*
+
+!/vhdl
+/vhdl/*
+!/vhdl/*.vhd
+
+!/vhdl/hardware
+/vhdl/hardware/*
+!/vhdl/hardware/*.vhd
+
+!/vhdl/pipeline
+/vhdl/pipeline/*
+!/vhdl/pipeline/*.vhd
+
+!/vhdl/testbenches
+/vhdl/testbenches/*
+!/vhdl/testbenches/*.vhd
