@@ -1,1 +1,0 @@
- -p aspartan6 -lang vhdl$(PROJECT_SEARCHPATHOPT) $(GLOBAL_SEARCHPATHOPT)   -msg __xps/ise/xmsgprops.lst -s mti -X C:/Users/sondree/Desktop/assignment1SimpleProc_new/MIPS_processor/

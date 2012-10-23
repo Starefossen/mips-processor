@@ -1,2 +1,0 @@
- -p xa6slx16csg324-3 -lang vhdl$(PROJECT_SEARCHPATHOPT) $(GLOBAL_SEARCHPATHOPT) -toplevel no -ti MIPS_processor_i -msg __xps/ise/xmsgprops.lst
-
