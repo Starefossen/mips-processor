@@ -60,6 +60,10 @@ entity memorier is
 		
 		if_ctrl_pcSrc			: out STD_LOGIC := '0'; -- branch control / selector
 		
+		mem_alu_res				: OUT STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		mem_reg_dest 			: out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		mem_reg_write 			: out	STD_LOGIC := '0';
+		
 		-- external processor signals		
 		dmem_address			: out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
 		dmem_address_wr     	: out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
@@ -88,7 +92,10 @@ begin
 	);
 
 	STEP_MEMORIER : process(clk, reset, mem_aluRes, mem_writeData, mem_ctrl_memWrite)
-	begin		
+	begin
+		mem_reg_dest 			<= mem_regWriteAddr;
+		mem_reg_write 			<= mem_wb_ctrl_regWrite;
+		mem_alu_res				<= mem_aluRes;
 		if reset = '1' then
 			wb_ctrl_regWrite 		<= '0';
 			wb_ctrl_memtoReg 		<= '0';

@@ -56,6 +56,15 @@ entity Executer is
 		ex_register_read_1 	: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		ex_register_read_2 	: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		
+		wb_write_data			: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		mem_alu_res				: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		
+		mem_reg_dest 			: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		mem_reg_write 			: in STD_LOGIC := '0';
+		
+		wb_reg_write 			: in STD_LOGIC := '0';
+		wb_reg_dest 			: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		
 		-- out signals
 		mem_wb_ctrl_regWrite : out  STD_LOGIC := '0';
 		mem_wb_ctrl_memtoReg : out  STD_LOGIC := '0';
@@ -73,6 +82,19 @@ entity Executer is
 end Executer;
 
 architecture Behavioral of Executer is
+
+	component FORWARDING_UNIT is
+		Port (
+			rs : in  STD_LOGIC_VECTOR (4 downto 0);
+			rt : in  STD_LOGIC_VECTOR (4 downto 0);
+			mem_reg_dest : in  STD_LOGIC_VECTOR (4 downto 0);
+			mem_reg_write : in  STD_LOGIC;
+			wb_reg_write : in  STD_LOGIC;
+			wb_reg_dest : in  STD_LOGIC_VECTOR (4 downto 0);
+			fwrd_ctrl_alusrc1 : out  STD_LOGIC_VECTOR (1 downto 0);
+			fwrd_ctrl_alusrc2 : out  STD_LOGIC_VECTOR (1 downto 0)
+		);
+	end component;
 
 	component ALU is
 		generic (N :NATURAL :=32); 
@@ -103,6 +125,16 @@ architecture Behavioral of Executer is
 		);
 	end component;
 	
+	component MUX3 is
+		generic (N :NATURAL :=32); 
+		Port ( selector : in STD_LOGIC_VECTOR (1 downto 0);
+			bus_in0 : in  STD_LOGIC_VECTOR (N-1 downto 0);
+			bus_in1 : in  STD_LOGIC_VECTOR (N-1 downto 0);
+			bus_in2 : in  STD_LOGIC_VECTOR (N-1 downto 0);
+			bus_out : out  STD_LOGIC_VECTOR (N-1 downto 0)
+		);
+	end component;
+	
 	component ADDER is
 		generic (N : NATURAL := 32);
 		port(
@@ -114,19 +146,37 @@ architecture Behavioral of Executer is
 		);
 	end component;
 	
+	signal alu_in_x			: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 	signal alu_in_y			: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 	signal alu_ctrl 			: ALU_INPUT := (OP0 => '0', OP1 => '0', OP2 => '0', OP3 => '0');
 	signal alu_flags 			: ALU_FLAGS := (Carry => '0', Overflow => '0', Zero => '0', Negative => '0');
 	signal alu_result			: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 
 	signal mux_regdest_out	: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+	signal mux_alusrc2 		: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	signal adder_out			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	
+	-- forwarding unit control signals here
+	signal fwrd_ctrl_alu1	: STD_LOGIC_VECTOR (1 downto 0) := "00";
+	signal fwrd_ctrl_alu2	: STD_LOGIC_VECTOR (1 downto 0) := "00";
 	
 begin
 
+	fwrd_unit : FORWARDING_UNIT port map(
+		rs							=> ex_inst_20_16,
+		rt							=> ex_inst_15_11,
+		mem_reg_dest			=> mem_reg_dest,
+		mem_reg_write			=> mem_reg_write,
+		wb_reg_write			=> wb_reg_write,
+		wb_reg_dest				=> wb_reg_dest,
+		fwrd_ctrl_alusrc1		=> fwrd_ctrl_alu1,
+		fwrd_ctrl_alusrc2		=> fwrd_ctrl_alu2
+	);
+
+
 	-- Main ALU
 	main_alu : ALU port map(
-		X				=> ex_register_read_1,
+		X				=> alu_in_x,
 		Y				=> alu_in_y,
 		ALU_IN		=> alu_ctrl,
 		R				=> alu_result,
@@ -140,10 +190,26 @@ begin
 		ALUCtrl 		=> alu_ctrl
 	);
 
-	mux_alusrc	: MUX port map(
+	mux_const : MUX port map(
 		selector 	=> ex_ctrl_aluSrc,
 	   bus_in1 		=> ex_register_read_2,
 	   bus_in2 		=> ex_signext,
+	   bus_out 		=> mux_alusrc2
+	);
+	
+	mux_alusrc0	: MUX3 port map(
+		selector 	=> fwrd_ctrl_alu1,
+	   bus_in0 		=> ex_register_read_1,
+	   bus_in1 		=> wb_write_data,
+	   bus_in2 		=> mem_alu_res,
+	   bus_out 		=> alu_in_x
+	);
+	
+	mux_alusrc1 : MUX3 port map(
+		selector 	=> fwrd_ctrl_alu2,
+	   bus_in0 		=> ex_register_read_2,
+	   bus_in1 		=> wb_write_data,
+	   bus_in2 		=> mem_alu_res,
 	   bus_out 		=> alu_in_y
 	);
 	
@@ -153,7 +219,7 @@ begin
 	   bus_in2 		=> ex_inst_15_11,
 	   bus_out 		=> mux_regdest_out
 	);
-	
+		
 	adder_comp : ADDER port map(
 		X				=>	ex_pc,
 		Y				=> ex_signext,

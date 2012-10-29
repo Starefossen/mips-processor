@@ -49,7 +49,11 @@ entity writebacker is
 		-- output signals to instruction decoder
 		id_ctrl_regWrite		: out STD_LOGIC := '0';
 		id_writeRegisterAddr : out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-		id_writeData			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0')
+		id_writeData			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		
+		wb_write_data			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		wb_reg_write 			: out STD_LOGIC := '0';
+		wb_reg_dest 			: out STD_LOGIC_VECTOR (4 downto 0) := (others => '0')
 	);
 end writebacker;
 
@@ -78,6 +82,9 @@ begin
 
 	STEP_WRITEBACKER : process(clk, reset,wb_ctrl_regWrite,wb_regWriteAddr,mux_memtoreg_output)
 	begin		
+		wb_reg_write 				<= wb_ctrl_regWrite;
+		wb_reg_dest 				<= wb_regWriteAddr;
+		wb_write_data				<= mux_memtoreg_output;
 		if reset = '1' then
 			-- output signals to instruction decoder
 			id_ctrl_regWrite			<= '0';	

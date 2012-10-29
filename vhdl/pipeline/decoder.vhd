@@ -55,7 +55,9 @@ entity decoder is
 		ex_register_read_2 	: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		ex_signext 				: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		ex_inst_20_16 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-		ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0')
+		ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		
+		ex_rt_back				: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	);
 end decoder;
 
@@ -75,6 +77,17 @@ architecture Behavioral of decoder is
 			RegWrite 			: out STD_LOGIC
 		);
 	end component;
+
+	component HAZARD_DETECTOR is
+		 Port (
+			rs : in  STD_LOGIC_VECTOR (4 downto 0);
+			rt : in  STD_LOGIC_VECTOR (4 downto 0);
+			ex_rt : in  STD_LOGIC_VECTOR (4 downto 0);
+			ex_mem_read : in  STD_LOGIC;
+			stall : out  STD_LOGIC
+		);
+	end component;
+
 
 	component REGISTER_FILE is
 		port(
@@ -129,7 +142,16 @@ begin
 		ALUSrc 					=> ALUSrc,
 		RegWrite 				=> RegWrite
 	);
-
+	
+	-- Stall pipeline on detected hazards
+	hazrd_detector : HAZARD_DETECTOR port map ( 
+		rs  					=> imem_data_in(20 downto 16),
+		rt 					=> imem_data_in(15 downto 11),
+		ex_r 					=> RegDst,
+		ex_mem_read 		=> RegDst, 
+		stall 				=> RegDst  --
+	);
+	
 	-- General Registers
 	registers : register_file port map(
 		CLK 						=> clk,		
