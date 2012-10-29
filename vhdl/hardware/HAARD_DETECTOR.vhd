@@ -35,7 +35,7 @@ entity HAZARD_DETECTOR is
 		rt : in  STD_LOGIC_VECTOR (4 downto 0);
 		ex_rt : in  STD_LOGIC_VECTOR (4 downto 0);
 		ex_mem_read : in  STD_LOGIC;
-		stall : out  STD_LOGIC
+		stall : out  STD_LOGIC := '0'
 	);
 end HAZARD_DETECTOR;
 

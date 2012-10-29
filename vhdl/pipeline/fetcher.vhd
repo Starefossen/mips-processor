@@ -33,6 +33,7 @@ entity fetcher is
 	Port ( 
 		clk 						: in  STD_LOGIC;
 		reset 					: in  STD_LOGIC;
+		pc_stall 				: in  STD_LOGIC := '0';
 		processor_enable		: in	STD_LOGIC := '0';
 		
 		-- input signals from write back
@@ -73,7 +74,9 @@ architecture Behavioral of fetcher is
 	signal adder1_output 		: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 	signal pc_register			: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 	signal mux_branch_output 	: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
-	signal mux_pcsrc_output 	: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+	signal sub_output 			: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+	signal mux_jump_output 		: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+	signal mux_staller_output 	: STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 	
 begin
 
@@ -88,7 +91,14 @@ begin
 		selector 	=> if_ctrl_jump,	
 	   bus_in1 		=> mux_branch_output,
 	   bus_in2 		=> if_jump_addr,
-	   bus_out 		=> mux_pcsrc_output
+	   bus_out 		=> mux_jump_output
+	);
+	
+	staller : MUX port map(
+		selector 	=> pc_stall,	
+	   bus_in1 		=> mux_jump_output,
+	   bus_in2 		=> sub_output,
+	   bus_out 		=> mux_staller_output
 	);
 
 	adder1 : ADDER port map(
@@ -96,6 +106,13 @@ begin
 		Y				=> "00000000000000000000000000000001",
 		CIN			=> '0',
 		R				=> adder1_output
+	);
+
+	sub : ADDER port map(
+		X				=>	pc_register,
+		Y				=> "11111111111111111111111111111110",
+		CIN			=> '0',
+		R				=> sub_output
 	);
 		
 	STEP_FETCHER : process(clk, reset)
@@ -109,7 +126,7 @@ begin
 			
 			-- output signals	
 			if rising_edge(clk) then			
-				pc_register			<= mux_pcsrc_output;
+				pc_register			<= mux_staller_output;
 				id_pc					<= adder1_output;
 			end if;
 		end if;

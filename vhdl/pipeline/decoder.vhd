@@ -54,10 +54,13 @@ entity decoder is
 		ex_register_read_1 	: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		ex_register_read_2 	: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		ex_signext 				: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_inst_25_21 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		ex_inst_20_16 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		
-		ex_rt_back				: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		ex_back_rt				: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		ex_back_mem_read		: in STD_LOGIC := '0';
+		pc_stall 				: out STD_LOGIC := '0'
 	);
 end decoder;
 
@@ -80,15 +83,28 @@ architecture Behavioral of decoder is
 
 	component HAZARD_DETECTOR is
 		 Port (
-			rs : in  STD_LOGIC_VECTOR (4 downto 0);
-			rt : in  STD_LOGIC_VECTOR (4 downto 0);
-			ex_rt : in  STD_LOGIC_VECTOR (4 downto 0);
-			ex_mem_read : in  STD_LOGIC;
-			stall : out  STD_LOGIC
+			rs 					: in  STD_LOGIC_VECTOR (4 downto 0);
+			rt 					: in  STD_LOGIC_VECTOR (4 downto 0);
+			ex_rt 				: in  STD_LOGIC_VECTOR (4 downto 0);
+			ex_mem_read 		: in  STD_LOGIC;
+			stall 				: out STD_LOGIC
 		);
 	end component;
 
-
+	signal ctrl_stall 		: STD_LOGIC;
+	
+	component MUX is
+		generic (N :NATURAL :=6); 
+		Port (
+			selector 			: in  STD_LOGIC;
+			bus_in1 				: in  STD_LOGIC_VECTOR (N-1 downto 0);
+			bus_in2 				: in  STD_LOGIC_VECTOR (N-1 downto 0);
+			bus_out 				: out STD_LOGIC_VECTOR (N-1 downto 0)
+		);
+	end component;
+	
+	signal mux_op_code		: STD_LOGIC_VECTOR (5 downto 0);
+	
 	component REGISTER_FILE is
 		port(
 			CLK 			:	in	STD_LOGIC;				
@@ -128,10 +144,26 @@ architecture Behavioral of decoder is
 	
 begin
 
+	-- Stall pipeline on detected hazards
+	hazrd_detector : HAZARD_DETECTOR port map ( 
+		rs  					=> imem_data_in(20 downto 16),
+		rt 					=> imem_data_in(15 downto 11),
+		ex_rt 				=> ex_back_rt,
+		ex_mem_read 		=> ex_back_mem_read, 
+		stall 				=> ctrl_stall
+	);
+
+	mux_opcode : MUX port map (
+		selector 			=> ctrl_stall,
+		bus_in1 				=> imem_data_in(31 downto 26),
+		bus_in2 				=> (others => '1'),
+		bus_out 				=> mux_op_code
+	);
+
 	-- Processor control component
 	-- todo remove state from source
 	processor_ctrl : PROCESSOR_CONTROL  port map ( 
-		OPCode 					=> imem_data_in(31 downto 26),
+		OPCode 					=> mux_op_code,
 		RegDst 					=> RegDst,
 		Jump 						=> Jump,
 		Branch 					=> Branch,
@@ -142,15 +174,8 @@ begin
 		ALUSrc 					=> ALUSrc,
 		RegWrite 				=> RegWrite
 	);
-	
-	-- Stall pipeline on detected hazards
-	hazrd_detector : HAZARD_DETECTOR port map ( 
-		rs  					=> imem_data_in(20 downto 16),
-		rt 					=> imem_data_in(15 downto 11),
-		ex_r 					=> RegDst,
-		ex_mem_read 		=> RegDst, 
-		stall 				=> RegDst  --
-	);
+
+
 	
 	-- General Registers
 	registers : register_file port map(
@@ -192,15 +217,19 @@ begin
 			
 			ex_pc						<= (others => '0');
 			ex_signext 				<= (others => '0'); 
+			ex_inst_25_21 			<= (others => '0'); 
 			ex_inst_20_16 			<= (others => '0'); 
 			ex_inst_15_11 			<= (others => '0'); 
 			
 			ex_register_read_1 	<= (others => '0'); 
 			ex_register_read_2 	<= (others => '0'); 
 			
+			pc_stall					<= '0'; 
+			
 		else
 				
 			if rising_edge(clk) then
+				pc_stall							<= ctrl_stall;
 			
 				--jump signals
 				if_jump_addr(31 downto 28) <= id_if_pc(31 downto 28);
@@ -222,6 +251,7 @@ begin
 				
 				ex_pc						<= id_if_pc;
 				ex_signext 				<= signext_output;
+				ex_inst_25_21 			<= imem_data_in(25 downto 21);
 				ex_inst_20_16 			<= imem_data_in(20 downto 16);
 				ex_inst_15_11 			<= imem_data_in(15 downto 11); 
 				

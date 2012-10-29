@@ -50,6 +50,7 @@ entity Executer is
 		
 		ex_pc						: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		ex_signext 				: in STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_inst_25_21 			: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		ex_inst_20_16 			: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		ex_inst_15_11 			: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		
@@ -77,7 +78,11 @@ entity Executer is
 		mem_branchAddr			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		mem_aluRes				: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		mem_writeData 			: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0'); -- copy of ex_register_read_2
-		mem_writeRegisterAddr: out STD_LOGIC_VECTOR (4 downto 0) := (others => '0')
+		mem_writeRegisterAddr: out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		
+		-- send back to instruction decode step
+		id_rt						: out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		id_mem_read				: out STD_LOGIC := '0'
 	);	
 end Executer;
 
@@ -163,8 +168,8 @@ architecture Behavioral of Executer is
 begin
 
 	fwrd_unit : FORWARDING_UNIT port map(
-		rs							=> ex_inst_20_16,
-		rt							=> ex_inst_15_11,
+		rs							=> ex_inst_25_21,
+		rt							=> ex_inst_20_16,
 		mem_reg_dest			=> mem_reg_dest,
 		mem_reg_write			=> mem_reg_write,
 		wb_reg_write			=> wb_reg_write,
@@ -227,7 +232,6 @@ begin
 		R				=> adder_out
 	);
 	
-	
 	STEP_EXECUTER : process(clk, reset)
 	begin		
 
@@ -244,6 +248,9 @@ begin
 			mem_aluZero				<= '0';
 			mem_writeData 			<= (others => '0');
 			mem_writeRegisterAddr<= (others => '0');
+			
+			id_rt						<= (others => '0');
+			id_mem_read				<= '0';
 
 		elsif rising_edge(clk) then
 			-- pipeline forwarding control signals
@@ -260,6 +267,9 @@ begin
 			mem_branchAddr			<= adder_out;				
 			mem_aluRes				<= alu_result;		-- intermediate alu res singal
 			mem_writeRegisterAddr<= mux_regdest_out;
+			
+			id_rt						<= ex_inst_20_16;
+			id_mem_read				<= ex_mem_ctrl_memRead;
 		end if;
 	end process;
 
