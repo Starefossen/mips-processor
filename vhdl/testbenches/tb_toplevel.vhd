@@ -186,53 +186,11 @@ BEGIN
       bus_data_in <= zero;
       wait for clk_period*3;
 		
-		--nop for pipeline
-		command <= CMD_WI;					
-      bus_address_in <= addr3;
-      bus_data_in <= nop;
-      wait for clk_period*3;
-      
-      command <= CMD_IDLE;					
-      bus_address_in <= zero;
-      bus_data_in <= zero;
-      wait for clk_period*3;
-		
-		--nop for pipeline
-		command <= CMD_WI;					
-      bus_address_in <= addr4;
-      bus_data_in <= nop;
-      wait for clk_period*3;
-      
-      command <= CMD_IDLE;					
-      bus_address_in <= zero;
-      bus_data_in <= zero;
-      wait for clk_period*3;
-		
 		-- INSTR-3: ADD (R3 = R1 + R2)
 		-- Should be 12
 		command <= CMD_WI;					
-      bus_address_in <= addr5;
+      bus_address_in <= addr3;
       bus_data_in <= ADD;
-      wait for clk_period*3;
-      
-      command <= CMD_IDLE;					
-      bus_address_in <= zero;
-      bus_data_in <= zero;
-      wait for clk_period*3;
-		
-		command <= CMD_WI;					
-      bus_address_in <= addr6;
-      bus_data_in <= nop;
-      wait for clk_period*3;
-      
-      command <= CMD_IDLE;					
-      bus_address_in <= zero;
-      bus_data_in <= zero;
-      wait for clk_period*3;
-		
-		command <= CMD_WI;					
-      bus_address_in <= addr7;
-      bus_data_in <= nop;
       wait for clk_period*3;
       
       command <= CMD_IDLE;					
@@ -242,7 +200,7 @@ BEGIN
 		
 		-- INSTR-4: STORE TO DMEM
 		command <= CMD_WI;					
-      bus_address_in <= addr8;
+      bus_address_in <= addr4;
       bus_data_in <= SW;
       wait for clk_period*3;
       
@@ -253,18 +211,8 @@ BEGIN
 
 		-- NOTHING		
 		command <= CMD_WI;					
-      bus_address_in <= addr9;
+      bus_address_in <= addr5;
       bus_data_in <= BEQ;
-      wait for clk_period*3;
-      
-      command <= CMD_IDLE;					
-      bus_address_in <= zero;
-      bus_data_in <= zero;
-      wait for clk_period*3;
-		
-		command <= CMD_WI;					
-      bus_address_in <= addr10;
-      bus_data_in <= nop;
       wait for clk_period*3;
       
       command <= CMD_IDLE;					

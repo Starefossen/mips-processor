@@ -115,14 +115,11 @@ begin
 			id_pc						<= (others => '0');
 			imem_address			<= (others => '0');
 			pc_register				<= (others => '0');
-		else
-			imem_address			<= mux_staller_output;--pc_register;
-			
 			-- output signals	
-			if rising_edge(clk) then			
-				pc_register				<= mux_staller_output;
-				id_pc						<= adder1_output;
-			end if;
+		elsif falling_edge(clk) then			
+			pc_register				<= mux_staller_output;
+			id_pc						<= adder1_output;
+			imem_address			<= mux_staller_output;--pc_register;
 		end if;
 	end process;
 

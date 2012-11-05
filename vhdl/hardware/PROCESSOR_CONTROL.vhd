@@ -99,7 +99,7 @@ begin
 					RegDst 			<= '0';
 					Jump 				<= '0';
 					Branch 			<= '0';
-					MemRead 			<= '1';
+					MemRead 			<= '0';
 					MemtoReg 		<= '0';
 					ALUOp 			<= ALU_OP_LS;
 					MemWrite 		<= '0';

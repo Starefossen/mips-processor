@@ -137,18 +137,20 @@ architecture Behavioral of decoder is
 	signal MemWrite 			: STD_LOGIC := '0';
 	signal ALUSrc 				: STD_LOGIC := '0';
 	signal RegWrite 			: STD_LOGIC := '0';
+	signal tmp_stall 			: STD_LOGIC := '0';
 	
 	signal registers_readdata1 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	signal registers_readdata2 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
-	signal tmp_registers_readdata1 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
-	signal tmp_registers_readdata2 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	signal signext_output 	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	
+	signal old_imem_data_in	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal new_imem_data_in	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	
 begin
 
 	-- Stall pipeline on detected hazards
 	hazard_detector_comp : HAZARD_DETECTOR port map ( 
-		imem_data_in		=> imem_data_in,
+		imem_data_in		=> new_imem_data_in,
 		ex_rt 				=> ex_back_rt,
 		ex_mem_read 		=> ex_back_mem_read, 
 		stall 				=> ctrl_stall
@@ -156,9 +158,16 @@ begin
 
 	mux_opcode : MUX port map (
 		selector 			=> ctrl_stall,
-		bus_in1 				=> imem_data_in(31 downto 26),
+		bus_in1 				=> new_imem_data_in(31 downto 26),
 		bus_in2 				=> (others => '1'),
 		bus_out 				=> mux_op_code
+	);
+
+	mux_data : MUX generic map (N=>32) port map (
+		selector 			=> tmp_stall,
+		bus_in1 				=> imem_data_in,
+		bus_in2 				=> old_imem_data_in,
+		bus_out 				=> new_imem_data_in
 	);
 
 	-- Processor control component
@@ -183,8 +192,8 @@ begin
 		CLK 						=> clk,		
 		RESET						=> reset,		
 		RW							=> id_ctrl_regWrite,		
-		RS_ADDR 					=> imem_data_in(25 downto 21),
-		RT_ADDR 					=> imem_data_in(20 downto 16),
+		RS_ADDR 					=> new_imem_data_in(25 downto 21),
+		RT_ADDR 					=> new_imem_data_in(20 downto 16),
 		RD_ADDR 					=> id_regWriteAddr,
 		WRITE_DATA				=> id_regWriteData,
 		RS							=>	registers_readdata1,
@@ -193,11 +202,11 @@ begin
 	
 	-- Sign extender (branch)
 	signext : SIGN_EXTEND port map(
-		bus_in 					=> imem_data_in(15 downto 0),
+		bus_in 					=> new_imem_data_in(15 downto 0),
 		bus_out 					=> signext_output
 	);
 
-	STEP_DECODER : process(clk, reset,imem_data_in)
+	STEP_DECODER : process(clk, reset, ctrl_stall)
 	begin	
 		pc_stall 					<= ctrl_stall;
 		pc_unincremented_back	<= pc_unincremented;
@@ -206,6 +215,7 @@ begin
 			
 			if_jump_addr 			<= (others => '0');
 			if_ctrl_jump 			<= '0';
+			tmp_stall				<= '0';
 
 			wb_ctrl_regWrite 		<= '0';
 			wb_ctrl_memtoReg 		<= '0';
@@ -227,38 +237,44 @@ begin
 			ex_register_read_1 	<= (others => '0'); 
 			ex_register_read_2 	<= (others => '0'); 
 			
-		elsif rising_edge(clk) then
-			
-				--jump signals
-				if_jump_addr(31 downto 28) <= id_if_pc(31 downto 28);
-				if_jump_addr(27 downto 2)  <= imem_data_in(25 downto 0);
-				if_jump_addr(1 downto 0)	<= "00";
-				if_ctrl_jump 					<= Jump;
-
-				--propagating control signals
-				wb_ctrl_regWrite 		<= RegWrite;
-				wb_ctrl_memtoReg 		<= MemtoReg;
-
-				mem_ctrl_branch 		<= Branch;
-				mem_ctrl_memRead 		<= MemRead;
-				mem_ctrl_memWrite 	<= MemWrite;
-
-				ex_ctrl_regDst 		<= RegDst;
-				ex_ctrl_aluOp 			<= ALUOp;
-				ex_ctrl_aluSrc 		<= ALUSrc;
-				
-				ex_pc						<= id_if_pc;
-				ex_signext 				<= signext_output;
-				ex_inst_25_21 			<= imem_data_in(25 downto 21);
-				ex_inst_20_16 			<= imem_data_in(20 downto 16);
-				ex_inst_15_11 			<= imem_data_in(15 downto 11); 
-				
-				ex_register_read_1 	<= registers_readdata1;
-				ex_register_read_2 	<= registers_readdata2;
-				
 		elsif falling_edge(clk) then
-				tmp_registers_readdata1 	<= registers_readdata1;
-				tmp_registers_readdata2 	<= registers_readdata2;
+			
+			--jump signals
+			if_jump_addr(31 downto 28) <= id_if_pc(31 downto 28);
+			if_jump_addr(27 downto 2)  <= new_imem_data_in(25 downto 0);
+			if_jump_addr(1 downto 0)	<= "00";
+			if_ctrl_jump 					<= Jump;
+
+			--propagating control signals
+			wb_ctrl_regWrite 		<= RegWrite;
+			wb_ctrl_memtoReg 		<= MemtoReg;
+
+			mem_ctrl_branch 		<= Branch;
+			mem_ctrl_memRead 		<= MemRead;
+			mem_ctrl_memWrite 	<= MemWrite;
+
+			ex_ctrl_regDst 		<= RegDst;
+			ex_ctrl_aluOp 			<= ALUOp;
+			ex_ctrl_aluSrc 		<= ALUSrc;
+			
+			ex_pc						<= id_if_pc;
+			ex_signext 				<= signext_output;
+			if ctrl_stall = '1' then
+				ex_inst_25_21 			<= "00000";
+				ex_inst_20_16 			<= "00000";
+				ex_inst_15_11 			<= "00000"; 
+				tmp_stall				<= '1';
+			else
+				ex_inst_25_21 			<= new_imem_data_in(25 downto 21);
+				ex_inst_20_16 			<= new_imem_data_in(20 downto 16);
+				ex_inst_15_11 			<= new_imem_data_in(15 downto 11); 
+				tmp_stall				<= '0';
+			end if;
+			
+			ex_register_read_1 	<= registers_readdata1;
+			ex_register_read_2 	<= registers_readdata2;
+			
+			old_imem_data_in		<=imem_data_in;
 		end if;
 	end process;
 

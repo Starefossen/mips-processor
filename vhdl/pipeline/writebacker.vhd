@@ -85,22 +85,14 @@ begin
 		wb_reg_write 				<= wb_ctrl_regWrite;
 		wb_reg_dest 				<= wb_regWriteAddr;
 		wb_write_data				<= mux_memtoreg_output;
+		id_writeRegisterAddr 	<= wb_regWriteAddr;
+		id_writeData				<= mux_memtoreg_output;
+		id_ctrl_regWrite			<= wb_ctrl_regWrite;
 		if reset = '1' then
 			-- output signals to instruction decoder
 			id_ctrl_regWrite			<= '0';	
 			id_writeRegisterAddr 	<= (others => '0');
 			id_writeData				<= (others => '0');
-		else
-			id_writeRegisterAddr 	<= wb_regWriteAddr;
-			tmp_id_writeData			<= mux_memtoreg_output;
-			id_ctrl_regWrite			<= wb_ctrl_regWrite;
-			if falling_edge(clk) then
-				-- output signals to instruction decoder
-			--id_ctrl_regWrite			<= wb_ctrl_regWrite;
-				id_writeData			<= tmp_id_writeData;
-			--elsif rising_edge(clk) then
-			--	id_ctrl_regWrite		<= '0';
-			end if;
 		end if;
 	end process;
 	

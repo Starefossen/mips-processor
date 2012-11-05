@@ -251,7 +251,7 @@ begin
 			mem_writeData 			<= (others => '0');
 			mem_writeRegisterAddr<= (others => '0');
 
-		elsif rising_edge(clk) then
+		elsif falling_edge(clk) then
 			-- pipeline forwarding control signals
 			mem_wb_ctrl_regWrite <= ex_wb_ctrl_regWrite;
 			mem_wb_ctrl_memtoReg <= ex_wb_ctrl_memtoReg;

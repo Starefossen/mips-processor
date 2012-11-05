@@ -117,7 +117,7 @@ begin
 			dmem_data_out       	<= mem_writeData;
 			dmem_write_enable   	<= mem_ctrl_memWrite;
 			-- external processor signals
-			if rising_edge(clk) then
+			if falling_edge(clk) then
 				-- pipeline forwarding control signals
 				wb_ctrl_regWrite 		<= mem_wb_ctrl_regWrite;
 				wb_ctrl_memtoReg 		<= mem_wb_ctrl_memtoReg;

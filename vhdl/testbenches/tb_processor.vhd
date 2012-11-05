@@ -70,7 +70,7 @@ ARCHITECTURE behavior OF tb_processor IS
 	signal dmem_write_enable : std_logic;
 
 	-- Clock period definitions
-	constant clk_period : time := 50 ns;
+	constant clk_period : time := 40 ns;
 	constant nop : std_logic_vector(31 downto 0) := "11111100000000000000000000000000";
  
 BEGIN
@@ -106,6 +106,7 @@ BEGIN
 		--reset <= '1';
 		--wait for 100 ns;	
 		reset <= '0';
+		wait for 20 ns;
 		wait for clk_period*10;
 
 		-- insert stimulus here 
@@ -204,19 +205,15 @@ BEGIN
 		wait for clk_period; --Last used mem
 		--imem_data <= '000010 00000 00000 0000000000000000';
 		imem_data_in	 <= "00001000000000000000000000000000";
-		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
 		
 		wait for clk_period;
-		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
 			
 		--JUMP
 		wait for clk_period; --Last used mem
 		--imem_data <= '000010 00000 00000 1111000000001111';
 		imem_data_in	 <= "00001000000000001111000000001111";	
-		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
 		
 		wait for clk_period;
-		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
 		
 		wait;
 	end process;
