@@ -48,6 +48,8 @@ architecture Behavioral of processor is
 		Port ( 
 			clk 						: in  STD_LOGIC;
 			reset 					: in  STD_LOGIC;
+			pc_stall 				: in  STD_LOGIC;
+			pc_stall_number		: in  STD_LOGIC_VECTOR (31 downto 0);
 			processor_enable		: in 	STD_LOGIC;
 		
 			--input
@@ -69,12 +71,16 @@ architecture Behavioral of processor is
 			
 			--input
 			imem_data_in 			: in  STD_LOGIC_VECTOR (31 downto 0);
+			pc_unincremented		: in  STD_LOGIC_VECTOR (31 downto 0);
 
 			id_ctrl_regWrite		: in 	STD_LOGIC;
 			id_regWriteAddr		: in 	STD_LOGIC_VECTOR (4 downto 0);
 			id_regWriteData		: in  STD_LOGIC_VECTOR (31 downto 0);	
 			id_if_pc					: in  STD_LOGIC_VECTOR (31 downto 0);
 
+			ex_back_rt				: in STD_LOGIC_VECTOR (4 downto 0);
+			ex_back_mem_read		: in STD_LOGIC;
+			
 			--output
 			if_ctrl_jump 			: out  STD_LOGIC; -- from processor control
 			if_jump_addr 			: out  STD_LOGIC_VECTOR (31 downto 0);
@@ -93,8 +99,12 @@ architecture Behavioral of processor is
 			ex_register_read_1 	: out  STD_LOGIC_VECTOR (31 downto 0);
 			ex_register_read_2 	: out  STD_LOGIC_VECTOR (31 downto 0);
 			ex_signext 				: out  STD_LOGIC_VECTOR (31 downto 0);
+			ex_inst_25_21 			: out  STD_LOGIC_VECTOR (4 downto 0);
 			ex_inst_20_16 			: out  STD_LOGIC_VECTOR (4 downto 0);
-			ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0)
+			ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0);
+			
+			pc_stall 				: out STD_LOGIC := '0';
+			pc_unincremented_back: out  STD_LOGIC_VECTOR (31 downto 0)
 		);
 	end component;
 	
@@ -117,11 +127,21 @@ architecture Behavioral of processor is
 			
 			ex_pc						: in STD_LOGIC_VECTOR (31 downto 0);
 			ex_signext 				: in STD_LOGIC_VECTOR (31 downto 0);
+			ex_inst_25_21 			: in STD_LOGIC_VECTOR (4 downto 0);
 			ex_inst_20_16 			: in STD_LOGIC_VECTOR (4 downto 0);
 			ex_inst_15_11 			: in STD_LOGIC_VECTOR (4 downto 0);
 			
 			ex_register_read_1 	: in STD_LOGIC_VECTOR (31 downto 0);
 			ex_register_read_2 	: in STD_LOGIC_VECTOR (31 downto 0);
+		
+			wb_write_data			: in STD_LOGIC_VECTOR (31 downto 0);
+			mem_alu_res				: in STD_LOGIC_VECTOR (31 downto 0);
+			
+			mem_reg_dest 			: in STD_LOGIC_VECTOR (4 downto 0);
+			mem_reg_write 			: in STD_LOGIC;
+			
+			wb_reg_write 			: in STD_LOGIC;
+			wb_reg_dest 			: in STD_LOGIC_VECTOR (4 downto 0);
 			
 			-- out signals
 			mem_wb_ctrl_regWrite : out  STD_LOGIC;
@@ -135,7 +155,10 @@ architecture Behavioral of processor is
 			mem_branchAddr			: out STD_LOGIC_VECTOR (31 downto 0);
 			mem_aluRes				: out STD_LOGIC_VECTOR (31 downto 0);
 			mem_writeData 			: out STD_LOGIC_VECTOR (31 downto 0); -- copy of ex_register_read_2
-			mem_writeRegisterAddr: out STD_LOGIC_VECTOR (4 downto 0)
+			mem_writeRegisterAddr: out STD_LOGIC_VECTOR (4 downto 0);
+			
+			id_rt						: out STD_LOGIC_VECTOR (4 downto 0);
+			id_mem_read				: out STD_LOGIC
 		);	
 	end component;
 	
@@ -168,6 +191,10 @@ architecture Behavioral of processor is
 			
 			if_ctrl_pcSrc			: out STD_LOGIC; -- branch control / selector
 			
+			mem_alu_res				: out STD_LOGIC_VECTOR (31 downto 0);
+			mem_reg_dest 			: out STD_LOGIC_VECTOR (4 downto 0);
+			mem_reg_write 			: out	STD_LOGIC;
+			
 			-- external processor signals		
 			dmem_address			: out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
 			dmem_address_wr     	: out STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
@@ -194,7 +221,11 @@ architecture Behavioral of processor is
 			-- output signals to instruction decoder
 			id_ctrl_regWrite		: out STD_LOGIC;
 			id_writeRegisterAddr : out STD_LOGIC_VECTOR (4 downto 0);
-			id_writeData			: out STD_LOGIC_VECTOR (31 downto 0)
+			id_writeData			: out STD_LOGIC_VECTOR (31 downto 0);
+			
+			wb_write_data			: out STD_LOGIC_VECTOR (31 downto 0);
+			wb_reg_write 			: out STD_LOGIC;
+			wb_reg_dest 			: out STD_LOGIC_VECTOR (4 downto 0)
 		);
 	end component;
 	
@@ -220,8 +251,11 @@ architecture Behavioral of processor is
 	signal decoder_ex_register_read_1 	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	signal decoder_ex_register_read_2 	: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	signal decoder_ex_signext 				: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal decoder_ex_inst_25_21 			: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	signal decoder_ex_inst_20_16 			: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	signal decoder_ex_inst_15_11 			: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+	signal decoder_pc_stall			 		: STD_LOGIC := '0';
+	signal decoder_pc_unincremented_back: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	
 	--executer
 	signal executer_mem_wb_ctrl_regWrite : STD_LOGIC := '0';
@@ -237,6 +271,9 @@ architecture Behavioral of processor is
 	signal executer_mem_writeData 			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0'); -- copy of ex_register_read_2
 	signal executer_mem_writeRegisterAddr	: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	
+	signal executer_id_rt					: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+	signal executer_id_mem_read			: STD_LOGIC := '0';
+	
 	--memorier
 	signal memorier_wb_ctrl_regWrite 	: STD_LOGIC := '0';	
 	signal memorier_wb_ctrl_memtoReg 	: STD_LOGIC := '0';
@@ -246,6 +283,10 @@ architecture Behavioral of processor is
 	signal memorier_wb_regWriteAddr		: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	
 	signal memorier_if_ctrl_pcSrc			: STD_LOGIC := '0'; -- branch control / selector
+	
+	signal memorier_mem_alu_res			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	signal memorier_mem_reg_dest			: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+	signal memorier_mem_reg_write			: STD_LOGIC := '0';
 	
 	-- external processor signals from memorier		
 	signal memorier_dmem_address			: STD_LOGIC_VECTOR (DADDR_BUS-1 downto 0) := (others => '0'); -- remove default value?
@@ -257,12 +298,18 @@ architecture Behavioral of processor is
 	signal writebacker_id_ctrl_regWrite			: STD_LOGIC := '0';
 	signal writebacker_id_writeRegisterAddr 	: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 	signal writebacker_id_writeData				: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+	
+	signal writebacker_wb_reg_write			: STD_LOGIC := '0';
+	signal writebacker_wb_reg_dest 			: STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+	signal writebacker_wb_write_data			: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 
 begin
 	
 	fetcher_comp: fetcher port map(
 		clk 					=> clk,
 		reset					=> reset,
+		pc_stall				=> decoder_pc_stall,
+		pc_stall_number   => decoder_pc_unincremented_back,
 		processor_enable 	=> processor_enable,
 		if_ctrl_pcSrc 		=>	memorier_if_ctrl_pcSrc,
 		if_ctrl_jump		=> decoder_if_ctrl_jump,
@@ -276,10 +323,13 @@ begin
 		clk 					=> clk,
 		reset					=> reset,
 		imem_data_in		=> imem_data_in,
+		pc_unincremented  => fetcher_imem_address,
 		id_ctrl_regWrite	=> writebacker_id_ctrl_regWrite,
 		id_regWriteAddr	=> writebacker_id_writeRegisterAddr,
 		id_regWriteData	=> writebacker_id_writeData,
 		id_if_pc				=> fetcher_id_pc,
+		ex_back_rt			=> executer_id_rt,
+		ex_back_mem_read	=> executer_id_mem_read,
 		if_ctrl_jump		=> decoder_if_ctrl_jump,
 		if_jump_addr		=> decoder_if_jump_addr,
 		wb_ctrl_regWrite	=> decoder_wb_ctrl_regWrite,
@@ -294,8 +344,11 @@ begin
 		ex_register_read_1=> decoder_ex_register_read_1,
 		ex_register_read_2=> decoder_ex_register_read_2,
 		ex_signext			=> decoder_ex_signext,
+		ex_inst_25_21		=> decoder_ex_inst_25_21,
 		ex_inst_20_16		=> decoder_ex_inst_20_16,
-		ex_inst_15_11		=> decoder_ex_inst_15_11
+		ex_inst_15_11		=> decoder_ex_inst_15_11,
+		pc_stall				=>	decoder_pc_stall,
+		pc_unincremented_back => decoder_pc_unincremented_back
 	);
 	
 	executer_comp: Executer port map(
@@ -311,10 +364,17 @@ begin
 		ex_ctrl_aluSrc			=> decoder_ex_ctrl_aluSrc,
 		ex_pc						=> decoder_ex_pc,
 		ex_signext				=> decoder_ex_signext,
+		ex_inst_25_21			=> decoder_ex_inst_25_21,
 		ex_inst_20_16			=> decoder_ex_inst_20_16,
 		ex_inst_15_11			=> decoder_ex_inst_15_11,
 		ex_register_read_1	=> decoder_ex_register_read_1,
 		ex_register_read_2	=> decoder_ex_register_read_2,
+		wb_write_data			=> writebacker_wb_write_data,
+		mem_alu_res				=> memorier_mem_alu_res,
+		mem_reg_dest			=> memorier_mem_reg_dest,
+		mem_reg_write			=> memorier_mem_reg_write,
+		wb_reg_write			=> writebacker_wb_reg_write,
+		wb_reg_dest				=> writebacker_wb_reg_dest,
 		mem_wb_ctrl_regWrite	=> executer_mem_wb_ctrl_regWrite,
 		mem_wb_ctrl_memtoReg	=> executer_mem_wb_ctrl_memtoReg,
 		mem_ctrl_branch		=> executer_mem_ctrl_branch,
@@ -324,7 +384,9 @@ begin
 		mem_branchAddr			=> executer_mem_branchAddr,
 		mem_aluRes				=> executer_mem_aluRes,
 		mem_writeData			=> executer_mem_writeData,
-		mem_writeRegisterAddr=> executer_mem_writeRegisterAddr
+		mem_writeRegisterAddr=> executer_mem_writeRegisterAddr,
+		id_rt						=> executer_id_rt,
+		id_mem_read				=> executer_id_mem_read
 	);
 	
 	memorier_comp: memorier port map(
@@ -346,6 +408,9 @@ begin
 		wb_aluRes				=> memorier_wb_aluRes,
 		wb_regWriteAddr		=> memorier_wb_regWriteAddr,
 		if_ctrl_pcSrc			=> memorier_if_ctrl_pcSrc,
+		mem_alu_res				=> memorier_mem_alu_res,
+		mem_reg_dest			=> memorier_mem_reg_dest,
+		mem_reg_write			=> memorier_mem_reg_write,
 		dmem_address			=> memorier_dmem_address,
 		dmem_address_wr		=> memorier_dmem_address_wr,
 		dmem_data_out			=> memorier_dmem_data_out,
@@ -362,7 +427,10 @@ begin
 		dmem_data_in			=> dmem_data_in,
 		id_ctrl_regWrite		=> writebacker_id_ctrl_regWrite,
 		id_writeRegisterAddr	=> writebacker_id_writeRegisterAddr,
-		id_writeData			=> writebacker_id_writeData
+		id_writeData			=> writebacker_id_writeData,
+		wb_write_data			=> writebacker_wb_write_data,
+		wb_reg_write			=> writebacker_wb_reg_write,
+		wb_reg_dest				=> writebacker_wb_reg_dest
 	);
 	
 		

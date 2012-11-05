@@ -212,7 +212,7 @@ begin
 	
 	mux_alusrc1 : MUX3 port map(
 		selector 	=> fwrd_ctrl_alu2,
-	   bus_in0 		=> ex_register_read_2,
+	   bus_in0 		=> mux_alusrc2,
 	   bus_in1 		=> wb_write_data,
 	   bus_in2 		=> mem_alu_res,
 	   bus_out 		=> alu_in_y
@@ -234,6 +234,8 @@ begin
 	
 	STEP_EXECUTER : process(clk, reset)
 	begin		
+		id_rt						<= ex_inst_20_16;
+		id_mem_read				<= ex_mem_ctrl_memRead;
 
 		if reset = '1' then
 			mem_ctrl_branch 		<= '0';
@@ -248,9 +250,6 @@ begin
 			mem_aluZero				<= '0';
 			mem_writeData 			<= (others => '0');
 			mem_writeRegisterAddr<= (others => '0');
-			
-			id_rt						<= (others => '0');
-			id_mem_read				<= '0';
 
 		elsif rising_edge(clk) then
 			-- pipeline forwarding control signals
@@ -268,8 +267,6 @@ begin
 			mem_aluRes				<= alu_result;		-- intermediate alu res singal
 			mem_writeRegisterAddr<= mux_regdest_out;
 			
-			id_rt						<= ex_inst_20_16;
-			id_mem_read				<= ex_mem_ctrl_memRead;
 		end if;
 	end process;
 

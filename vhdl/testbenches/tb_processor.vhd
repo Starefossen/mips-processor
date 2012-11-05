@@ -136,20 +136,15 @@ BEGIN
 		--imem_data <= '001111 00000 10011 0000000000000100';
 		imem_data_in	 <= "00111100000100110000000000000100";		
 		
-		
-		
 		--TEST ADD  (1+2)
 		wait for clk_period;
 		--imem_data <= '000000 10000 10001 10100 00000 100000';
 		imem_data_in	 <= "00000010000100011010000000100000";
-
-		wait for clk_period;
-		imem_data_in		<= nop;
 		
-		--TEST sub  (4-3)
+		--TEST sub  (4-3)  (num 3 from add. FORWARD TEST)
 		wait for clk_period;
-		--imem_data <= '000000 10011 10010 10101 00000 100010';
-		imem_data_in	 <= "00000010011100101010100000100010";	
+		--imem_data <= '000000 10011 10100 10101 00000 100010';
+		imem_data_in	 <= "00000010011101001010100000100010";	
 		
 		--TEST OR  (1 | 2)
 		wait for clk_period;
@@ -182,13 +177,9 @@ BEGIN
 		imem_data_in	 <= "00010010110100100111000000001110";	
 		
 		wait for clk_period;
-		imem_data_in		<= nop;
 		wait for clk_period;
-		imem_data_in		<= nop;
 		wait for clk_period;
-		imem_data_in		<= nop;
 		wait for clk_period;
-		imem_data_in		<= nop;
 				
 		--STORE     M[ R[rs] + imm] <= R[rt]
 		wait for clk_period;
@@ -200,14 +191,22 @@ BEGIN
 		--imem_data <= '100011 10001 11011 0000000000000001';
 		imem_data_in	 <= "10001110001110110000000000000001";	
 		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
+		
+		--TEST ADD  (4+1)    HAZARD TEST
+		wait for clk_period;
+		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
+		--imem_data <= '000000 10000 11011 11100 00000 100000';
+		imem_data_in	 <= "00000010000110111110000000100000";
+		wait for clk_period;  --HAZARD STALL
+		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
 				
 		--JUMP
 		wait for clk_period; --Last used mem
 		--imem_data <= '000010 00000 00000 0000000000000000';
 		imem_data_in	 <= "00001000000000000000000000000000";
 		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
+		
 		wait for clk_period;
-		imem_data_in <= nop;	
 		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
 			
 		--JUMP
@@ -215,8 +214,8 @@ BEGIN
 		--imem_data <= '000010 00000 00000 1111000000001111';
 		imem_data_in	 <= "00001000000000001111000000001111";	
 		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
+		
 		wait for clk_period;
-		imem_data_in <= nop;	
 		dmem_data_in 	<= dmem_data_out; --signal ought to be delayed
 		
 		wait;

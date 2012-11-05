@@ -34,6 +34,7 @@ entity fetcher is
 		clk 						: in  STD_LOGIC;
 		reset 					: in  STD_LOGIC;
 		pc_stall 				: in  STD_LOGIC := '0';
+		pc_stall_number		: in  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		processor_enable		: in	STD_LOGIC := '0';
 		
 		-- input signals from write back
@@ -97,7 +98,7 @@ begin
 	staller : MUX port map(
 		selector 	=> pc_stall,	
 	   bus_in1 		=> mux_jump_output,
-	   bus_in2 		=> sub_output,
+	   bus_in2 		=> pc_stall_number,
 	   bus_out 		=> mux_staller_output
 	);
 
@@ -107,13 +108,6 @@ begin
 		CIN			=> '0',
 		R				=> adder1_output
 	);
-
-	sub : ADDER port map(
-		X				=>	pc_register,
-		Y				=> "11111111111111111111111111111110",
-		CIN			=> '0',
-		R				=> sub_output
-	);
 		
 	STEP_FETCHER : process(clk, reset)
 	begin		
@@ -122,12 +116,12 @@ begin
 			imem_address			<= (others => '0');
 			pc_register				<= (others => '0');
 		else
-			imem_address			<= pc_register;
+			imem_address			<= mux_staller_output;--pc_register;
 			
 			-- output signals	
 			if rising_edge(clk) then			
-				pc_register			<= mux_staller_output;
-				id_pc					<= adder1_output;
+				pc_register				<= mux_staller_output;
+				id_pc						<= adder1_output;
 			end if;
 		end if;
 	end process;

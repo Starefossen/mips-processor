@@ -60,7 +60,7 @@ entity memorier is
 		
 		if_ctrl_pcSrc			: out STD_LOGIC := '0'; -- branch control / selector
 		
-		mem_alu_res				: OUT STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		mem_alu_res				: out STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		mem_reg_dest 			: out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		mem_reg_write 			: out	STD_LOGIC := '0';
 		

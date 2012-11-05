@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    13:52:38 09/11/2012 
+-- Create Date:    12:42:51 10/29/2012 
 -- Design Name: 
--- Module Name:    MUX - Behavioral 
+-- Module Name:    HAZARD_DETECTOR - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,29 +29,27 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity MUX3 is
-	generic (N :NATURAL);
-	Port ( selector : in  STD_LOGIC_VECTOR (1 downto 0) := (others => '0');
-           bus_in0 : in  STD_LOGIC_VECTOR (N-1 downto 0) := (others => '0');
-           bus_in1 : in  STD_LOGIC_VECTOR (N-1 downto 0) := (others => '0');
-           bus_in2 : in  STD_LOGIC_VECTOR (N-1 downto 0) := (others => '0');
-           bus_out : out  STD_LOGIC_VECTOR (N-1 downto 0) := (others => '0')
+entity HAZARD_DETECTOR is
+    Port (
+		imem_data_in : in  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
+		ex_rt : in  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		ex_mem_read : in  STD_LOGIC := '0';
+		stall : out  STD_LOGIC := '0'
 	);
-end MUX3;
+end HAZARD_DETECTOR;
 
-architecture Behavioral of MUX3 is
+architecture Behavioral of HAZARD_DETECTOR is
 
 begin
 
-MUX3 : process(selector, bus_in0, bus_in1, bus_in2)
-	begin
-		if (selector = "00") then
-			bus_out <= bus_in0;
-		elsif (selector = "01") then
-			bus_out <= bus_in1;
-		else 
-			bus_out <= bus_in2;
+	STEP_FETCHER : process(imem_data_in, ex_rt, ex_mem_read)
+	begin		
+		if (ex_mem_read = '1' and ((ex_rt = imem_data_in(20 downto 16)) or (ex_rt = imem_data_in(15 downto 11)))) then
+			stall <= '1';
+		else
+			stall <= '0';
 		end if;
 	end process;
+
 end Behavioral;
 

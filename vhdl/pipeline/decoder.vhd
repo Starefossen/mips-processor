@@ -29,6 +29,7 @@ entity decoder is
 		
 		-- processor instruction
 		imem_data_in			: in 	STD_LOGIC_VECTOR (31 downto 0) := "11111100000000000000000000000000";
+		pc_unincremented		: in 	STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 		
 		-- forwarded signals for writing regtister
 		id_ctrl_regWrite		: in 	STD_LOGIC := '0';								-- from wb step
@@ -36,6 +37,9 @@ entity decoder is
 		id_regWriteData		: in  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');	-- from wb step
 		id_if_pc					: in  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');	-- from if step
 
+		ex_back_rt				: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+		ex_back_mem_read		: in STD_LOGIC := '0';
+		
 		-- output signals
 		if_ctrl_jump 			: out  STD_LOGIC := '0'; -- from processor control
 		if_jump_addr 			: out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
@@ -58,9 +62,8 @@ entity decoder is
 		ex_inst_20_16 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		ex_inst_15_11 			: out  STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 		
-		ex_back_rt				: in STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
-		ex_back_mem_read		: in STD_LOGIC := '0';
-		pc_stall 				: out STD_LOGIC := '0'
+		pc_stall 				: out STD_LOGIC := '0';
+		pc_unincremented_back : out  STD_LOGIC_VECTOR (31 downto 0) := (others => '0')
 	);
 end decoder;
 
@@ -83,15 +86,14 @@ architecture Behavioral of decoder is
 
 	component HAZARD_DETECTOR is
 		 Port (
-			rs 					: in  STD_LOGIC_VECTOR (4 downto 0);
-			rt 					: in  STD_LOGIC_VECTOR (4 downto 0);
+			imem_data_in		: in  STD_LOGIC_VECTOR (31 downto 0);
 			ex_rt 				: in  STD_LOGIC_VECTOR (4 downto 0);
 			ex_mem_read 		: in  STD_LOGIC;
 			stall 				: out STD_LOGIC
 		);
 	end component;
 
-	signal ctrl_stall 		: STD_LOGIC;
+	signal ctrl_stall 		: STD_LOGIC := '0';
 	
 	component MUX is
 		generic (N :NATURAL :=6); 
@@ -103,7 +105,7 @@ architecture Behavioral of decoder is
 		);
 	end component;
 	
-	signal mux_op_code		: STD_LOGIC_VECTOR (5 downto 0);
+	signal mux_op_code		: STD_LOGIC_VECTOR (5 downto 0) := (others => '0');
 	
 	component REGISTER_FILE is
 		port(
@@ -145,9 +147,8 @@ architecture Behavioral of decoder is
 begin
 
 	-- Stall pipeline on detected hazards
-	hazrd_detector : HAZARD_DETECTOR port map ( 
-		rs  					=> imem_data_in(20 downto 16),
-		rt 					=> imem_data_in(15 downto 11),
+	hazard_detector_comp : HAZARD_DETECTOR port map ( 
+		imem_data_in		=> imem_data_in,
 		ex_rt 				=> ex_back_rt,
 		ex_mem_read 		=> ex_back_mem_read, 
 		stall 				=> ctrl_stall
@@ -196,8 +197,10 @@ begin
 		bus_out 					=> signext_output
 	);
 
-	STEP_DECODER : process(clk, reset)
+	STEP_DECODER : process(clk, reset,imem_data_in)
 	begin	
+		pc_stall 					<= ctrl_stall;
+		pc_unincremented_back	<= pc_unincremented;
 		
 		if reset = '1' then
 			
@@ -224,12 +227,7 @@ begin
 			ex_register_read_1 	<= (others => '0'); 
 			ex_register_read_2 	<= (others => '0'); 
 			
-			pc_stall					<= '0'; 
-			
-		else
-				
-			if rising_edge(clk) then
-				pc_stall							<= ctrl_stall;
+		elsif rising_edge(clk) then
 			
 				--jump signals
 				if_jump_addr(31 downto 28) <= id_if_pc(31 downto 28);
@@ -258,10 +256,9 @@ begin
 				ex_register_read_1 	<= registers_readdata1;
 				ex_register_read_2 	<= registers_readdata2;
 				
-			elsif falling_edge(clk) then
+		elsif falling_edge(clk) then
 				tmp_registers_readdata1 	<= registers_readdata1;
 				tmp_registers_readdata2 	<= registers_readdata2;
-			end if;
 		end if;
 	end process;
 
