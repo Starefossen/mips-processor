@@ -63,10 +63,8 @@ begin
 				for i in 0 to NUM_REG-1 loop
 					REGS(i) <= (others => '0');
 				end loop;
-		else
-			if  (RW='1' AND RD_ADDR /= "00000") then
-				REGS(to_integer(unsigned(RD_ADDR)))<=WRITE_DATA;
-			end if;
+		elsif  (RW='1' AND RD_ADDR /= "00000") then
+			REGS(to_integer(unsigned(RD_ADDR)))<=WRITE_DATA;
 		end if;
 	end process  REGISTERS;
 
