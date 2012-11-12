@@ -7,6 +7,9 @@
 !*.vhdl
 
 !/docs/
+!/docs/*.dia
+!/docs/*.pdf
+!/docs/*.png
 
 !/vhdl
 /vhdl/*
