@@ -197,9 +197,9 @@ begin
 
 	mux_const : MUX port map(
 		selector 	=> ex_ctrl_aluSrc,
-	   bus_in1 		=> ex_register_read_2,
+	   bus_in1 		=> mux_alusrc2,
 	   bus_in2 		=> ex_signext,
-	   bus_out 		=> mux_alusrc2
+	   bus_out 		=> alu_in_y
 	);
 	
 	mux_alusrc0	: MUX3 port map(
@@ -212,10 +212,10 @@ begin
 	
 	mux_alusrc1 : MUX3 port map(
 		selector 	=> fwrd_ctrl_alu2,
-	   bus_in0 		=> mux_alusrc2,
+	   bus_in0 		=> ex_register_read_2,
 	   bus_in1 		=> wb_write_data,
 	   bus_in2 		=> mem_alu_res,
-	   bus_out 		=> alu_in_y
+	   bus_out 		=> mux_alusrc2
 	);
 	
 	mux_regdst : MUX generic map (N=>5) port map(
@@ -259,7 +259,7 @@ begin
 			mem_ctrl_branch 		<= ex_mem_ctrl_branch;
 			mem_ctrl_memRead 		<= ex_mem_ctrl_memRead;
 			mem_ctrl_memWrite 	<= ex_mem_ctrl_memWrite;
-			mem_writeData 			<= ex_register_read_2;
+			mem_writeData 			<= mux_alusrc2;
 			
 			-- set computed results to output signals
 			mem_aluZero				<= alu_flags.Zero;

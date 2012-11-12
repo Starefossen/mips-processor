@@ -113,10 +113,10 @@ BEGIN
 		ex_mem_read <= '1';
       wait for clk_period*1;
 		
-		--imem_data_in <= 
-		--ex_rt <= 
-		--ex_mem_read <= 
-      -- insert stimulus here 
+		--Case 4
+		ex_rt <= x_vector;
+		ex_mem_read <= '1';
+      wait for clk_period*1;
 
       wait;
    end process;
